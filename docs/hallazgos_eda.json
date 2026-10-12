@@ -1,0 +1,227 @@
+{
+  "tablas": {
+    "customers": {
+      "filas": 99441,
+      "columnas": 5
+    },
+    "geolocation": {
+      "filas": 1000163,
+      "columnas": 5
+    },
+    "orders": {
+      "filas": 99441,
+      "columnas": 8
+    },
+    "order_items": {
+      "filas": 112650,
+      "columnas": 7
+    },
+    "payments": {
+      "filas": 103886,
+      "columnas": 5
+    },
+    "reviews": {
+      "filas": 99224,
+      "columnas": 7
+    },
+    "products": {
+      "filas": 32951,
+      "columnas": 9
+    },
+    "sellers": {
+      "filas": 3095,
+      "columnas": 4
+    },
+    "category_tr": {
+      "filas": 71,
+      "columnas": 2
+    }
+  },
+  "periodo": [
+    "2016-09-04",
+    "2018-10-17"
+  ],
+  "nulos": {
+    "reviews.review_comment_title": 88.34,
+    "reviews.review_comment_message": 58.7,
+    "orders.order_delivered_customer_date": 2.98,
+    "products.product_name_lenght": 1.85,
+    "products.product_category_name": 1.85,
+    "products.product_description_lenght": 1.85,
+    "products.product_photos_qty": 1.85,
+    "orders.order_delivered_carrier_date": 1.79,
+    "orders.order_approved_at": 0.16,
+    "products.product_weight_g": 0.01,
+    "products.product_length_cm": 0.01,
+    "products.product_height_cm": 0.01,
+    "products.product_width_cm": 0.01
+  },
+  "duplicados": {
+    "orders (order_id)": 0,
+    "customers (customer_id)": 0,
+    "reviews (review_id)": 814,
+    "reviews: pedidos con >1 reseña": 547,
+    "geolocation: filas exactamente duplicadas": 261831,
+    "products (product_id)": 0
+  },
+  "inconsistencias": {
+    "entrega antes de la compra": 0,
+    "aprobación antes de la compra": 0,
+    "entrega a cliente antes que al transportista": 23,
+    "transportista antes de aprobación": 1359,
+    "status 'delivered' sin fecha de entrega": 8,
+    "status 'canceled' con fecha de entrega": 6,
+    "pedidos sin ítems": 775,
+    "pedidos sin pago": 1,
+    "pagos con valor 0": 9,
+    "productos sin categoría": 610,
+    "categorías sin traducción": 2,
+    "pago total ≠ precio+flete (>1 BRL)": 312
+  },
+  "outliers": {
+    "price": {
+      "outliers_IQR": 8427,
+      "%_IQR": 7.48
+    },
+    "freight_value": {
+      "outliers_IQR": 12180,
+      "%_IQR": 10.81
+    },
+    "payment_value": {
+      "outliers_IQR": 7981,
+      "%_IQR": 7.68
+    },
+    "product_weight_g": {
+      "outliers_IQR": 4551,
+      "%_IQR": 13.81
+    },
+    "dias_entrega": {
+      "outliers_IQR": 4899,
+      "%_IQR": 5.08
+    }
+  },
+  "review_score_%": {
+    "1": 11.51,
+    "2": 3.18,
+    "3": 8.24,
+    "4": 19.29,
+    "5": 57.78
+  },
+  "review_negativa_%(<=2)": 14.69,
+  "order_status_%": {
+    "delivered": 97.02,
+    "shipped": 1.11,
+    "canceled": 0.63,
+    "unavailable": 0.61,
+    "invoiced": 0.32,
+    "processing": 0.3,
+    "created": 0.01,
+    "approved": 0.0
+  },
+  "top_dias_pedidos": {
+    "2017-11-24": 1176,
+    "2017-11-25": 499,
+    "2017-11-27": 403,
+    "2017-11-26": 389,
+    "2017-11-28": 379
+  },
+  "n_categorias": 74,
+  "categorias_80%_ventas": 18,
+  "top10_categorias": {
+    "health_beauty": {
+      "ventas": 1258681.34,
+      "%_review_negativa": 12.54
+    },
+    "watches_gifts": {
+      "ventas": 1205005.68,
+      "%_review_negativa": 15.05
+    },
+    "bed_bath_table": {
+      "ventas": 1036988.68,
+      "%_review_negativa": 16.48
+    },
+    "sports_leisure": {
+      "ventas": 988048.97,
+      "%_review_negativa": 12.88
+    },
+    "computers_accessories": {
+      "ventas": 911954.32,
+      "%_review_negativa": 16.04
+    },
+    "furniture_decor": {
+      "ventas": 729762.49,
+      "%_review_negativa": 16.34
+    },
+    "cool_stuff": {
+      "ventas": 635290.85,
+      "%_review_negativa": 12.24
+    },
+    "housewares": {
+      "ventas": 632248.66,
+      "%_review_negativa": 12.99
+    },
+    "auto": {
+      "ventas": 592720.11,
+      "%_review_negativa": 14.35
+    },
+    "garden_tools": {
+      "ventas": 485256.46,
+      "%_review_negativa": 13.06
+    }
+  },
+  "dias_entrega_media": 12.52,
+  "dias_entrega_mediana": 10.21,
+  "%_entregas_tardias": 7.99,
+  "dias_estimacion_sobrante_media": 11.22,
+  "MAE_estimacion_olist_dias": 12.73,
+  "%_negativas_a_tiempo": 9.22,
+  "%_negativas_tardias": 54.07,
+  "clientes_unicos": 95560,
+  "%_clientes_recompra": 3.06,
+  "%_pedidos_multi_item": 9.94,
+  "%_pedidos_multi_producto": 3.28,
+  "%_pedidos_multi_categoria": 0.8,
+  "n_pedidos_multi_categoria": 786,
+  "payment_type_%": {
+    "credit_card": 73.92,
+    "boleto": 19.04,
+    "voucher": 5.56,
+    "debit_card": 1.47,
+    "not_defined": 0.0
+  },
+  "ticket_promedio_BRL": 160.56,
+  "%_reseñas_con_comentario": 41.3,
+  "palabras_por_comentario_mediana": 9,
+  "%_con_comentario_por_score": {
+    "1": 76.55,
+    "2": 68.07,
+    "3": 43.49,
+    "4": 31.22,
+    "5": 35.85
+  },
+  "top_palabras_negativas": [
+    "não",
+    "produto",
+    "recebi",
+    "comprei",
+    "veio",
+    "entrega",
+    "ainda",
+    "entregue",
+    "chegou",
+    "nao"
+  ],
+  "corr_review_score": {
+    "dias_entrega": -0.235,
+    "dias_retraso": -0.176,
+    "n_items": -0.102,
+    "n_sellers": -0.089,
+    "freight_total": -0.086,
+    "dias_estimados": -0.055,
+    "peso_total_g": -0.033,
+    "price_total": -0.032,
+    "ratio_flete": -0.026,
+    "n_cuotas": -0.021,
+    "mismo_estado": 0.065
+  }
+}

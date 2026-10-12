@@ -1,0 +1,26 @@
+pandas>=2.0
+numpy
+matplotlib
+seaborn
+openpyxl
+kagglehub
+jupyter
+scikit-learn
+xgboost
+mlxtend          # Apriori / FP-Growth
+statsmodels
+prophet
+networkx
+python-louvain   # comunidades en grafos
+nltk
+spacy
+shap
+lime
+imbalanced-learn # SMOTE / ADASYN
+evidently        # data drift
+fastapi
+uvicorn
+streamlit
+plotly
+psycopg2-binary
+sqlalchemy
