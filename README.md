@@ -129,6 +129,69 @@ La evaluación comparativa es transversal. Cada integrante compara los algoritmo
 publica las métricas bajo el contrato común. El dashboard consolida ganadores y versiones sin comparar
 directamente métricas incompatibles como MAE, Silhouette, lift, modularidad y F1.
 
-Docker y n8n se incorporarán después de estabilizar los modelos y sus contratos. Docker empaquetará
-Streamlit, FastAPI, PostgreSQL y n8n; n8n orquestará validación, detección de drift y reentrenamiento,
-pero la lógica analítica permanecerá en Python.
+Docker ya empaqueta Streamlit y FastAPI. PostgreSQL y n8n se incorporarán después de estabilizar los
+modelos y sus contratos; n8n orquestará validación, detección de drift y reentrenamiento, pero la
+lógica analítica permanecerá en Python.
+
+## Ejecución con Docker
+
+Con Docker Desktop iniciado, levantar backend y frontend desde la raíz:
+
+```bash
+docker compose up --build
+```
+
+Abrir:
+
+- Dashboard: `http://localhost:8501`
+- API: `http://localhost:8010/docs`
+
+Para detener los servicios:
+
+```bash
+docker compose down
+```
+
+Los volúmenes permiten que los cambios del código se reflejen durante el desarrollo. La base de datos
+no forma parte todavía del Compose; se añadirá cuando exista el pipeline procesado y se defina el
+esquema de PostgreSQL.
+
+## Guía breve para el equipo
+
+Antes de repartir tareas, `eda-front` debe integrarse en `develop`. Cada integrante crea su rama desde
+`develop`, nunca directamente desde `main`:
+
+```bash
+git switch develop
+git pull origin develop
+git switch -c feature/nombre-modulo
+```
+
+Al terminar:
+
+```bash
+git push -u origin feature/nombre-modulo
+```
+
+El Pull Request debe apuntar de `feature/nombre-modulo` hacia `develop`.
+
+| Rama | Responsabilidad |
+|---|---|
+| `feature/association` | Notebook `03_association`, Apriori/FP-Growth/ECLAT, reglas, métricas y `association.py`. |
+| `feature/clustering` | Notebook `04_clustering`, RFM, K-Means/DBSCAN, segmentos, Silhouette y `clustering.py`. |
+| `feature/timeseries` | Notebook `05_timeseries`, SARIMA/Prophet, backtesting, pronósticos y `timeseries.py`. |
+| `feature/graphs` | Notebook `06_graphs`, nodos, aristas, centralidad, Louvain y `graphs.py`. |
+| `feature/regression` | Notebook `07_regression`, días de entrega, comparación por MAE y `regression.py`. |
+| `feature/classification` | Notebook `08_classification`, reseña negativa, Recall/F1/PR-AUC y `classification.py`. |
+
+Flujo obligatorio de cada módulo:
+
+1. Experimentar en su notebook.
+2. Pasar la lógica definitiva a `src/models/`.
+3. Guardar resultados en `artifacts/<modulo>/`.
+4. Crear `manifest.json`.
+5. Completar su archivo en `frontend/views/model_pages/`.
+6. Agregar pruebas y abrir PR hacia `develop`.
+
+Cada integrante modifica únicamente su módulo. Los cambios en navegación, estilos globales o contratos
+se coordinan previamente en `develop`.
