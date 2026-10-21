@@ -35,3 +35,180 @@ Genera:
 
 ## Dataset
 [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) (CC BY-NC-SA 4.0) — 9 tablas, pedidos de sep-2016 a oct-2018.
+
+## Dashboard analítico
+
+El repositorio incluye una base modular para que seis integrantes trabajen en ramas separadas sin
+modificar la navegación o los componentes compartidos. La interfaz usa Streamlit y Plotly con las
+pantallas conectadas mediante un menú lateral accesible.
+
+La página **EDA y calidad** consume `docs/hallazgos_eda.json` y presenta KPIs, gráficas interactivas y
+las figuras originales del notebook. Las pantallas de modelamiento muestran un estado vacío explícito
+hasta que exista un artefacto real; no se publican resultados simulados.
+
+### Ejecutar backend y frontend
+
+Desde la raíz del repositorio, instalar primero las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+Terminal 1 — API FastAPI:
+
+```bash
+uvicorn backend.main:app --reload --port 8000
+```
+
+Comprobar la API en `http://127.0.0.1:8000/docs` o `http://127.0.0.1:8000/health`.
+
+Terminal 2 — dashboard Streamlit:
+
+```bash
+streamlit run frontend/app.py
+```
+
+Abrir `http://localhost:8501`. Si la API no está disponible, el EDA utiliza automáticamente el JSON
+local y muestra **Modo local**. Para usar otra dirección de API, definir `OLIST_API_URL` antes de
+iniciar Streamlit.
+
+### Ramas de trabajo
+
+- `feature/association`
+- `feature/clustering`
+- `feature/timeseries`
+- `feature/graphs`
+- `feature/regression`
+- `feature/classification`
+
+Cada integrante trabaja en su notebook, módulo productivo, pruebas, carpeta dentro de `artifacts/` y
+pantalla correspondiente. No debe colocar entrenamiento pesado dentro de Streamlit ni repetir la
+limpieza de los CSV en cada página.
+
+Las vistas aisladas están en `frontend/views/model_pages/`. Cada rama debe modificar únicamente su
+archivo homónimo y reutilizar los componentes compartidos; los cambios a navegación, estilos o
+contratos se coordinan en la rama de integración.
+
+### Contrato común de los módulos
+
+Cada módulo debe producir:
+
+- Estado del entrenamiento.
+- Nombre y versión del modelo.
+- Fecha de generación.
+- Dataset o periodo utilizado.
+- Métricas de entrenamiento y prueba.
+- Modelo ganador.
+- Tabla pequeña con resultados o predicciones.
+- Datos preparados para las gráficas.
+- Conclusiones de negocio.
+- Limitaciones.
+- Modelo serializado cuando corresponda.
+
+`docs/module_contract.schema.json` formaliza el manifest que activa los resultados en el dashboard.
+Cada módulo escribe su manifest en `artifacts/<modulo>/manifest.json`.
+
+Salidas específicas:
+
+- **Asociación:** reglas, support, confidence, lift y algoritmo.
+- **Clustering:** cliente, cluster, métricas RFM, perfil y Silhouette.
+- **Series temporales:** fecha, valor real, pronóstico, intervalos y error.
+- **Grafos:** nodos, aristas, peso, comunidad y centralidad.
+- **Regresión:** valor real, predicción, error y métricas.
+- **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
+
+### Integración y evaluación
+
+La API expone inicialmente:
+
+- `GET /health`
+- `GET /api/v1/eda/summary`
+- `GET /api/v1/modules`
+
+La evaluación comparativa es transversal. Cada integrante compara los algoritmos de su módulo y
+publica las métricas bajo el contrato común. El dashboard consolida ganadores y versiones sin comparar
+directamente métricas incompatibles como MAE, Silhouette, lift, modularidad y F1.
+
+Docker ya empaqueta Streamlit y FastAPI. PostgreSQL y n8n se incorporarán después de estabilizar los
+modelos y sus contratos; n8n orquestará validación, detección de drift y reentrenamiento, pero la
+lógica analítica permanecerá en Python.
+
+## Ejecución con Docker
+
+Con Docker Desktop iniciado, levantar backend y frontend desde la raíz:
+
+```bash
+docker compose up --build
+```
+
+Abrir:
+
+- Dashboard: `http://localhost:8501`
+- API: `http://localhost:8010/docs`
+
+Para detener los servicios:
+
+```bash
+docker compose down
+```
+
+Los volúmenes permiten que los cambios del código se reflejen durante el desarrollo. La base de datos
+no forma parte todavía del Compose; se añadirá cuando exista el pipeline procesado y se defina el
+esquema de PostgreSQL.
+
+## Guía breve para el equipo
+
+Antes de repartir tareas, `eda-front` debe integrarse en `develop`. Cada integrante crea su rama desde
+`develop`, nunca directamente desde `main`:
+
+```bash
+git switch develop
+git pull origin develop
+git switch -c feature/nombre-modulo
+```
+
+Al terminar:
+
+```bash
+git push -u origin feature/nombre-modulo
+```
+
+El Pull Request debe apuntar de `feature/nombre-modulo` hacia `develop`.
+
+| Rama | Responsabilidad |
+|---|---|
+| `feature/association` | Notebook `03_association`, Apriori/FP-Growth/ECLAT, reglas, métricas y `association.py`. |
+| `feature/clustering` | Notebook `04_clustering`, RFM, K-Means/DBSCAN, segmentos, Silhouette y `clustering.py`. |
+| `feature/timeseries` | Notebook `05_timeseries`, SARIMA/Prophet, backtesting, pronósticos y `timeseries.py`. |
+| `feature/graphs` | Notebook `06_graphs`, nodos, aristas, centralidad, Louvain y `graphs.py`. |
+| `feature/regression` | Notebook `07_regression`, días de entrega, comparación por MAE y `regression.py`. |
+| `feature/classification` | Notebook `08_classification`, reseña negativa, Recall/F1/PR-AUC y `classification.py`. |
+
+Flujo obligatorio de cada módulo:
+
+1. Experimentar en su notebook.
+2. Pasar la lógica definitiva a `src/models/`.
+3. Guardar resultados en `artifacts/<modulo>/`.
+4. Crear `manifest.json`.
+5. Completar su archivo en `frontend/views/model_pages/`.
+6. Agregar pruebas y abrir PR hacia `develop`.
+
+Cada integrante modifica únicamente su módulo. Los cambios en navegación, estilos globales o contratos
+se coordinan previamente en `develop`.
+
+
+## Cada compañero hará:
+1. Entrenar y comparar varios algoritmos.
+2. Evaluarlos con métricas apropiadas.
+3. Seleccionar un único modelo ganador.
+4. Guardar ese modelo y sus resultados en artifacts/<modulo>/.
+5. Mostrar en Streamlit la comparación y justificar por qué ganó.
+
+| Módulo | Pregunta que responde | Utilidad |
+|---|---|---|
+| **Asociación** | ¿Qué productos o categorías se compran juntos? | Crear recomendaciones y estrategias de venta cruzada. |
+| **Clustering** | ¿Qué tipos de clientes existen y cuáles tienen mayor valor? | Segmentar clientes y diseñar acciones diferenciadas. |
+| **Series temporales** | ¿Cuánto se venderá en los próximos periodos? | Planificar inventario, logística y demanda. |
+| **Grafos** | ¿Qué productos, categorías o vendedores están más conectados? | Detectar comunidades, productos centrales y relaciones relevantes. |
+| **Regresión** | ¿Cuántos días tardará en llegar un pedido? | Anticipar retrasos y ofrecer fechas de entrega más precisas. |
+| **Clasificación** | ¿Qué pedidos podrían recibir una reseña negativa? | Identificar riesgos y actuar antes de que el cliente quede insatisfecho. |

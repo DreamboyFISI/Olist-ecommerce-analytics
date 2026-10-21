@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSmart module manifest",
+  "type": "object",
+  "required": ["status", "model_name", "version", "generated_at", "dataset", "period", "metrics", "winner", "results_path", "chart_data_path", "business_conclusions", "limitations"],
+  "properties": {
+    "status": {"type": "string", "enum": ["Pendiente", "En entrenamiento", "Entrenado", "Completado"]},
+    "model_name": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "dataset": {"type": "string", "minLength": 1},
+    "period": {"type": "string", "minLength": 1},
+    "metrics": {"type": "object", "additionalProperties": {"type": ["number", "string", "null"]}},
+    "winner": {"type": "string", "minLength": 1},
+    "results_path": {"type": "string", "minLength": 1},
+    "chart_data_path": {"type": "string", "minLength": 1},
+    "business_conclusions": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "serialized_model_path": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
