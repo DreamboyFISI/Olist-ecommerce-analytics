@@ -195,3 +195,20 @@ Flujo obligatorio de cada módulo:
 
 Cada integrante modifica únicamente su módulo. Los cambios en navegación, estilos globales o contratos
 se coordinan previamente en `develop`.
+
+
+## Cada compañero hará:
+1. Entrenar y comparar varios algoritmos.
+2. Evaluarlos con métricas apropiadas.
+3. Seleccionar un único modelo ganador.
+4. Guardar ese modelo y sus resultados en artifacts/<modulo>/.
+5. Mostrar en Streamlit la comparación y justificar por qué ganó.
+
+| Módulo | Pregunta que responde | Utilidad |
+|---|---|---|
+| **Asociación** | ¿Qué productos o categorías se compran juntos? | Crear recomendaciones y estrategias de venta cruzada. |
+| **Clustering** | ¿Qué tipos de clientes existen y cuáles tienen mayor valor? | Segmentar clientes y diseñar acciones diferenciadas. |
+| **Series temporales** | ¿Cuánto se venderá en los próximos periodos? | Planificar inventario, logística y demanda. |
+| **Grafos** | ¿Qué productos, categorías o vendedores están más conectados? | Detectar comunidades, productos centrales y relaciones relevantes. |
+| **Regresión** | ¿Cuántos días tardará en llegar un pedido? | Anticipar retrasos y ofrecer fechas de entrega más precisas. |
+| **Clasificación** | ¿Qué pedidos podrían recibir una reseña negativa? | Identificar riesgos y actuar antes de que el cliente quede insatisfecho. |
