@@ -1,10 +1,7 @@
 """Tabla maestra de pedidos de Olist — fase 3 de CRISP-DM.
 
-Integra los nueve CSV crudos en una tabla a nivel `order_id` aplicando la matriz
-de tratamiento del 1° avance.
-
-Las inconsistencias se marcan con banderas `flag_*` en lugar de eliminarse: cada
-módulo decide qué excluir según su problema.
+Integra los nueve CSV crudos en una tabla a nivel `order_id`. Las
+inconsistencias se marcan con banderas `flag_*` en lugar de eliminarse.
 
     python -m src.data.build_master
 """
@@ -55,13 +52,13 @@ def load_raw(raw_dir: Path = RAW) -> dict[str, pd.DataFrame]:
 
 
 def dedup_reviews(reviews: pd.DataFrame) -> pd.DataFrame:
-    """Una reseña por pedido, la respuesta más reciente (814 ids duplicados)."""
+    """Una reseña por pedido, la respuesta más reciente."""
     return (reviews.sort_values("review_answer_timestamp")
                    .drop_duplicates("order_id", keep="last"))
 
 
 def dedup_geolocation(geo: pd.DataFrame) -> pd.DataFrame:
-    """Centroide por prefijo postal (261,831 filas exactamente duplicadas)."""
+    """Centroide por prefijo postal."""
     return (geo.drop_duplicates()
                .groupby("geolocation_zip_code_prefix")
                .agg(lat=("geolocation_lat", "mean"), lng=("geolocation_lng", "mean"),
@@ -91,8 +88,6 @@ def build_items(dfs: dict[str, pd.DataFrame]) -> pd.DataFrame:
         categoria_principal=("category", "first"),
         seller_state=("seller_state", "first"),
     )
-    # min_count=1 evita que una suma de solo nulos se convierta en 0: un pedido
-    # sin peso conocido debe quedar nulo, no pesar cero.
     agg["peso_total_g"] = items_full.groupby("order_id").product_weight_g.sum(min_count=1)
     return agg.reset_index()
 
@@ -106,7 +101,7 @@ def build_payments(payments: pd.DataFrame) -> pd.DataFrame:
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Variables derivadas, con las mismas definiciones del notebook de EDA."""
+    """Variables derivadas, con las definiciones del notebook de EDA."""
     df = df.copy()
 
     df["dias_entrega"] = (df.order_delivered_customer_date - df.order_purchase_timestamp).dt.total_seconds() / SEGUNDOS_POR_DIA
@@ -147,8 +142,6 @@ def add_quality_flags(df: pd.DataFrame) -> pd.DataFrame:
         df.order_delivered_carrier_date < df.order_approved_at).astype(int)
     df["flag_pago_descuadrado"] = ((df.payment_value - df.ticket).abs() > 1).astype(int)
 
-    # El descuadre de pago y el adelanto del transportista quedan fuera: son
-    # explicables por voucher y por aprobación tardía, no son errores.
     errores = ["flag_sin_items", "flag_pago_cero", "flag_entregado_sin_fecha",
                "flag_cancelado_con_entrega", "flag_entrega_antes_transportista"]
     df["registro_valido"] = (df[errores].sum(axis=1) == 0).astype(int)
