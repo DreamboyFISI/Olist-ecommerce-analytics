@@ -118,3 +118,75 @@ def evaluar(serie: pd.Series, predictor, horizonte: int = 30, n_pliegues: int = 
         fila.update(metricas(test.to_numpy(), np.asarray(pred)))
         filas.append(fila)
     return pd.DataFrame(filas)
+
+
+ORDENES = [((1, 1, 1), (1, 1, 1, 7)), ((2, 1, 1), (1, 1, 1, 7)),
+           ((1, 1, 2), (1, 1, 1, 7)), ((0, 1, 1), (0, 1, 1, 7))]
+
+
+def _ajustar_sarimax(y, order, seasonal, exog=None):
+    from statsmodels.tsa.statespace.sarimax import SARIMAX
+    return SARIMAX(y, exog=exog, order=order, seasonal_order=seasonal,
+                   enforce_stationarity=False,
+                   enforce_invertibility=False).fit(disp=False, maxiter=200)
+
+
+def _mejor_orden(y, exog=None):
+    """Elige el orden por AIC sobre el train del pliegue, sin mirar el test."""
+    mejor, mejor_aic = ORDENES[0], np.inf
+    for order, seasonal in ORDENES:
+        try:
+            aic = _ajustar_sarimax(y, order, seasonal, exog).aic
+        except Exception:
+            continue
+        if aic < mejor_aic:
+            mejor, mejor_aic = (order, seasonal), aic
+    return mejor
+
+
+def sarima(train: pd.Series, horizonte: int) -> pd.Series:
+    y = np.log1p(train)
+    order, seasonal = _mejor_orden(y)
+    pred = _ajustar_sarimax(y, order, seasonal).forecast(horizonte)
+    return pd.Series(np.expm1(pred.to_numpy()), index=_futuro(train, horizonte), name="sarima")
+
+
+def sarimax(train: pd.Series, horizonte: int) -> pd.Series:
+    y = np.log1p(train)
+    index = _futuro(train, horizonte)
+    exog_tr, exog_te = calendario(train.index), calendario(index)
+    order, seasonal = _mejor_orden(y, exog_tr)
+    pred = _ajustar_sarimax(y, order, seasonal, exog_tr).forecast(horizonte, exog=exog_te)
+    return pd.Series(np.expm1(np.asarray(pred)), index=index, name="sarimax")
+
+
+def prophet(train: pd.Series, horizonte: int) -> pd.Series:
+    from prophet import Prophet
+
+    modelo = Prophet(weekly_seasonality=True, yearly_seasonality=False,
+                     daily_seasonality=False, seasonality_mode="multiplicative")
+    modelo.add_country_holidays(country_name="BR")
+    modelo.fit(pd.DataFrame({"ds": train.index, "y": train.to_numpy()}))
+
+    index = _futuro(train, horizonte)
+    pred = modelo.predict(pd.DataFrame({"ds": index}))["yhat"].to_numpy()
+    return pd.Series(np.clip(pred, 0, None), index=index, name="prophet")
+
+
+def _futuro(train: pd.Series, horizonte: int) -> pd.DatetimeIndex:
+    return pd.date_range(train.index[-1] + pd.Timedelta(days=1), periods=horizonte, freq="D")
+
+
+MODELOS = {"naive_estacional": naive_estacional, "sarima": sarima,
+           "sarimax": sarimax, "prophet": prophet}
+
+
+def comparar(serie: pd.Series, horizonte: int = 30, n_pliegues: int = 6) -> pd.DataFrame:
+    filas = []
+    for nombre, predictor in MODELOS.items():
+        r = evaluar(serie, predictor, horizonte, n_pliegues).mean(numeric_only=True)
+        filas.append({"modelo": nombre, **r.drop("pliegue").to_dict()})
+    tabla = pd.DataFrame(filas).sort_values("sMAPE").reset_index(drop=True)
+    base = tabla.loc[tabla.modelo == "naive_estacional", "MAE"].iat[0]
+    tabla["mejora_MAE_%"] = ((base - tabla.MAE) / base * 100).round(1)
+    return tabla

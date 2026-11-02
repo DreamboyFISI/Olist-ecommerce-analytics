@@ -60,3 +60,24 @@ def test_metricas_perfectas_son_cero():
 
 def test_smape_no_explota_cerca_de_cero():
     assert np.isfinite(smape(np.array([0.01, 100.0]), np.array([50.0, 100.0])))
+
+
+def test_sarima_le_gana_al_baseline(serie):
+    """El modelo ganador debe superar al naive estacional; si no, no hay modelo."""
+    from src.models.timeseries import evaluar, naive_estacional, sarima
+
+    corto = serie.iloc[-200:]
+    base = evaluar(corto, naive_estacional, horizonte=30, n_pliegues=2).MAE.mean()
+    modelo = evaluar(corto, sarima, horizonte=30, n_pliegues=2).MAE.mean()
+    assert modelo < base
+
+
+def test_los_predictores_devuelven_el_horizonte_pedido(serie):
+    from src.models.timeseries import sarima, sarimax
+
+    train = serie.iloc[:-30]
+    for predictor in (sarima, sarimax):
+        pred = predictor(train, 30)
+        assert len(pred) == 30
+        assert pred.index[0] == train.index[-1] + pd.Timedelta(days=1)
+        assert (pred > 0).all()
