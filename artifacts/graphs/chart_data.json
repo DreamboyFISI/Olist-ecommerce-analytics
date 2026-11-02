@@ -1,0 +1,2137 @@
+{
+  "grafo": {
+    "nodos": [
+      {
+        "nodo": "housewares",
+        "tipo": "categoria",
+        "grado": 468,
+        "pagerank": 0.033186,
+        "comunidad": 1,
+        "etiqueta": "housewares"
+      },
+      {
+        "nodo": "f8db351d8c4c4c22c6835c19a46f01b0",
+        "tipo": "vendedor",
+        "grado": 20,
+        "pagerank": 0.002795,
+        "comunidad": 1,
+        "etiqueta": "Vendedor f8db351d"
+      },
+      {
+        "nodo": "53e4c6e0f4312d4d2107a8c9cddf45cd",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.002149,
+        "comunidad": 1,
+        "etiqueta": "Vendedor 53e4c6e0"
+      },
+      {
+        "nodo": "813348c996469b40f2e028d5429d3495",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000868,
+        "comunidad": 1,
+        "etiqueta": "Vendedor 813348c9"
+      },
+      {
+        "nodo": "98dac6635aee4995d501a3972e047414",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000839,
+        "comunidad": 1,
+        "etiqueta": "Vendedor 98dac663"
+      },
+      {
+        "nodo": "electronics",
+        "tipo": "categoria",
+        "grado": 149,
+        "pagerank": 0.008946,
+        "comunidad": 2,
+        "etiqueta": "electronics"
+      },
+      {
+        "nodo": "8b321bb669392f5163d04c59e235e066",
+        "tipo": "vendedor",
+        "grado": 11,
+        "pagerank": 0.002984,
+        "comunidad": 2,
+        "etiqueta": "Vendedor 8b321bb6"
+      },
+      {
+        "nodo": "128639473a139ac0f3e5f5ade55873a5",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.001639,
+        "comunidad": 2,
+        "etiqueta": "Vendedor 12863947"
+      },
+      {
+        "nodo": "watches_gifts",
+        "tipo": "categoria",
+        "grado": 101,
+        "pagerank": 0.012367,
+        "comunidad": 3,
+        "etiqueta": "watches_gifts"
+      },
+      {
+        "nodo": "fashion_bags_accessories",
+        "tipo": "categoria",
+        "grado": 99,
+        "pagerank": 0.008137,
+        "comunidad": 3,
+        "etiqueta": "fashion_bags_accessories"
+      },
+      {
+        "nodo": "634964b17796e64304cadf1ad3050fb7",
+        "tipo": "vendedor",
+        "grado": 11,
+        "pagerank": 0.00073,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 634964b1"
+      },
+      {
+        "nodo": "4869f7a5dfa277a7dca6462dcf3b52b2",
+        "tipo": "vendedor",
+        "grado": 10,
+        "pagerank": 0.002266,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 4869f7a5"
+      },
+      {
+        "nodo": "0ea22c1cfbdc755f86b9b54b39c16043",
+        "tipo": "vendedor",
+        "grado": 10,
+        "pagerank": 0.001009,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 0ea22c1c"
+      },
+      {
+        "nodo": "7e93a43ef30c4f03f38b393420bc753a",
+        "tipo": "vendedor",
+        "grado": 8,
+        "pagerank": 0.000684,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 7e93a43e"
+      },
+      {
+        "nodo": "6560211a19b47992c3666cc44a7e94c0",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.004272,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 6560211a"
+      },
+      {
+        "nodo": "7d13fca15225358621be4086e1eb0964",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.001126,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 7d13fca1"
+      },
+      {
+        "nodo": "fa1c13f2614d7b5c4749cbc52fecda94",
+        "tipo": "vendedor",
+        "grado": 5,
+        "pagerank": 0.001096,
+        "comunidad": 3,
+        "etiqueta": "Vendedor fa1c13f2"
+      },
+      {
+        "nodo": "86ccac0b835037332a596a33b6949ee1",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.000429,
+        "comunidad": 3,
+        "etiqueta": "Vendedor 86ccac0b"
+      },
+      {
+        "nodo": "e5a3438891c0bfdb9394643f95273d8e",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001158,
+        "comunidad": 3,
+        "etiqueta": "Vendedor e5a34388"
+      },
+      {
+        "nodo": "cab85505710c7cb9b720bceb52b01cee",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000761,
+        "comunidad": 3,
+        "etiqueta": "Vendedor cab85505"
+      },
+      {
+        "nodo": "home_appliances",
+        "tipo": "categoria",
+        "grado": 48,
+        "pagerank": 0.003239,
+        "comunidad": 4,
+        "etiqueta": "home_appliances"
+      },
+      {
+        "nodo": "d91fb3b7d041e83b64a00a3edfb37e4f",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.002009,
+        "comunidad": 4,
+        "etiqueta": "Vendedor d91fb3b7"
+      },
+      {
+        "nodo": "cool_stuff",
+        "tipo": "categoria",
+        "grado": 267,
+        "pagerank": 0.014125,
+        "comunidad": 5,
+        "etiqueta": "cool_stuff"
+      },
+      {
+        "nodo": "7ddcbb64b5bc1ef36ca8c151f6ec77df",
+        "tipo": "vendedor",
+        "grado": 9,
+        "pagerank": 0.001214,
+        "comunidad": 5,
+        "etiqueta": "Vendedor 7ddcbb64"
+      },
+      {
+        "nodo": "ceaec5548eefc6e23e6607c5435102e7",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.000775,
+        "comunidad": 5,
+        "etiqueta": "Vendedor ceaec554"
+      },
+      {
+        "nodo": "7a67c85e85bb2ce8582c35f2203ad736",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.003824,
+        "comunidad": 5,
+        "etiqueta": "Vendedor 7a67c85e"
+      },
+      {
+        "nodo": "computers_accessories",
+        "tipo": "categoria",
+        "grado": 287,
+        "pagerank": 0.026087,
+        "comunidad": 6,
+        "etiqueta": "computers_accessories"
+      },
+      {
+        "nodo": "consoles_games",
+        "tipo": "categoria",
+        "grado": 82,
+        "pagerank": 0.004142,
+        "comunidad": 6,
+        "etiqueta": "consoles_games"
+      },
+      {
+        "nodo": "4e922959ae960d389249c378d1c939f5",
+        "tipo": "vendedor",
+        "grado": 24,
+        "pagerank": 0.001628,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 4e922959"
+      },
+      {
+        "nodo": "7299e27ed73d2ad986de7f7c77d919fa",
+        "tipo": "vendedor",
+        "grado": 13,
+        "pagerank": 0.001328,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 7299e27e"
+      },
+      {
+        "nodo": "87142160b41353c4e5fca2360caf6f92",
+        "tipo": "vendedor",
+        "grado": 8,
+        "pagerank": 0.001049,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 87142160"
+      },
+      {
+        "nodo": "9f505651f4a6abe901a56cdc21508025",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.001344,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 9f505651"
+      },
+      {
+        "nodo": "85d9eb9ddc5d00ca9336a2219c97bb13",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.001595,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 85d9eb9d"
+      },
+      {
+        "nodo": "897060da8b9a21f655304d50fd935913",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.001314,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 897060da"
+      },
+      {
+        "nodo": "9c0e69c7bf2619675bbadf47b43f655a",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.000636,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 9c0e69c7"
+      },
+      {
+        "nodo": "1c68394e931a64f90ea236c5ea590300",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000539,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 1c68394e"
+      },
+      {
+        "nodo": "25c5c91f63607446a97b143d2d535d31",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000835,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 25c5c91f"
+      },
+      {
+        "nodo": "de722cd6dad950a92b7d4f82673f8833",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001131,
+        "comunidad": 6,
+        "etiqueta": "Vendedor de722cd6"
+      },
+      {
+        "nodo": "e9bc59e7b60fc3063eb2290deda4cced",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000828,
+        "comunidad": 6,
+        "etiqueta": "Vendedor e9bc59e7"
+      },
+      {
+        "nodo": "37515688008a7a40ac93e3b2e4ab203f",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000794,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 37515688"
+      },
+      {
+        "nodo": "0b90b6df587eb83608a64ea8b390cf07",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000645,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 0b90b6df"
+      },
+      {
+        "nodo": "88460e8ebdecbfecb5f9601833981930",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000906,
+        "comunidad": 6,
+        "etiqueta": "Vendedor 88460e8e"
+      },
+      {
+        "nodo": "f457c46070d02cadd8a68551231220dd",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000713,
+        "comunidad": 6,
+        "etiqueta": "Vendedor f457c460"
+      },
+      {
+        "nodo": "toys",
+        "tipo": "categoria",
+        "grado": 252,
+        "pagerank": 0.017137,
+        "comunidad": 7,
+        "etiqueta": "toys"
+      },
+      {
+        "nodo": "baby",
+        "tipo": "categoria",
+        "grado": 244,
+        "pagerank": 0.01352,
+        "comunidad": 7,
+        "etiqueta": "baby"
+      },
+      {
+        "nodo": "stationery",
+        "tipo": "categoria",
+        "grado": 173,
+        "pagerank": 0.010185,
+        "comunidad": 7,
+        "etiqueta": "stationery"
+      },
+      {
+        "nodo": "luggage_accessories",
+        "tipo": "categoria",
+        "grado": 73,
+        "pagerank": 0.004482,
+        "comunidad": 7,
+        "etiqueta": "luggage_accessories"
+      },
+      {
+        "nodo": "46dc3b2cc0980fb8ec44634e21d2718e",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.002094,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 46dc3b2c"
+      },
+      {
+        "nodo": "5dceca129747e92ff8ef7a997dc4f8ca",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.001245,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 5dceca12"
+      },
+      {
+        "nodo": "3d871de0142ce09b7081e2b9d1733cb1",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.003924,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 3d871de0"
+      },
+      {
+        "nodo": "7aa4334be125fcdd2ba64b3180029f14",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.000878,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 7aa4334b"
+      },
+      {
+        "nodo": "dbc22125167c298ef99da25668e1011f",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.001567,
+        "comunidad": 7,
+        "etiqueta": "Vendedor dbc22125"
+      },
+      {
+        "nodo": "855668e0971d4dfd7bef1b6a4133b41b",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001263,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 855668e0"
+      },
+      {
+        "nodo": "fa40cc5b934574b62717c68f3d678b6d",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001263,
+        "comunidad": 7,
+        "etiqueta": "Vendedor fa40cc5b"
+      },
+      {
+        "nodo": "4b9750c8ad28220fe6702d4ecb7c898f",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000875,
+        "comunidad": 7,
+        "etiqueta": "Vendedor 4b9750c8"
+      },
+      {
+        "nodo": "auto",
+        "tipo": "categoria",
+        "grado": 383,
+        "pagerank": 0.026223,
+        "comunidad": 8,
+        "etiqueta": "auto"
+      },
+      {
+        "nodo": "16090f2ca825584b5a147ab24aa30c86",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.00202,
+        "comunidad": 8,
+        "etiqueta": "Vendedor 16090f2c"
+      },
+      {
+        "nodo": "7142540dd4c91e2237acb7e911c4eba2",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001639,
+        "comunidad": 8,
+        "etiqueta": "Vendedor 7142540d"
+      },
+      {
+        "nodo": "c003204e1ab016dfa150abc119207b24",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000992,
+        "comunidad": 8,
+        "etiqueta": "Vendedor c003204e"
+      },
+      {
+        "nodo": "8581055ce74af1daba164fdbd55a40de",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.002342,
+        "comunidad": 8,
+        "etiqueta": "Vendedor 8581055c"
+      },
+      {
+        "nodo": "b4ffb71f0cb1b1c3d63fad021ecf93e1",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000918,
+        "comunidad": 8,
+        "etiqueta": "Vendedor b4ffb71f"
+      },
+      {
+        "nodo": "furniture_decor",
+        "tipo": "categoria",
+        "grado": 370,
+        "pagerank": 0.032708,
+        "comunidad": 9,
+        "etiqueta": "furniture_decor"
+      },
+      {
+        "nodo": "home_construction",
+        "tipo": "categoria",
+        "grado": 68,
+        "pagerank": 0.00335,
+        "comunidad": 9,
+        "etiqueta": "home_construction"
+      },
+      {
+        "nodo": "955fee9216a65b617aa5c0531780ce60",
+        "tipo": "vendedor",
+        "grado": 23,
+        "pagerank": 0.005678,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 955fee92"
+      },
+      {
+        "nodo": "cca3071e3e9bb7d12640c9fbe2301306",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.002533,
+        "comunidad": 9,
+        "etiqueta": "Vendedor cca3071e"
+      },
+      {
+        "nodo": "1025f0e2d44d7041d6cf58b6550e0bfa",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.005025,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 1025f0e2"
+      },
+      {
+        "nodo": "5a8e7d5003a1f221f9e1d6e411de7c23",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.000663,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 5a8e7d50"
+      },
+      {
+        "nodo": "391fc6631aebcf3004804e51b40bcf1e",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001715,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 391fc663"
+      },
+      {
+        "nodo": "213b25e6f54661939f11710a6fddb871",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.000976,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 213b25e6"
+      },
+      {
+        "nodo": "77530e9772f57a62c906e1c21538ab82",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001353,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 77530e97"
+      },
+      {
+        "nodo": "0241d4d5d36f10f80c644447315af0bd",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000871,
+        "comunidad": 9,
+        "etiqueta": "Vendedor 0241d4d5"
+      },
+      {
+        "nodo": "telephony",
+        "tipo": "categoria",
+        "grado": 149,
+        "pagerank": 0.013236,
+        "comunidad": 10,
+        "etiqueta": "telephony"
+      },
+      {
+        "nodo": "computers",
+        "tipo": "categoria",
+        "grado": 9,
+        "pagerank": 0.000719,
+        "comunidad": 10,
+        "etiqueta": "computers"
+      },
+      {
+        "nodo": "2138ccb85b11a4ec1e37afbd1c8eda1f",
+        "tipo": "vendedor",
+        "grado": 8,
+        "pagerank": 0.001289,
+        "comunidad": 10,
+        "etiqueta": "Vendedor 2138ccb8"
+      },
+      {
+        "nodo": "ef506c96320abeedfb894c34db06f478",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.000958,
+        "comunidad": 10,
+        "etiqueta": "Vendedor ef506c96"
+      },
+      {
+        "nodo": "92eb0f42c21942b6552362b9b114707d",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.000972,
+        "comunidad": 10,
+        "etiqueta": "Vendedor 92eb0f42"
+      },
+      {
+        "nodo": "7d76b645482be4a332374e8223836592",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000521,
+        "comunidad": 10,
+        "etiqueta": "Vendedor 7d76b645"
+      },
+      {
+        "nodo": "ea8482cd71df3c1969d7b9473ff13abc",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.003108,
+        "comunidad": 10,
+        "etiqueta": "Vendedor ea8482cd"
+      },
+      {
+        "nodo": "53243585a1d6dc2643021fd1853d8905",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001148,
+        "comunidad": 10,
+        "etiqueta": "Vendedor 53243585"
+      },
+      {
+        "nodo": "562fc2f2c2863ab7e79a9e4388a58a14",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000719,
+        "comunidad": 10,
+        "etiqueta": "Vendedor 562fc2f2"
+      },
+      {
+        "nodo": "sports_leisure",
+        "tipo": "categoria",
+        "grado": 481,
+        "pagerank": 0.039879,
+        "comunidad": 11,
+        "etiqueta": "sports_leisure"
+      },
+      {
+        "nodo": "drinks",
+        "tipo": "categoria",
+        "grado": 36,
+        "pagerank": 0.002382,
+        "comunidad": 11,
+        "etiqueta": "drinks"
+      },
+      {
+        "nodo": "e9779976487b77c6d4ac45f75ec7afe9",
+        "tipo": "vendedor",
+        "grado": 8,
+        "pagerank": 0.003292,
+        "comunidad": 11,
+        "etiqueta": "Vendedor e9779976"
+      },
+      {
+        "nodo": "54a1852d1b8f10312c55e906355666ee",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.000853,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 54a1852d"
+      },
+      {
+        "nodo": "218d46b86c1881d022bce9c68a7d4b15",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001788,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 218d46b8"
+      },
+      {
+        "nodo": "4d6d651bd7684af3fffabd5f08d12e5a",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001599,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 4d6d651b"
+      },
+      {
+        "nodo": "c3cfdc648177fdbbbb35635a37472c53",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001258,
+        "comunidad": 11,
+        "etiqueta": "Vendedor c3cfdc64"
+      },
+      {
+        "nodo": "4c2b230173bb36f9b240f2b8ac11786e",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001408,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 4c2b2301"
+      },
+      {
+        "nodo": "7008613ea464bad5cb9b83456e1e6a8f",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000661,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 7008613e"
+      },
+      {
+        "nodo": "8f2ce03f928b567e3d56181ae20ae952",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000736,
+        "comunidad": 11,
+        "etiqueta": "Vendedor 8f2ce03f"
+      },
+      {
+        "nodo": "c3867b4666c7d76867627c2f7fb22e21",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.001066,
+        "comunidad": 11,
+        "etiqueta": "Vendedor c3867b46"
+      },
+      {
+        "nodo": "garden_tools",
+        "tipo": "categoria",
+        "grado": 237,
+        "pagerank": 0.016905,
+        "comunidad": 13,
+        "etiqueta": "garden_tools"
+      },
+      {
+        "nodo": "a1043bafd471dff536d0c462352beb48",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.002443,
+        "comunidad": 13,
+        "etiqueta": "Vendedor a1043baf"
+      },
+      {
+        "nodo": "1f50f920176fa81dab994f9023523100",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.006489,
+        "comunidad": 13,
+        "etiqueta": "Vendedor 1f50f920"
+      },
+      {
+        "nodo": "001cca7ae9ae17fb1caed9dfb1094831",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000901,
+        "comunidad": 13,
+        "etiqueta": "Vendedor 001cca7a"
+      },
+      {
+        "nodo": "health_beauty",
+        "tipo": "categoria",
+        "grado": 492,
+        "pagerank": 0.042246,
+        "comunidad": 14,
+        "etiqueta": "health_beauty"
+      },
+      {
+        "nodo": "perfumery",
+        "tipo": "categoria",
+        "grado": 175,
+        "pagerank": 0.014076,
+        "comunidad": 14,
+        "etiqueta": "perfumery"
+      },
+      {
+        "nodo": "cc419e0650a3c5ba77189a1882b7556a",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.006488,
+        "comunidad": 14,
+        "etiqueta": "Vendedor cc419e06"
+      },
+      {
+        "nodo": "a416b6a846a11724393025641d4edd5e",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000719,
+        "comunidad": 14,
+        "etiqueta": "Vendedor a416b6a8"
+      },
+      {
+        "nodo": "620c87c171fb2a6dd6e8bb4dec959fc6",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.002937,
+        "comunidad": 14,
+        "etiqueta": "Vendedor 620c87c1"
+      },
+      {
+        "nodo": "7e1fb0a3ebfb01ffb3a7dae98bf3238d",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.0007,
+        "comunidad": 14,
+        "etiqueta": "Vendedor 7e1fb0a3"
+      },
+      {
+        "nodo": "ccc4bbb5f32a6ab2b7066a4130f114e3",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000763,
+        "comunidad": 14,
+        "etiqueta": "Vendedor ccc4bbb5"
+      },
+      {
+        "nodo": "f7ba60f8c3f99e7ee4042fdef03b70c4",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.00091,
+        "comunidad": 14,
+        "etiqueta": "Vendedor f7ba60f8"
+      },
+      {
+        "nodo": "fe2032dab1a61af8794248c8196565c9",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.001122,
+        "comunidad": 14,
+        "etiqueta": "Vendedor fe2032da"
+      },
+      {
+        "nodo": "06a2c3af7b3aee5d69171b0e14f0ee87",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.001556,
+        "comunidad": 14,
+        "etiqueta": "Vendedor 06a2c3af"
+      },
+      {
+        "nodo": "c70c1b0d8ca86052f45a432a38b73958",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.001306,
+        "comunidad": 14,
+        "etiqueta": "Vendedor c70c1b0d"
+      },
+      {
+        "nodo": "edb1ef5e36e0c8cd84eb3c9b003e486d",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000699,
+        "comunidad": 14,
+        "etiqueta": "Vendedor edb1ef5e"
+      },
+      {
+        "nodo": "3c7c4a49ec3c6550809089c6a2ca9370",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000609,
+        "comunidad": 14,
+        "etiqueta": "Vendedor 3c7c4a49"
+      },
+      {
+        "nodo": "pet_shop",
+        "tipo": "categoria",
+        "grado": 137,
+        "pagerank": 0.010989,
+        "comunidad": 15,
+        "etiqueta": "pet_shop"
+      },
+      {
+        "nodo": "5cf13accae3222c70a9cac40818ae839",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000798,
+        "comunidad": 15,
+        "etiqueta": "Vendedor 5cf13acc"
+      },
+      {
+        "nodo": "66922902710d126a0e7d26b0e3805106",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000797,
+        "comunidad": 15,
+        "etiqueta": "Vendedor 66922902"
+      },
+      {
+        "nodo": "sin_categoria",
+        "tipo": "categoria",
+        "grado": 257,
+        "pagerank": 0.011433,
+        "comunidad": 16,
+        "etiqueta": "sin_categoria"
+      },
+      {
+        "nodo": "c826c40d7b19f62a09e2d7c5e7295ee2",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.00231,
+        "comunidad": 16,
+        "etiqueta": "Vendedor c826c40d"
+      },
+      {
+        "nodo": "bed_bath_table",
+        "tipo": "categoria",
+        "grado": 196,
+        "pagerank": 0.0255,
+        "comunidad": 17,
+        "etiqueta": "bed_bath_table"
+      },
+      {
+        "nodo": "home_confort",
+        "tipo": "categoria",
+        "grado": 20,
+        "pagerank": 0.001116,
+        "comunidad": 17,
+        "etiqueta": "home_confort"
+      },
+      {
+        "nodo": "4a3ca9315b744ce9f8e9374361493884",
+        "tipo": "vendedor",
+        "grado": 7,
+        "pagerank": 0.004257,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 4a3ca931"
+      },
+      {
+        "nodo": "41b39e28db005d9731d9d485a83b4c38",
+        "tipo": "vendedor",
+        "grado": 5,
+        "pagerank": 0.000578,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 41b39e28"
+      },
+      {
+        "nodo": "8160255418d5aaa7dbdc9f4c64ebda44",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.00091,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 81602554"
+      },
+      {
+        "nodo": "d2374cbcbb3ca4ab1086534108cc3ab7",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.001372,
+        "comunidad": 17,
+        "etiqueta": "Vendedor d2374cbc"
+      },
+      {
+        "nodo": "dc4a0fc896dc34b0d5bfec8438291c80",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.000572,
+        "comunidad": 17,
+        "etiqueta": "Vendedor dc4a0fc8"
+      },
+      {
+        "nodo": "da8622b14eb17ae2831f4ac5b9dab84a",
+        "tipo": "vendedor",
+        "grado": 4,
+        "pagerank": 0.003569,
+        "comunidad": 17,
+        "etiqueta": "Vendedor da8622b1"
+      },
+      {
+        "nodo": "1900267e848ceeba8fa32d80c1a5f5a8",
+        "tipo": "vendedor",
+        "grado": 3,
+        "pagerank": 0.001097,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 1900267e"
+      },
+      {
+        "nodo": "1835b56ce799e6a4dc4eddc053f04066",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.00115,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 1835b56c"
+      },
+      {
+        "nodo": "d1c281d3ae149232351cd8c8cc885f0d",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000529,
+        "comunidad": 17,
+        "etiqueta": "Vendedor d1c281d3"
+      },
+      {
+        "nodo": "004c9cd9d87a3c30c522c48c4fc07416",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.00043,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 004c9cd9"
+      },
+      {
+        "nodo": "00ee68308b45bc5e2660cd833c3f81cc",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000437,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 00ee6830"
+      },
+      {
+        "nodo": "1c129092bf23f28a5930387c980c0dfc",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000484,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 1c129092"
+      },
+      {
+        "nodo": "259f7b5e6e482c230e5bfaa670b6bb8f",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000383,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 259f7b5e"
+      },
+      {
+        "nodo": "37be5a7c751166fbc5f8ccba4119e043",
+        "tipo": "vendedor",
+        "grado": 2,
+        "pagerank": 0.000604,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 37be5a7c"
+      },
+      {
+        "nodo": "1a3df491d1c4f1589fc2b934ada68bf2",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000396,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 1a3df491"
+      },
+      {
+        "nodo": "7ad32824caee82087b3e2e5f33b1bf32",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000408,
+        "comunidad": 17,
+        "etiqueta": "Vendedor 7ad32824"
+      },
+      {
+        "nodo": "cfb1a033743668a192316f3c6d1d2671",
+        "tipo": "vendedor",
+        "grado": 1,
+        "pagerank": 0.000408,
+        "comunidad": 17,
+        "etiqueta": "Vendedor cfb1a033"
+      },
+      {
+        "nodo": "office_furniture",
+        "tipo": "categoria",
+        "grado": 34,
+        "pagerank": 0.003977,
+        "comunidad": 20,
+        "etiqueta": "office_furniture"
+      },
+      {
+        "nodo": "7c67e1448b00f6e969d365cea6b010ab",
+        "tipo": "vendedor",
+        "grado": 6,
+        "pagerank": 0.003001,
+        "comunidad": 20,
+        "etiqueta": "Vendedor 7c67e144"
+      }
+    ],
+    "aristas": [
+      {
+        "origen": "1f50f920176fa81dab994f9023523100",
+        "destino": "garden_tools",
+        "peso": 1882
+      },
+      {
+        "origen": "6560211a19b47992c3666cc44a7e94c0",
+        "destino": "watches_gifts",
+        "peso": 1628
+      },
+      {
+        "origen": "4a3ca9315b744ce9f8e9374361493884",
+        "destino": "bed_bath_table",
+        "peso": 1572
+      },
+      {
+        "origen": "1025f0e2d44d7041d6cf58b6550e0bfa",
+        "destino": "furniture_decor",
+        "peso": 1292
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "da8622b14eb17ae2831f4ac5b9dab84a",
+        "peso": 1277
+      },
+      {
+        "origen": "7c67e1448b00f6e969d365cea6b010ab",
+        "destino": "office_furniture",
+        "peso": 1233
+      },
+      {
+        "origen": "ea8482cd71df3c1969d7b9473ff13abc",
+        "destino": "telephony",
+        "peso": 1178
+      },
+      {
+        "origen": "cc419e0650a3c5ba77189a1882b7556a",
+        "destino": "health_beauty",
+        "peso": 1091
+      },
+      {
+        "origen": "7a67c85e85bb2ce8582c35f2203ad736",
+        "destino": "cool_stuff",
+        "peso": 1069
+      },
+      {
+        "origen": "4869f7a5dfa277a7dca6462dcf3b52b2",
+        "destino": "watches_gifts",
+        "peso": 1002
+      },
+      {
+        "origen": "8b321bb669392f5163d04c59e235e066",
+        "destino": "electronics",
+        "peso": 910
+      },
+      {
+        "origen": "3d871de0142ce09b7081e2b9d1733cb1",
+        "destino": "stationery",
+        "peso": 834
+      },
+      {
+        "origen": "cc419e0650a3c5ba77189a1882b7556a",
+        "destino": "perfumery",
+        "peso": 657
+      },
+      {
+        "origen": "d2374cbcbb3ca4ab1086534108cc3ab7",
+        "destino": "bed_bath_table",
+        "peso": 597
+      },
+      {
+        "origen": "fa1c13f2614d7b5c4749cbc52fecda94",
+        "destino": "watches_gifts",
+        "peso": 579
+      },
+      {
+        "origen": "1835b56ce799e6a4dc4eddc053f04066",
+        "destino": "bed_bath_table",
+        "peso": 553
+      },
+      {
+        "origen": "cca3071e3e9bb7d12640c9fbe2301306",
+        "destino": "furniture_decor",
+        "peso": 544
+      },
+      {
+        "origen": "128639473a139ac0f3e5f5ade55873a5",
+        "destino": "electronics",
+        "peso": 540
+      },
+      {
+        "origen": "955fee9216a65b617aa5c0531780ce60",
+        "destino": "furniture_decor",
+        "peso": 535
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "1900267e848ceeba8fa32d80c1a5f5a8",
+        "peso": 519
+      },
+      {
+        "origen": "7d13fca15225358621be4086e1eb0964",
+        "destino": "watches_gifts",
+        "peso": 508
+      },
+      {
+        "origen": "d91fb3b7d041e83b64a00a3edfb37e4f",
+        "destino": "home_appliances",
+        "peso": 500
+      },
+      {
+        "origen": "85d9eb9ddc5d00ca9336a2219c97bb13",
+        "destino": "computers_accessories",
+        "peso": 481
+      },
+      {
+        "origen": "53e4c6e0f4312d4d2107a8c9cddf45cd",
+        "destino": "housewares",
+        "peso": 476
+      },
+      {
+        "origen": "auto",
+        "destino": "8581055ce74af1daba164fdbd55a40de",
+        "peso": 435
+      },
+      {
+        "origen": "a1043bafd471dff536d0c462352beb48",
+        "destino": "garden_tools",
+        "peso": 425
+      },
+      {
+        "origen": "8160255418d5aaa7dbdc9f4c64ebda44",
+        "destino": "bed_bath_table",
+        "peso": 425
+      },
+      {
+        "origen": "897060da8b9a21f655304d50fd935913",
+        "destino": "computers_accessories",
+        "peso": 415
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "620c87c171fb2a6dd6e8bb4dec959fc6",
+        "peso": 414
+      },
+      {
+        "origen": "218d46b86c1881d022bce9c68a7d4b15",
+        "destino": "sports_leisure",
+        "peso": 410
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "06a2c3af7b3aee5d69171b0e14f0ee87",
+        "peso": 405
+      },
+      {
+        "origen": "4d6d651bd7684af3fffabd5f08d12e5a",
+        "destino": "sports_leisure",
+        "peso": 387
+      },
+      {
+        "origen": "620c87c171fb2a6dd6e8bb4dec959fc6",
+        "destino": "perfumery",
+        "peso": 384
+      },
+      {
+        "origen": "77530e9772f57a62c906e1c21538ab82",
+        "destino": "furniture_decor",
+        "peso": 380
+      },
+      {
+        "origen": "46dc3b2cc0980fb8ec44634e21d2718e",
+        "destino": "toys",
+        "peso": 374
+      },
+      {
+        "origen": "sin_categoria",
+        "destino": "c826c40d7b19f62a09e2d7c5e7295ee2",
+        "peso": 372
+      },
+      {
+        "origen": "2138ccb85b11a4ec1e37afbd1c8eda1f",
+        "destino": "telephony",
+        "peso": 368
+      },
+      {
+        "origen": "9f505651f4a6abe901a56cdc21508025",
+        "destino": "computers_accessories",
+        "peso": 364
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "de722cd6dad950a92b7d4f82673f8833",
+        "peso": 362
+      },
+      {
+        "origen": "4c2b230173bb36f9b240f2b8ac11786e",
+        "destino": "sports_leisure",
+        "peso": 345
+      },
+      {
+        "origen": "a1043bafd471dff536d0c462352beb48",
+        "destino": "computers_accessories",
+        "peso": 343
+      },
+      {
+        "origen": "6560211a19b47992c3666cc44a7e94c0",
+        "destino": "fashion_bags_accessories",
+        "peso": 340
+      },
+      {
+        "origen": "92eb0f42c21942b6552362b9b114707d",
+        "destino": "telephony",
+        "peso": 339
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "c70c1b0d8ca86052f45a432a38b73958",
+        "peso": 338
+      },
+      {
+        "origen": "391fc6631aebcf3004804e51b40bcf1e",
+        "destino": "furniture_decor",
+        "peso": 333
+      },
+      {
+        "origen": "e9779976487b77c6d4ac45f75ec7afe9",
+        "destino": "sports_leisure",
+        "peso": 319
+      },
+      {
+        "origen": "7e93a43ef30c4f03f38b393420bc753a",
+        "destino": "watches_gifts",
+        "peso": 314
+      },
+      {
+        "origen": "ef506c96320abeedfb894c34db06f478",
+        "destino": "telephony",
+        "peso": 314
+      },
+      {
+        "origen": "c3cfdc648177fdbbbb35635a37472c53",
+        "destino": "sports_leisure",
+        "peso": 305
+      },
+      {
+        "origen": "fe2032dab1a61af8794248c8196565c9",
+        "destino": "perfumery",
+        "peso": 303
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "88460e8ebdecbfecb5f9601833981930",
+        "peso": 302
+      },
+      {
+        "origen": "855668e0971d4dfd7bef1b6a4133b41b",
+        "destino": "baby",
+        "peso": 298
+      },
+      {
+        "origen": "fa40cc5b934574b62717c68f3d678b6d",
+        "destino": "toys",
+        "peso": 297
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "391fc6631aebcf3004804e51b40bcf1e",
+        "peso": 279
+      },
+      {
+        "origen": "634964b17796e64304cadf1ad3050fb7",
+        "destino": "watches_gifts",
+        "peso": 278
+      },
+      {
+        "origen": "87142160b41353c4e5fca2360caf6f92",
+        "destino": "computers_accessories",
+        "peso": 277
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "37be5a7c751166fbc5f8ccba4119e043",
+        "peso": 277
+      },
+      {
+        "origen": "dbc22125167c298ef99da25668e1011f",
+        "destino": "luggage_accessories",
+        "peso": 272
+      },
+      {
+        "origen": "telephony",
+        "destino": "562fc2f2c2863ab7e79a9e4388a58a14",
+        "peso": 270
+      },
+      {
+        "origen": "da8622b14eb17ae2831f4ac5b9dab84a",
+        "destino": "health_beauty",
+        "peso": 270
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "25c5c91f63607446a97b143d2d535d31",
+        "peso": 262
+      },
+      {
+        "origen": "sports_leisure",
+        "destino": "c3867b4666c7d76867627c2f7fb22e21",
+        "peso": 259
+      },
+      {
+        "origen": "53243585a1d6dc2643021fd1853d8905",
+        "destino": "telephony",
+        "peso": 257
+      },
+      {
+        "origen": "auto",
+        "destino": "16090f2ca825584b5a147ab24aa30c86",
+        "peso": 255
+      },
+      {
+        "origen": "0ea22c1cfbdc755f86b9b54b39c16043",
+        "destino": "fashion_bags_accessories",
+        "peso": 246
+      },
+      {
+        "origen": "furniture_decor",
+        "destino": "0241d4d5d36f10f80c644447315af0bd",
+        "peso": 246
+      },
+      {
+        "origen": "3d871de0142ce09b7081e2b9d1733cb1",
+        "destino": "toys",
+        "peso": 244
+      },
+      {
+        "origen": "cca3071e3e9bb7d12640c9fbe2301306",
+        "destino": "bed_bath_table",
+        "peso": 243
+      },
+      {
+        "origen": "4a3ca9315b744ce9f8e9374361493884",
+        "destino": "home_confort",
+        "peso": 243
+      },
+      {
+        "origen": "955fee9216a65b617aa5c0531780ce60",
+        "destino": "housewares",
+        "peso": 242
+      },
+      {
+        "origen": "consoles_games",
+        "destino": "37515688008a7a40ac93e3b2e4ab203f",
+        "peso": 239
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "f457c46070d02cadd8a68551231220dd",
+        "peso": 234
+      },
+      {
+        "origen": "d1c281d3ae149232351cd8c8cc885f0d",
+        "destino": "bed_bath_table",
+        "peso": 234
+      },
+      {
+        "origen": "dc4a0fc896dc34b0d5bfec8438291c80",
+        "destino": "bed_bath_table",
+        "peso": 229
+      },
+      {
+        "origen": "auto",
+        "destino": "7142540dd4c91e2237acb7e911c4eba2",
+        "peso": 229
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "e9bc59e7b60fc3063eb2290deda4cced",
+        "peso": 223
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "1c129092bf23f28a5930387c980c0dfc",
+        "peso": 217
+      },
+      {
+        "origen": "001cca7ae9ae17fb1caed9dfb1094831",
+        "destino": "garden_tools",
+        "peso": 212
+      },
+      {
+        "origen": "baby",
+        "destino": "4b9750c8ad28220fe6702d4ecb7c898f",
+        "peso": 210
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "0b90b6df587eb83608a64ea8b390cf07",
+        "peso": 210
+      },
+      {
+        "origen": "fashion_bags_accessories",
+        "destino": "cab85505710c7cb9b720bceb52b01cee",
+        "peso": 209
+      },
+      {
+        "origen": "86ccac0b835037332a596a33b6949ee1",
+        "destino": "watches_gifts",
+        "peso": 206
+      },
+      {
+        "origen": "9c0e69c7bf2619675bbadf47b43f655a",
+        "destino": "computers_accessories",
+        "peso": 204
+      },
+      {
+        "origen": "housewares",
+        "destino": "813348c996469b40f2e028d5429d3495",
+        "peso": 202
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "f7ba60f8c3f99e7ee4042fdef03b70c4",
+        "peso": 201
+      },
+      {
+        "origen": "5dceca129747e92ff8ef7a997dc4f8ca",
+        "destino": "luggage_accessories",
+        "peso": 198
+      },
+      {
+        "origen": "housewares",
+        "destino": "98dac6635aee4995d501a3972e047414",
+        "peso": 195
+      },
+      {
+        "origen": "f8db351d8c4c4c22c6835c19a46f01b0",
+        "destino": "housewares",
+        "peso": 189
+      },
+      {
+        "origen": "7aa4334be125fcdd2ba64b3180029f14",
+        "destino": "toys",
+        "peso": 189
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "ccc4bbb5f32a6ab2b7066a4130f114e3",
+        "peso": 187
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "7ad32824caee82087b3e2e5f33b1bf32",
+        "peso": 184
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "cfb1a033743668a192316f3c6d1d2671",
+        "peso": 184
+      },
+      {
+        "origen": "7d76b645482be4a332374e8223836592",
+        "destino": "telephony",
+        "peso": 184
+      },
+      {
+        "origen": "cool_stuff",
+        "destino": "ceaec5548eefc6e23e6607c5435102e7",
+        "peso": 183
+      },
+      {
+        "origen": "drinks",
+        "destino": "e9779976487b77c6d4ac45f75ec7afe9",
+        "peso": 183
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "1a3df491d1c4f1589fc2b934ada68bf2",
+        "peso": 178
+      },
+      {
+        "origen": "e9779976487b77c6d4ac45f75ec7afe9",
+        "destino": "health_beauty",
+        "peso": 177
+      },
+      {
+        "origen": "a416b6a846a11724393025641d4edd5e",
+        "destino": "health_beauty",
+        "peso": 177
+      },
+      {
+        "origen": "54a1852d1b8f10312c55e906355666ee",
+        "destino": "sports_leisure",
+        "peso": 177
+      },
+      {
+        "origen": "213b25e6f54661939f11710a6fddb871",
+        "destino": "home_construction",
+        "peso": 176
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "edb1ef5e36e0c8cd84eb3c9b003e486d",
+        "peso": 175
+      },
+      {
+        "origen": "41b39e28db005d9731d9d485a83b4c38",
+        "destino": "bed_bath_table",
+        "peso": 175
+      },
+      {
+        "origen": "sports_leisure",
+        "destino": "8f2ce03f928b567e3d56181ae20ae952",
+        "peso": 175
+      },
+      {
+        "origen": "7ddcbb64b5bc1ef36ca8c151f6ec77df",
+        "destino": "cool_stuff",
+        "peso": 173
+      },
+      {
+        "origen": "auto",
+        "destino": "b4ffb71f0cb1b1c3d63fad021ecf93e1",
+        "peso": 165
+      },
+      {
+        "origen": "fashion_bags_accessories",
+        "destino": "e5a3438891c0bfdb9394643f95273d8e",
+        "peso": 165
+      },
+      {
+        "origen": "7299e27ed73d2ad986de7f7c77d919fa",
+        "destino": "consoles_games",
+        "peso": 164
+      },
+      {
+        "origen": "perfumery",
+        "destino": "3c7c4a49ec3c6550809089c6a2ca9370",
+        "peso": 160
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "004c9cd9d87a3c30c522c48c4fc07416",
+        "peso": 158
+      },
+      {
+        "origen": "5a8e7d5003a1f221f9e1d6e411de7c23",
+        "destino": "furniture_decor",
+        "peso": 157
+      },
+      {
+        "origen": "sports_leisure",
+        "destino": "7008613ea464bad5cb9b83456e1e6a8f",
+        "peso": 156
+      },
+      {
+        "origen": "pet_shop",
+        "destino": "66922902710d126a0e7d26b0e3805106",
+        "peso": 156
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "259f7b5e6e482c230e5bfaa670b6bb8f",
+        "peso": 156
+      },
+      {
+        "origen": "computers_accessories",
+        "destino": "1c68394e931a64f90ea236c5ea590300",
+        "peso": 155
+      },
+      {
+        "origen": "pet_shop",
+        "destino": "5cf13accae3222c70a9cac40818ae839",
+        "peso": 155
+      },
+      {
+        "origen": "auto",
+        "destino": "c003204e1ab016dfa150abc119207b24",
+        "peso": 154
+      },
+      {
+        "origen": "computers",
+        "destino": "53243585a1d6dc2643021fd1853d8905",
+        "peso": 153
+      },
+      {
+        "origen": "health_beauty",
+        "destino": "7e1fb0a3ebfb01ffb3a7dae98bf3238d",
+        "peso": 152
+      },
+      {
+        "origen": "4e922959ae960d389249c378d1c939f5",
+        "destino": "computers_accessories",
+        "peso": 150
+      },
+      {
+        "origen": "bed_bath_table",
+        "destino": "00ee68308b45bc5e2660cd833c3f81cc",
+        "peso": 150
+      }
+    ]
+  },
+  "comunidades": [
+    {
+      "comunidad": 14,
+      "nodos": 391,
+      "categorias": 2,
+      "vendedores": 389,
+      "grado_promedio": 3.48,
+      "top_nodos": "health_beauty, perfumery"
+    },
+    {
+      "comunidad": 11,
+      "nodos": 332,
+      "categorias": 6,
+      "vendedores": 326,
+      "grado_promedio": 3.77,
+      "top_nodos": "sports_leisure, drinks"
+    },
+    {
+      "comunidad": 7,
+      "nodos": 317,
+      "categorias": 6,
+      "vendedores": 311,
+      "grado_promedio": 4.77,
+      "top_nodos": "toys, baby"
+    },
+    {
+      "comunidad": 9,
+      "nodos": 302,
+      "categorias": 7,
+      "vendedores": 295,
+      "grado_promedio": 3.91,
+      "top_nodos": "furniture_decor, home_construction"
+    },
+    {
+      "comunidad": 1,
+      "nodos": 264,
+      "categorias": 5,
+      "vendedores": 259,
+      "grado_promedio": 4.63,
+      "top_nodos": "housewares, industry_commerce_and_business"
+    },
+    {
+      "comunidad": 8,
+      "nodos": 244,
+      "categorias": 4,
+      "vendedores": 240,
+      "grado_promedio": 3.46,
+      "top_nodos": "auto, food"
+    },
+    {
+      "comunidad": 6,
+      "nodos": 174,
+      "categorias": 3,
+      "vendedores": 171,
+      "grado_promedio": 4.67,
+      "top_nodos": "computers_accessories, consoles_games"
+    },
+    {
+      "comunidad": 4,
+      "nodos": 139,
+      "categorias": 8,
+      "vendedores": 131,
+      "grado_promedio": 4.86,
+      "top_nodos": "small_appliances, air_conditioning"
+    },
+    {
+      "comunidad": 17,
+      "nodos": 125,
+      "categorias": 4,
+      "vendedores": 121,
+      "grado_promedio": 3.64,
+      "top_nodos": "bed_bath_table, home_confort"
+    },
+    {
+      "comunidad": 3,
+      "nodos": 116,
+      "categorias": 3,
+      "vendedores": 113,
+      "grado_promedio": 4.51,
+      "top_nodos": "watches_gifts, fashion_bags_accessories"
+    }
+  ],
+  "top_categorias": [
+    {
+      "nodo": "health_beauty",
+      "grado": 492,
+      "etiqueta": "health_beauty"
+    },
+    {
+      "nodo": "sports_leisure",
+      "grado": 481,
+      "etiqueta": "sports_leisure"
+    },
+    {
+      "nodo": "housewares",
+      "grado": 468,
+      "etiqueta": "housewares"
+    },
+    {
+      "nodo": "auto",
+      "grado": 383,
+      "etiqueta": "auto"
+    },
+    {
+      "nodo": "furniture_decor",
+      "grado": 370,
+      "etiqueta": "furniture_decor"
+    },
+    {
+      "nodo": "computers_accessories",
+      "grado": 287,
+      "etiqueta": "computers_accessories"
+    },
+    {
+      "nodo": "cool_stuff",
+      "grado": 267,
+      "etiqueta": "cool_stuff"
+    },
+    {
+      "nodo": "sin_categoria",
+      "grado": 257,
+      "etiqueta": "sin_categoria"
+    },
+    {
+      "nodo": "toys",
+      "grado": 252,
+      "etiqueta": "toys"
+    },
+    {
+      "nodo": "baby",
+      "grado": 244,
+      "etiqueta": "baby"
+    }
+  ],
+  "top_vendedores": [
+    {
+      "nodo": "b2ba3715d723d245138f291a6fe42594",
+      "grado": 27,
+      "etiqueta": "Vendedor b2ba3715"
+    },
+    {
+      "nodo": "4e922959ae960d389249c378d1c939f5",
+      "grado": 24,
+      "etiqueta": "Vendedor 4e922959"
+    },
+    {
+      "nodo": "955fee9216a65b617aa5c0531780ce60",
+      "grado": 23,
+      "etiqueta": "Vendedor 955fee92"
+    },
+    {
+      "nodo": "1da3aeb70d7989d1e6d9b0e887f97c23",
+      "grado": 21,
+      "etiqueta": "Vendedor 1da3aeb7"
+    },
+    {
+      "nodo": "f8db351d8c4c4c22c6835c19a46f01b0",
+      "grado": 20,
+      "etiqueta": "Vendedor f8db351d"
+    },
+    {
+      "nodo": "18a349e75d307f4b4cc646a691ed4216",
+      "grado": 17,
+      "etiqueta": "Vendedor 18a349e7"
+    },
+    {
+      "nodo": "44073f8b7e41514de3b7815dd0237f4f",
+      "grado": 15,
+      "etiqueta": "Vendedor 44073f8b"
+    },
+    {
+      "nodo": "6edacfd9f9074789dad6d62ba7950b9c",
+      "grado": 15,
+      "etiqueta": "Vendedor 6edacfd9"
+    },
+    {
+      "nodo": "70a12e78e608ac31179aea7f8422044b",
+      "grado": 15,
+      "etiqueta": "Vendedor 70a12e78"
+    },
+    {
+      "nodo": "2ff97219cb8622eaf3cd89b7d9c09824",
+      "grado": 14,
+      "etiqueta": "Vendedor 2ff97219"
+    }
+  ],
+  "top_productos": [
+    {
+      "producto": "99a4788cb24856965c36a24e339b6058",
+      "categoria": "bed_bath_table",
+      "pagerank": 0.001103,
+      "grado": 2,
+      "etiqueta": "Producto 99a4788c"
+    },
+    {
+      "producto": "aca2eb7d00ea1a7b8ebd4e68314663af",
+      "categoria": "furniture_decor",
+      "pagerank": 0.000425,
+      "grado": 1,
+      "etiqueta": "Producto aca2eb7d"
+    },
+    {
+      "producto": "53b36df67ebb7c41585e8d54d6772e08",
+      "categoria": "watches_gifts",
+      "pagerank": 0.000411,
+      "grado": 3,
+      "etiqueta": "Producto 53b36df6"
+    },
+    {
+      "producto": "35afc973633aaeb6b877ff57b2793310",
+      "categoria": "home_confort",
+      "pagerank": 0.000377,
+      "grado": 2,
+      "etiqueta": "Producto 35afc973"
+    },
+    {
+      "producto": "06edb72f1e0c64b14c5b79353f7abea3",
+      "categoria": "bed_bath_table",
+      "pagerank": 0.000346,
+      "grado": 1,
+      "etiqueta": "Producto 06edb72f"
+    },
+    {
+      "producto": "e0d64dcfaa3b6db5c54ca298ae101d05",
+      "categoria": "watches_gifts",
+      "pagerank": 0.0003,
+      "grado": 5,
+      "etiqueta": "Producto e0d64dcf"
+    },
+    {
+      "producto": "d285360f29ac7fd97640bf0baef03de0",
+      "categoria": "watches_gifts",
+      "pagerank": 0.000286,
+      "grado": 8,
+      "etiqueta": "Producto d285360f"
+    },
+    {
+      "producto": "e44f675b60b3a3a2453ec36421e06f0f",
+      "categoria": "sports_leisure",
+      "pagerank": 0.000285,
+      "grado": 3,
+      "etiqueta": "Producto e44f675b"
+    },
+    {
+      "producto": "bee2e070c39f3dd2f6883a17a5f0da45",
+      "categoria": "computers_accessories",
+      "pagerank": 0.000265,
+      "grado": 1,
+      "etiqueta": "Producto bee2e070"
+    },
+    {
+      "producto": "78efe838c04bbc568be034082200ac20",
+      "categoria": "furniture_decor",
+      "pagerank": 0.000264,
+      "grado": 1,
+      "etiqueta": "Producto 78efe838"
+    }
+  ],
+  "top_betweenness": [
+    {
+      "nodo": "b2ba3715d723d245138f291a6fe42594",
+      "betweenness": 0.454416,
+      "etiqueta": "Vendedor b2ba3715"
+    },
+    {
+      "nodo": "46dc3b2cc0980fb8ec44634e21d2718e",
+      "betweenness": 0.246902,
+      "etiqueta": "Vendedor 46dc3b2c"
+    },
+    {
+      "nodo": "612170e34b97004b3ba37eae81836b4c",
+      "betweenness": 0.205497,
+      "etiqueta": "Vendedor 612170e3"
+    },
+    {
+      "nodo": "2b2cde418c199f2ad971a7511cac11c0",
+      "betweenness": 0.174144,
+      "etiqueta": "Producto 2b2cde41"
+    },
+    {
+      "nodo": "8444e55c1f13cd5c179851e5ca5ebd00",
+      "betweenness": 0.171122,
+      "etiqueta": "Vendedor 8444e55c"
+    },
+    {
+      "nodo": "2eb70248d66e0e3ef83659f71b244378",
+      "betweenness": 0.166975,
+      "etiqueta": "Vendedor 2eb70248"
+    },
+    {
+      "nodo": "22a8168cf1f1c6347da8d29863b7f75e",
+      "betweenness": 0.162541,
+      "etiqueta": "Producto 22a8168c"
+    },
+    {
+      "nodo": "620c87c171fb2a6dd6e8bb4dec959fc6",
+      "betweenness": 0.14521,
+      "etiqueta": "Vendedor 620c87c1"
+    },
+    {
+      "nodo": "8b28d096634035667e8263d57ba3368c",
+      "betweenness": 0.133437,
+      "etiqueta": "Vendedor 8b28d096"
+    },
+    {
+      "nodo": "7b7f91e98f8c6def45a1407923304402",
+      "betweenness": 0.128591,
+      "etiqueta": "Vendedor 7b7f91e9"
+    }
+  ],
+  "co_compra_categorias": [
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "furniture_decor",
+      "pedidos": 70
+    },
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "home_confort",
+      "pedidos": 43
+    },
+    {
+      "categoria_a": "housewares",
+      "categoria_b": "furniture_decor",
+      "pedidos": 24
+    },
+    {
+      "categoria_a": "baby",
+      "categoria_b": "cool_stuff",
+      "pedidos": 20
+    },
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "housewares",
+      "pedidos": 20
+    },
+    {
+      "categoria_a": "toys",
+      "categoria_b": "baby",
+      "pedidos": 19
+    },
+    {
+      "categoria_a": "baby",
+      "categoria_b": "bed_bath_table",
+      "pedidos": 17
+    },
+    {
+      "categoria_a": "garden_tools",
+      "categoria_b": "furniture_decor",
+      "pedidos": 17
+    },
+    {
+      "categoria_a": "housewares",
+      "categoria_b": "sin_categoria",
+      "pedidos": 14
+    },
+    {
+      "categoria_a": "sports_leisure",
+      "categoria_b": "health_beauty",
+      "pedidos": 14
+    }
+  ],
+  "co_compra_productos": [
+    {
+      "producto_a": "36f60d45225e60c7da4558b070ce4b60",
+      "producto_b": "e53e557d5a159f5aa2c5e995dfdf244b",
+      "pedidos": 34,
+      "etiqueta_a": "Producto 36f60d45",
+      "etiqueta_b": "Producto e53e557d"
+    },
+    {
+      "producto_a": "99a4788cb24856965c36a24e339b6058",
+      "producto_b": "35afc973633aaeb6b877ff57b2793310",
+      "pedidos": 29,
+      "etiqueta_a": "Producto 99a4788c",
+      "etiqueta_b": "Producto 35afc973"
+    },
+    {
+      "producto_a": "4fcb3d9a5f4871e8362dfedbdb02b064",
+      "producto_b": "f4f67ccaece962d013a4e1d7dc3a61f7",
+      "pedidos": 17,
+      "etiqueta_a": "Producto 4fcb3d9a",
+      "etiqueta_b": "Producto f4f67cca"
+    },
+    {
+      "producto_a": "36f60d45225e60c7da4558b070ce4b60",
+      "producto_b": "3f14d740544f37ece8a9e7bc8349797e",
+      "pedidos": 12,
+      "etiqueta_a": "Producto 36f60d45",
+      "etiqueta_b": "Producto 3f14d740"
+    },
+    {
+      "producto_a": "389d119b48cf3043d311335e499d9c6b",
+      "producto_b": "422879e10f46682990de24d770e7f83d",
+      "pedidos": 11,
+      "etiqueta_a": "Producto 389d119b",
+      "etiqueta_b": "Producto 422879e1"
+    },
+    {
+      "producto_a": "389d119b48cf3043d311335e499d9c6b",
+      "producto_b": "53759a2ecddad2bb87a079a1f1519f73",
+      "pedidos": 9,
+      "etiqueta_a": "Producto 389d119b",
+      "etiqueta_b": "Producto 53759a2e"
+    },
+    {
+      "producto_a": "53759a2ecddad2bb87a079a1f1519f73",
+      "producto_b": "368c6c730842d78016ad823897a372db",
+      "pedidos": 8,
+      "etiqueta_a": "Producto 53759a2e",
+      "etiqueta_b": "Producto 368c6c73"
+    },
+    {
+      "producto_a": "18486698933fbb64af6c0a255f7dd64c",
+      "producto_b": "dbb67791e405873b259e4656bf971246",
+      "pedidos": 7,
+      "etiqueta_a": "Producto 18486698",
+      "etiqueta_b": "Producto dbb67791"
+    },
+    {
+      "producto_a": "53759a2ecddad2bb87a079a1f1519f73",
+      "producto_b": "422879e10f46682990de24d770e7f83d",
+      "pedidos": 7,
+      "etiqueta_a": "Producto 53759a2e",
+      "etiqueta_b": "Producto 422879e1"
+    },
+    {
+      "producto_a": "060cb19345d90064d1015407193c233d",
+      "producto_b": "98d61056e0568ba048e5d78038790e77",
+      "pedidos": 6,
+      "etiqueta_a": "Producto 060cb193",
+      "etiqueta_b": "Producto 98d61056"
+    }
+  ],
+  "comparacion": [
+    {
+      "algoritmo": "Louvain",
+      "modularidad": 0.7596,
+      "comunidades": 21,
+      "cobertura": 1.0,
+      "tiempo_s": 0.08
+    },
+    {
+      "algoritmo": "Greedy Modularity",
+      "modularidad": 0.76,
+      "comunidades": 21,
+      "cobertura": 1.0,
+      "tiempo_s": 3.07
+    },
+    {
+      "algoritmo": "Label Propagation",
+      "modularidad": 0.4059,
+      "comunidades": 55,
+      "cobertura": 1.0,
+      "tiempo_s": 0.05
+    }
+  ]
+}

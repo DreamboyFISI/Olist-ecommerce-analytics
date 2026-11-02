@@ -1,0 +1,4 @@
+algoritmo,modularidad,comunidades,cobertura,tiempo_s
+Louvain,0.7596,21,1.0,0.08
+Greedy Modularity,0.76,21,1.0,3.07
+Label Propagation,0.4059,55,1.0,0.05
