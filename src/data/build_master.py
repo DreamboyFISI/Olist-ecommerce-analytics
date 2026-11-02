@@ -1,7 +1,4 @@
-"""Tabla maestra de pedidos de Olist — fase 3 de CRISP-DM.
-
-Integra los nueve CSV crudos en una tabla a nivel `order_id`. Las
-inconsistencias se marcan con banderas `flag_*` en lugar de eliminarse.
+"""Tabla maestra de pedidos de Olist (fase 3 de CRISP-DM).
 
     python -m src.data.build_master
 """
@@ -52,13 +49,11 @@ def load_raw(raw_dir: Path = RAW) -> dict[str, pd.DataFrame]:
 
 
 def dedup_reviews(reviews: pd.DataFrame) -> pd.DataFrame:
-    """Una reseña por pedido, la respuesta más reciente."""
     return (reviews.sort_values("review_answer_timestamp")
                    .drop_duplicates("order_id", keep="last"))
 
 
 def dedup_geolocation(geo: pd.DataFrame) -> pd.DataFrame:
-    """Centroide por prefijo postal."""
     return (geo.drop_duplicates()
                .groupby("geolocation_zip_code_prefix")
                .agg(lat=("geolocation_lat", "mean"), lng=("geolocation_lng", "mean"),
@@ -101,7 +96,6 @@ def build_payments(payments: pd.DataFrame) -> pd.DataFrame:
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Variables derivadas, con las definiciones del notebook de EDA."""
     df = df.copy()
 
     df["dias_entrega"] = (df.order_delivered_customer_date - df.order_purchase_timestamp).dt.total_seconds() / SEGUNDOS_POR_DIA
