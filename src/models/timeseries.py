@@ -190,3 +190,152 @@ def comparar(serie: pd.Series, horizonte: int = 30, n_pliegues: int = 6) -> pd.D
     base = tabla.loc[tabla.modelo == "naive_estacional", "MAE"].iat[0]
     tabla["mejora_MAE_%"] = ((base - tabla.MAE) / base * 100).round(1)
     return tabla
+
+
+ARTIFACTS = ROOT / "artifacts" / "timeseries"
+VERSION = "1.0.0"
+
+
+def detalle_por_pliegue(serie: pd.Series, horizonte: int = 30, n_pliegues: int = 6) -> pd.DataFrame:
+    filas = []
+    for nombre, predictor in MODELOS.items():
+        r = evaluar(serie, predictor, horizonte, n_pliegues)
+        r.insert(0, "modelo", nombre)
+        filas.append(r)
+    return pd.concat(filas, ignore_index=True)
+
+
+def pronostico_final(serie: pd.Series, horizonte: int = 30, alpha: float = 0.05):
+    """Reajusta el ganador con toda la serie y pronostica con intervalos."""
+    y = np.log1p(serie)
+    order, seasonal = _mejor_orden(y)
+    ajuste = _ajustar_sarimax(y, order, seasonal)
+
+    pred = ajuste.get_forecast(horizonte)
+    ic = pred.conf_int(alpha=alpha)
+    index = _futuro(serie, horizonte)
+    salida = pd.DataFrame({
+        "fecha": index,
+        "real": np.nan,
+        "pronostico": np.expm1(pred.predicted_mean.to_numpy()),
+        "inferior": np.expm1(ic.iloc[:, 0].to_numpy()),
+        "superior": np.expm1(ic.iloc[:, 1].to_numpy()),
+    })
+    return salida, ajuste, (order, seasonal)
+
+
+def backtest_ultimo_pliegue(serie: pd.Series, horizonte: int = 30, n_pliegues: int = 6) -> pd.DataFrame:
+    train, test = list(walk_forward_splits(serie, horizonte, n_pliegues))[-1]
+    pred = sarima(train, horizonte)
+    return pd.DataFrame({
+        "fecha": test.index,
+        "real": test.to_numpy(),
+        "pronostico": pred.to_numpy(),
+        "inferior": np.nan,
+        "superior": np.nan,
+        "error": test.to_numpy() - pred.to_numpy(),
+    })
+
+
+def generar_artefactos() -> dict:
+    import json
+    import pickle
+    from datetime import datetime
+
+    ARTIFACTS.mkdir(parents=True, exist_ok=True)
+    serie = build_series()
+
+    resumen = comparar(serie)
+    detalle = detalle_por_pliegue(serie)
+    resumen.to_csv(ARTIFACTS / "comparacion_modelos.csv", index=False)
+    detalle.to_csv(ARTIFACTS / "comparacion_por_pliegue.csv", index=False)
+
+    ganador = resumen.iloc[0]
+    backtest = backtest_ultimo_pliegue(serie)
+    futuro, ajuste, (order, seasonal) = pronostico_final(serie)
+    futuro["error"] = np.nan
+    pd.concat([backtest, futuro], ignore_index=True).to_csv(ARTIFACTS / "forecast.csv", index=False)
+
+    modelo = {"order": list(order), "seasonal_order": list(seasonal), "log1p": True,
+              "params": {k: round(float(v), 6) for k, v in ajuste.params.items()},
+              "aic": round(float(ajuste.aic), 3), "inicio": INICIO, "fin": FIN,
+              "version": VERSION}
+    # El .pkl queda fuera del repo por .gitignore; el .json es el artefacto versionado.
+    with (ARTIFACTS / "modelo_sarima.pkl").open("wb") as f:
+        pickle.dump(modelo, f)
+    with (ARTIFACTS / "modelo_sarima.json").open("w", encoding="utf-8") as f:
+        json.dump(modelo, f, ensure_ascii=False, indent=2)
+
+    chart = {
+        "serie": {"fecha": [str(d.date()) for d in serie.index],
+                  "ventas": [round(v, 2) for v in serie.to_numpy()]},
+        "backtest": {"fecha": [str(d.date()) for d in backtest.fecha],
+                     "real": [round(v, 2) for v in backtest.real],
+                     "pronostico": [round(v, 2) for v in backtest.pronostico]},
+        "futuro": {"fecha": [str(d.date()) for d in futuro.fecha],
+                   "pronostico": [round(v, 2) for v in futuro.pronostico],
+                   "inferior": [round(v, 2) for v in futuro.inferior],
+                   "superior": [round(v, 2) for v in futuro.superior]},
+        "comparacion": resumen.round(2).to_dict("records"),
+    }
+    with (ARTIFACTS / "chart_data.json").open("w", encoding="utf-8") as f:
+        json.dump(chart, f, ensure_ascii=False, indent=2)
+
+    base = resumen.loc[resumen.modelo == "naive_estacional"].iloc[0]
+    manifest = {
+        "status": "Completado",
+        "model_name": f"SARIMA{order}{seasonal} sobre log1p",
+        "version": VERSION,
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "dataset": "Olist — pedidos no cancelados y validos, agregados por dia",
+        "period": f"{serie.index[0].date()} a {serie.index[-1].date()} ({len(serie)} dias)",
+        "metrics": {
+            "MAE": round(float(ganador.MAE), 2),
+            "RMSE": round(float(ganador.RMSE), 2),
+            "sMAPE_%": round(float(ganador["sMAPE"]), 2),
+            "MAPE_%": round(float(ganador.MAPE), 2),
+            "MAE_baseline": round(float(base.MAE), 2),
+            "mejora_vs_baseline_%": round(float(ganador["mejora_MAE_%"]), 2),
+        },
+        "winner": str(ganador.modelo),
+        "results_path": "artifacts/timeseries/forecast.csv",
+        "chart_data_path": "artifacts/timeseries/chart_data.json",
+        "serialized_model_path": "artifacts/timeseries/modelo_sarima.json",
+        "validation": f"Walk-forward de 6 pliegues x 30 dias sobre {len(serie)} dias",
+        "models_compared": resumen.round(2).to_dict("records"),
+        "why_winner": [
+            "Es el unico de los cuatro que supera al baseline naive estacional "
+            f"({round(float(ganador.MAE))} frente a {round(float(base.MAE))} de MAE, "
+            f"{round(float(ganador['mejora_MAE_%']), 1)}% mejor).",
+            "Captura la estacionalidad semanal, que es real: el sabado vende 39% menos "
+            "que el martes.",
+            "Modelar log1p en lugar del nivel reduce el error porque la serie es "
+            "asimetrica y crece a lo largo del periodo.",
+            "El orden se elige por AIC sobre el train de cada pliegue, sin mirar el test.",
+            "SARIMAX no mejora porque sus regresores de calendario valen cero en los seis "
+            "pliegues de validacion; ademas el dataset tiene un solo Black Friday, por lo "
+            "que su efecto no puede estimarse y validarse a la vez.",
+            "Prophet quedo por debajo del baseline en las seis configuraciones probadas: "
+            "19 meses son pocos para su modelo de tendencia con changepoints.",
+        ],
+        "business_conclusions": [
+            "El pronostico a 30 dias permite anticipar la demanda para planificar "
+            "inventario y capacidad logistica.",
+            "La estacionalidad semanal es el patron dominante: el fin de semana cae hasta "
+            "39% frente al martes, lo que ordena la programacion de personal y despachos.",
+            "El KPI comprometido en el 1er avance (MAPE semanal <= 20%) ya lo cumple un "
+            "baseline trivial con 16.5%, asi que la vara real es superar ese baseline.",
+        ],
+        "limitations": [
+            "La serie util tiene 19 meses: no permite estimar estacionalidad anual, solo "
+            "la semanal (s=7).",
+            "Un unico Black Friday en todo el periodo impide modelar eventos especiales.",
+            "El arranque de 2017 y los dias posteriores al 22-ago-2018 se excluyen por no "
+            "ser representativos (lanzamiento y corte de extraccion).",
+            "El dataset termina en 2018: el pronostico es una demostracion metodologica, "
+            "no una proyeccion operativa vigente.",
+        ],
+    }
+    with (ARTIFACTS / "manifest.json").open("w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    return manifest
