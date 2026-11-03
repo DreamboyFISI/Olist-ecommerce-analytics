@@ -117,6 +117,26 @@ Salidas específicas:
 - **Regresión:** valor real, predicción, error y métricas.
 - **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
 
+### Ejecución de módulos de modelamiento (ejemplo: Clustering)
+
+Antes de iniciar el dashboard o levantar el entorno con Docker, se debe ejecutar el pipeline productivo para entrenar los modelos y generar los artefactos requeridos por el contrato:
+
+```bash
+python -m src.models.clustering
+```
+
+El script ejecuta de principio a fin:
+1. Agrupación RFM por `customer_unique_id` a partir de `data/raw/`.
+2. Preprocesamiento con `log1p` y `StandardScaler`.
+3. Comparación de modelos (K-Means k=3..6, DBSCAN y GMM) mediante Silhouette Score, Davies-Bouldin y Calinski-Harabasz.
+4. Generación y validación de los cuatro artefactos en `artifacts/clustering/` (`manifest.json`, `results.csv`, `chart_data.json` y `model.joblib`).
+
+Para verificar el cumplimiento del contrato antes de confirmar los cambios:
+
+```bash
+python -c "import json, jsonschema, pathlib; jsonschema.validate(json.loads(pathlib.Path('artifacts/clustering/manifest.json').read_text(encoding='utf-8')), json.loads(pathlib.Path('docs/module_contract.schema.json').read_text(encoding='utf-8'))); print('Contrato válido')"
+```
+
 ### Integración y evaluación
 
 La API expone inicialmente:

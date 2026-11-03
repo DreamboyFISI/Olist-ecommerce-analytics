@@ -1,0 +1,74 @@
+{
+  "cluster_counts": [
+    {
+      "cluster": 0,
+      "cluster_name": "Recientes / Prometedores",
+      "count": 14911
+    },
+    {
+      "cluster": 1,
+      "cluster_name": "En Riesgo / Dormidos",
+      "count": 32899
+    },
+    {
+      "cluster": 2,
+      "cluster_name": "Ocasionales de Bajo Valor",
+      "count": 42746
+    },
+    {
+      "cluster": 3,
+      "cluster_name": "VIP / Champions",
+      "count": 2801
+    }
+  ],
+  "centroids_normalized": [
+    {
+      "cluster": 0,
+      "cluster_name": "Recientes / Prometedores",
+      "Recency_norm": 1.0,
+      "Frequency_norm": 0.0,
+      "Monetary_norm": 0.1922,
+      "AvgTicket_norm": 0.1973,
+      "raw_Recency": 42.9,
+      "raw_Frequency": 1.0,
+      "raw_Monetary": 114.22,
+      "raw_AvgTicket": 114.22
+    },
+    {
+      "cluster": 1,
+      "cluster_name": "En Riesgo / Dormidos",
+      "Recency_norm": 0.0842,
+      "Frequency_norm": 0.0,
+      "Monetary_norm": 0.9745,
+      "AvgTicket_norm": 1.0,
+      "raw_Recency": 265.5,
+      "raw_Frequency": 1.0,
+      "raw_Monetary": 302.44,
+      "raw_AvgTicket": 302.44
+    },
+    {
+      "cluster": 2,
+      "cluster_name": "Ocasionales de Bajo Valor",
+      "Recency_norm": 0.0,
+      "Frequency_norm": 0.0,
+      "Monetary_norm": 0.0,
+      "AvgTicket_norm": 0.0,
+      "raw_Recency": 285.9,
+      "raw_Frequency": 1.0,
+      "raw_Monetary": 67.96,
+      "raw_AvgTicket": 67.96
+    },
+    {
+      "cluster": 3,
+      "cluster_name": "VIP / Champions",
+      "Recency_norm": 0.2701,
+      "Frequency_norm": 1.0,
+      "Monetary_norm": 1.0,
+      "AvgTicket_norm": 0.3323,
+      "raw_Recency": 220.3,
+      "raw_Frequency": 2.11,
+      "raw_Monetary": 308.59,
+      "raw_AvgTicket": 145.87
+    }
+  ]
+}
