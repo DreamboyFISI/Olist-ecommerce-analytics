@@ -1,28 +1,32 @@
 {
   "status": "Completado",
-  "model_name": "Customer RFM Clustering",
+  "model_name": "Segmentación de Clientes RFM",
   "version": "1.0.0",
-  "generated_at": "2026-11-03T10:26:16.475258+00:00",
-  "dataset": "Olist Brazilian E-Commerce",
-  "period": "2016-10 a 2018-08",
+  "generated_at": "2026-11-03T17:39:45.563639+00:00",
+  "dataset": "Brazilian E-Commerce Public Dataset by Olist (9 tablas)",
+  "period": "2016-09-04 a 2018-10-17",
   "metrics": {
-    "silhouette_score": 0.4082,
-    "davies_bouldin_index": 0.7716,
-    "calinski_harabasz_index": 62342.1
+    "silhouette_score": 0.4003,
+    "davies_bouldin_index": 0.7537,
+    "calinski_harabasz_index": 60934.7,
+    "stability_ari_10_runs": 0.9947,
+    "baseline_rfm_quantiles_ari": 0.1617,
+    "explainability_tree_accuracy": 0.9696
   },
-  "winner": "K-Means (k=4)",
+  "winner": "K-Means (k=4) - Conjunto A (RFM)",
   "results_path": "artifacts/clustering/results.csv",
   "chart_data_path": "artifacts/clustering/chart_data.json",
   "business_conclusions": [
-    "Concentración en recompra: Apenas el 3.0% de los clientes recompró (VIP / Champions), pero concentran el mayor valor acumulado. Un programa de fidelización temprano es la palanca con mayor retorno.",
-    "Ventana de reactivación: El segmento Recientes (~43 días de recencia) está en la ventana óptima de 60 días para incentivar un segundo pedido antes de entrar en inactividad.",
-    "Deserción en alto ticket: Clientes dormidos de alto gasto (>R$ 300) acumulan más de 260 días sin compras tras una primera experiencia con posibles fricciones de entrega.",
-    "Base ocasional dominante: El 45.8% adquiere productos económicos puntuales (R$ 68); requiere umbrales de envío gratis para elevar el tamaño medio de cesta."
+    "Concentración extrema de recompra: Apenas el 3.0% de los clientes ha realizado más de un pedido ('Recompradores Leales VIP'). La casi-constancia de F debilita el RFM tradicional pero convierte la retención en la palanca de mayor ROI.",
+    "Deserción de clientes de alto gasto: El segmento 'Alto Valor en Riesgo' acumula el 61.7% de los ingresos históricos pero presenta 272 días de inactividad, una satisfacción inferior (4.04★) y la mayor tasa de retrasos (9.46%), confirmando la correlación hallada en el EDA entre retrasos logísticos y abandono.",
+    "Ventana crítica de reactivación: El segmento 'Recientes / Nuevos' (17.3% de la base) posee recencia media de 42 días, satisfacción máxima (4.32★) y mínima tasa de retrasos (6.04%), conformando la cohorte óptima para programas de bienvenida y estímulo a la segunda compra.",
+    "Masa ocasional de ticket bajo: El 45.3% de los clientes pertenece a 'Ocasionales de Bajo Valor' (gasto medio R$ 68.3), para los cuales se requieren incentivos por umbral de envío gratuito."
   ],
   "limitations": [
-    "Sesgo por compra única: Con 97% de compradores de una sola vez, la Frecuencia presenta varianza mínima en la masa, concentrando la separación en Recencia y Monetario.",
-    "Horizonte temporal cerrado (2016-2018): Datos históricos hasta agosto 2018; el paso del tiempo eleva la recencia si no se aplica una ventana móvil de churn.",
-    "Ausencia de telemetría web: No se cuenta con datos de navegación, visitas ni carritos abandonados para modelar intención activa previa al checkout."
+    "Distribución degenerada en frecuencia: El 97.0% de los clientes registra exactamente una compra, limitando la aplicabilidad de modelos probabilísticos tradicionales como BG/NBD y requiriendo transformaciones asimétricas.",
+    "Horizonte temporal estático (2016-2018): Los datos culminan en octubre de 2018. Sin ingesta en tiempo real, la recencia aumenta artificialmente para toda la base si no se calcula respecto a ventanas relativas de cohorte.",
+    "Inexistencia de telemetría y navegación: La plataforma solo registra pedidos aprobados; la ausencia de eventos de visualización, sesiones web o carritos abandonados impide segmentar según intención previa a la compra.",
+    "Sensibilidad al flete interestatal: En Brasil el costo de envío representa una fricción decisiva que no se deriva puramente de la preferencia del consumidor sino de la distancia geográfica al vendedor."
   ],
   "serialized_model_path": "artifacts/clustering/model.joblib"
 }
