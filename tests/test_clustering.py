@@ -263,3 +263,4 @@ def test_manifest_schema_validation():
     chart_path = ROOT / manifest["chart_data_path"]
     assert res_path.exists(), f"No existe el results_path: {res_path}"
     assert chart_path.exists(), f"No existe el chart_data_path: {chart_path}"
+

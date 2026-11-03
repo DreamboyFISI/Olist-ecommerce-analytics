@@ -123,3 +123,4 @@ Para dotar al modelo de explicabilidad en producción sin perder la capacidad de
 1. **Asimetría extrema en Frecuencia:** El 97% de compradores únicos inhabilita el uso confiable de modelos bayesianos o probabilísticos tipo BG/NBD para CLV.
 2. **Horizonte temporal histórico cerrado:** Pedidos culminan en octubre de 2018. En un despliegue productivo vivo debe recalcularse la recencia con ventanas móviles de cohorte.
 3. **Ausencia de telemetría web:** No se dispone de navegación, visitas ni carritos abandonados; solo se observa el checkout exitoso.
+
