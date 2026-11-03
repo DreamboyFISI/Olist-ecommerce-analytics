@@ -1,0 +1,28 @@
+{
+  "status": "Completado",
+  "model_name": "Customer RFM Clustering",
+  "version": "1.0.0",
+  "generated_at": "2026-11-03T10:26:16.475258+00:00",
+  "dataset": "Olist Brazilian E-Commerce",
+  "period": "2016-10 a 2018-08",
+  "metrics": {
+    "silhouette_score": 0.4082,
+    "davies_bouldin_index": 0.7716,
+    "calinski_harabasz_index": 62342.1
+  },
+  "winner": "K-Means (k=4)",
+  "results_path": "artifacts/clustering/results.csv",
+  "chart_data_path": "artifacts/clustering/chart_data.json",
+  "business_conclusions": [
+    "Concentración en recompra: Apenas el 3.0% de los clientes recompró (VIP / Champions), pero concentran el mayor valor acumulado. Un programa de fidelización temprano es la palanca con mayor retorno.",
+    "Ventana de reactivación: El segmento Recientes (~43 días de recencia) está en la ventana óptima de 60 días para incentivar un segundo pedido antes de entrar en inactividad.",
+    "Deserción en alto ticket: Clientes dormidos de alto gasto (>R$ 300) acumulan más de 260 días sin compras tras una primera experiencia con posibles fricciones de entrega.",
+    "Base ocasional dominante: El 45.8% adquiere productos económicos puntuales (R$ 68); requiere umbrales de envío gratis para elevar el tamaño medio de cesta."
+  ],
+  "limitations": [
+    "Sesgo por compra única: Con 97% de compradores de una sola vez, la Frecuencia presenta varianza mínima en la masa, concentrando la separación en Recencia y Monetario.",
+    "Horizonte temporal cerrado (2016-2018): Datos históricos hasta agosto 2018; el paso del tiempo eleva la recencia si no se aplica una ventana móvil de churn.",
+    "Ausencia de telemetría web: No se cuenta con datos de navegación, visitas ni carritos abandonados para modelar intención activa previa al checkout."
+  ],
+  "serialized_model_path": "artifacts/clustering/model.joblib"
+}
