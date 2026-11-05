@@ -1,0 +1,570 @@
+{
+  "scatter_data": [
+    {
+      "antecedents": "fashion_childrens_clothes",
+      "consequents": "fashion_bags_accessories",
+      "support": 2.1e-05,
+      "confidence": 0.2857,
+      "lift": 15.146,
+      "leverage": 1.9e-05,
+      "conviction": 1.3736,
+      "rule_label": "fashion_childrens_clothes -> fashion_bags_accessories"
+    },
+    {
+      "antecedents": "fashion_bags_accessories",
+      "consequents": "fashion_childrens_clothes",
+      "support": 2.1e-05,
+      "confidence": 0.0011,
+      "lift": 15.146,
+      "leverage": 1.9e-05,
+      "conviction": 1.001,
+      "rule_label": "fashion_bags_accessories -> fashion_childrens_clothes"
+    },
+    {
+      "antecedents": "home_construction",
+      "consequents": "construction_tools_safety",
+      "support": 2.1e-05,
+      "confidence": 0.0041,
+      "lift": 2.513,
+      "leverage": 1.2e-05,
+      "conviction": 1.0025,
+      "rule_label": "home_construction -> construction_tools_safety"
+    },
+    {
+      "antecedents": "construction_tools_safety",
+      "consequents": "home_construction",
+      "support": 2.1e-05,
+      "confidence": 0.0126,
+      "lift": 2.513,
+      "leverage": 1.2e-05,
+      "conviction": 1.0077,
+      "rule_label": "construction_tools_safety -> home_construction"
+    },
+    {
+      "antecedents": "costruction_tools_garden",
+      "consequents": "desconocido",
+      "support": 4.1e-05,
+      "confidence": 0.0211,
+      "lift": 1.438,
+      "leverage": 1.3e-05,
+      "conviction": 1.0066,
+      "rule_label": "costruction_tools_garden -> desconocido"
+    },
+    {
+      "antecedents": "desconocido",
+      "consequents": "costruction_tools_garden",
+      "support": 4.1e-05,
+      "confidence": 0.0028,
+      "lift": 1.438,
+      "leverage": 1.3e-05,
+      "conviction": 1.0009,
+      "rule_label": "desconocido -> costruction_tools_garden"
+    },
+    {
+      "antecedents": "books_general_interest",
+      "consequents": "market_place",
+      "support": 2.1e-05,
+      "confidence": 0.004,
+      "lift": 1.42,
+      "leverage": 6e-06,
+      "conviction": 1.0012,
+      "rule_label": "books_general_interest -> market_place"
+    },
+    {
+      "antecedents": "market_place",
+      "consequents": "books_general_interest",
+      "support": 2.1e-05,
+      "confidence": 0.0073,
+      "lift": 1.42,
+      "leverage": 6e-06,
+      "conviction": 1.0022,
+      "rule_label": "market_place -> books_general_interest"
+    },
+    {
+      "antecedents": "home_confort",
+      "consequents": "bed_bath_table",
+      "support": 0.000446,
+      "confidence": 0.1097,
+      "lift": 1.141,
+      "leverage": 5.5e-05,
+      "conviction": 1.0153,
+      "rule_label": "home_confort -> bed_bath_table"
+    },
+    {
+      "antecedents": "bed_bath_table",
+      "consequents": "home_confort",
+      "support": 0.000446,
+      "confidence": 0.0046,
+      "lift": 1.141,
+      "leverage": 5.5e-05,
+      "conviction": 1.0006,
+      "rule_label": "bed_bath_table -> home_confort"
+    }
+  ],
+  "top_10_rules": [
+    {
+      "antecedents": "fashion_childrens_clothes",
+      "consequents": "fashion_bags_accessories",
+      "support": 2.1e-05,
+      "confidence": 0.2857,
+      "lift": 15.146,
+      "leverage": 1.9e-05,
+      "conviction": 1.3736
+    },
+    {
+      "antecedents": "fashion_bags_accessories",
+      "consequents": "fashion_childrens_clothes",
+      "support": 2.1e-05,
+      "confidence": 0.0011,
+      "lift": 15.146,
+      "leverage": 1.9e-05,
+      "conviction": 1.001
+    },
+    {
+      "antecedents": "home_construction",
+      "consequents": "construction_tools_safety",
+      "support": 2.1e-05,
+      "confidence": 0.0041,
+      "lift": 2.513,
+      "leverage": 1.2e-05,
+      "conviction": 1.0025
+    },
+    {
+      "antecedents": "construction_tools_safety",
+      "consequents": "home_construction",
+      "support": 2.1e-05,
+      "confidence": 0.0126,
+      "lift": 2.513,
+      "leverage": 1.2e-05,
+      "conviction": 1.0077
+    },
+    {
+      "antecedents": "costruction_tools_garden",
+      "consequents": "desconocido",
+      "support": 4.1e-05,
+      "confidence": 0.0211,
+      "lift": 1.438,
+      "leverage": 1.3e-05,
+      "conviction": 1.0066
+    },
+    {
+      "antecedents": "desconocido",
+      "consequents": "costruction_tools_garden",
+      "support": 4.1e-05,
+      "confidence": 0.0028,
+      "lift": 1.438,
+      "leverage": 1.3e-05,
+      "conviction": 1.0009
+    },
+    {
+      "antecedents": "books_general_interest",
+      "consequents": "market_place",
+      "support": 2.1e-05,
+      "confidence": 0.004,
+      "lift": 1.42,
+      "leverage": 6e-06,
+      "conviction": 1.0012
+    },
+    {
+      "antecedents": "market_place",
+      "consequents": "books_general_interest",
+      "support": 2.1e-05,
+      "confidence": 0.0073,
+      "lift": 1.42,
+      "leverage": 6e-06,
+      "conviction": 1.0022
+    },
+    {
+      "antecedents": "home_confort",
+      "consequents": "bed_bath_table",
+      "support": 0.000446,
+      "confidence": 0.1097,
+      "lift": 1.141,
+      "leverage": 5.5e-05,
+      "conviction": 1.0153
+    },
+    {
+      "antecedents": "bed_bath_table",
+      "consequents": "home_confort",
+      "support": 0.000446,
+      "confidence": 0.0046,
+      "lift": 1.141,
+      "leverage": 5.5e-05,
+      "conviction": 1.0006
+    }
+  ],
+  "antecedent_distribution": [
+    {
+      "antecedents": "fashion_childrens_clothes",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "fashion_bags_accessories",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "home_construction",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "construction_tools_safety",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "costruction_tools_garden",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "desconocido",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "books_general_interest",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "market_place",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "home_confort",
+      "rule_count": 1
+    },
+    {
+      "antecedents": "bed_bath_table",
+      "rule_count": 1
+    }
+  ],
+  "cooccurrence_matrix": {
+    "categories": [
+      "bed_bath_table",
+      "health_beauty",
+      "sports_leisure",
+      "computers_accessories",
+      "furniture_decor",
+      "housewares",
+      "watches_gifts",
+      "telephony",
+      "auto",
+      "toys",
+      "cool_stuff",
+      "garden_tools",
+      "perfumery",
+      "baby",
+      "electronics"
+    ],
+    "matrix": [
+      [
+        9272,
+        11,
+        1,
+        1,
+        70,
+        20,
+        0,
+        0,
+        2,
+        2,
+        10,
+        4,
+        1,
+        17,
+        2
+      ],
+      [
+        11,
+        8647,
+        14,
+        1,
+        3,
+        1,
+        3,
+        2,
+        1,
+        1,
+        2,
+        0,
+        11,
+        1,
+        0
+      ],
+      [
+        1,
+        14,
+        7530,
+        3,
+        3,
+        11,
+        5,
+        0,
+        3,
+        4,
+        1,
+        3,
+        3,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        3,
+        6530,
+        1,
+        4,
+        1,
+        6,
+        5,
+        0,
+        5,
+        8,
+        0,
+        0,
+        5
+      ],
+      [
+        70,
+        3,
+        3,
+        1,
+        6307,
+        24,
+        7,
+        0,
+        2,
+        0,
+        4,
+        16,
+        2,
+        12,
+        2
+      ],
+      [
+        20,
+        1,
+        11,
+        4,
+        24,
+        5743,
+        2,
+        0,
+        2,
+        0,
+        1,
+        11,
+        1,
+        5,
+        1
+      ],
+      [
+        0,
+        3,
+        5,
+        1,
+        7,
+        2,
+        5495,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        6,
+        0,
+        0,
+        2,
+        4093,
+        3,
+        1,
+        6,
+        1,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        1,
+        3,
+        5,
+        2,
+        2,
+        1,
+        3,
+        3810,
+        0,
+        3,
+        2,
+        0,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        4,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        3804,
+        7,
+        0,
+        2,
+        19,
+        0
+      ],
+      [
+        10,
+        2,
+        1,
+        5,
+        4,
+        1,
+        2,
+        6,
+        3,
+        7,
+        3559,
+        0,
+        0,
+        20,
+        0
+      ],
+      [
+        4,
+        0,
+        3,
+        8,
+        16,
+        11,
+        2,
+        1,
+        2,
+        0,
+        0,
+        3448,
+        0,
+        4,
+        1
+      ],
+      [
+        1,
+        11,
+        3,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        0,
+        3086,
+        0,
+        2
+      ],
+      [
+        17,
+        1,
+        1,
+        0,
+        12,
+        5,
+        1,
+        0,
+        2,
+        19,
+        20,
+        4,
+        0,
+        2809,
+        0
+      ],
+      [
+        2,
+        0,
+        1,
+        5,
+        2,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0,
+        2517
+      ]
+    ]
+  },
+  "comparison_summary": [
+    {
+      "algoritmo": "Apriori",
+      "canasta": "Canasta por Pedido",
+      "min_support": 0.0003,
+      "n_itemsets": 66,
+      "n_rules": 2,
+      "tiempo_segundos": 3.1321,
+      "memoria_mb": 557.25
+    },
+    {
+      "algoritmo": "FP-Growth",
+      "canasta": "Canasta por Pedido",
+      "min_support": 0.0003,
+      "n_itemsets": 66,
+      "n_rules": 2,
+      "tiempo_segundos": 6.688,
+      "memoria_mb": 0.14
+    },
+    {
+      "algoritmo": "ECLAT",
+      "canasta": "Canasta por Pedido",
+      "min_support": 0.0003,
+      "n_itemsets": 66,
+      "n_rules": 2,
+      "tiempo_segundos": 0.4577,
+      "memoria_mb": 8.12
+    },
+    {
+      "algoritmo": "Apriori",
+      "canasta": "Canasta por Cliente",
+      "min_support": 0.0003,
+      "n_itemsets": 72,
+      "n_rules": 2,
+      "tiempo_segundos": 2.67,
+      "memoria_mb": 539.22
+    },
+    {
+      "algoritmo": "FP-Growth",
+      "canasta": "Canasta por Cliente",
+      "min_support": 0.0003,
+      "n_itemsets": 72,
+      "n_rules": 2,
+      "tiempo_segundos": 6.1912,
+      "memoria_mb": 0.24
+    },
+    {
+      "algoritmo": "ECLAT",
+      "canasta": "Canasta por Cliente",
+      "min_support": 0.0003,
+      "n_itemsets": 72,
+      "n_rules": 2,
+      "tiempo_segundos": 0.5488,
+      "memoria_mb": 8.08
+    }
+  ]
+}
