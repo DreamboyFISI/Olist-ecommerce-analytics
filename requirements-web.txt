@@ -3,3 +3,4 @@ uvicorn[standard]
 streamlit
 plotly
 pandas>=2.0
+networkx

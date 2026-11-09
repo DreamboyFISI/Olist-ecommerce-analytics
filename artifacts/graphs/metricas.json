@@ -1,0 +1,461 @@
+{
+  "grafo_principal": {
+    "nombre": "bipartito categoria-vendedor",
+    "nodos": 3169,
+    "aristas": 6616,
+    "componentes": 1,
+    "componente_gigante": 3169,
+    "componente_gigante_%": 100.0,
+    "grado_promedio": 4.18,
+    "grado_maximo": 492,
+    "nodos_aislados": 0
+  },
+  "grafo_producto_vendedor": {
+    "nombre": "bipartito producto-vendedor",
+    "nodos": 36046,
+    "aristas": 34448,
+    "componentes": 2423,
+    "componente_gigante": 9712,
+    "componente_gigante_%": 26.94,
+    "grado_promedio": 1.91,
+    "grado_maximo": 399,
+    "nodos_aislados": 0
+  },
+  "grafo_co_compra": {
+    "nombre": "co-compra producto-producto",
+    "nodos": 4885,
+    "aristas": 4058,
+    "componentes": 1652,
+    "componente_gigante": 398,
+    "componente_gigante_%": 8.15,
+    "grado_promedio": 1.66,
+    "grado_maximo": 23,
+    "nodos_aislados": 0
+  },
+  "grafo_categoria_categoria": {
+    "nombre": "co-compra categoria-categoria",
+    "nodos": 64,
+    "aristas": 262,
+    "componentes": 1,
+    "componente_gigante": 64,
+    "componente_gigante_%": 100.0,
+    "grado_promedio": 8.19,
+    "grado_maximo": 31,
+    "nodos_aislados": 0
+  },
+  "proyeccion_categoria": {
+    "nodos": 74,
+    "aristas": 1435,
+    "top_pares": [
+      {
+        "categoria_a": "health_beauty",
+        "categoria_b": "sports_leisure",
+        "vendedores_compartidos": 103
+      },
+      {
+        "categoria_a": "housewares",
+        "categoria_b": "sports_leisure",
+        "vendedores_compartidos": 101
+      },
+      {
+        "categoria_a": "furniture_decor",
+        "categoria_b": "housewares",
+        "vendedores_compartidos": 100
+      },
+      {
+        "categoria_a": "health_beauty",
+        "categoria_b": "perfumery",
+        "vendedores_compartidos": 87
+      },
+      {
+        "categoria_a": "baby",
+        "categoria_b": "toys",
+        "vendedores_compartidos": 78
+      },
+      {
+        "categoria_a": "auto",
+        "categoria_b": "sports_leisure",
+        "vendedores_compartidos": 73
+      },
+      {
+        "categoria_a": "cool_stuff",
+        "categoria_b": "toys",
+        "vendedores_compartidos": 72
+      },
+      {
+        "categoria_a": "auto",
+        "categoria_b": "computers_accessories",
+        "vendedores_compartidos": 70
+      },
+      {
+        "categoria_a": "garden_tools",
+        "categoria_b": "housewares",
+        "vendedores_compartidos": 70
+      },
+      {
+        "categoria_a": "baby",
+        "categoria_b": "cool_stuff",
+        "vendedores_compartidos": 68
+      }
+    ]
+  },
+  "comparacion_comunidades": [
+    {
+      "algoritmo": "Louvain",
+      "modularidad": 0.7596,
+      "comunidades": 21,
+      "cobertura": 1.0,
+      "tiempo_s": 0.11
+    },
+    {
+      "algoritmo": "Greedy Modularity",
+      "modularidad": 0.76,
+      "comunidades": 21,
+      "cobertura": 1.0,
+      "tiempo_s": 4.64
+    },
+    {
+      "algoritmo": "Label Propagation",
+      "modularidad": 0.4059,
+      "comunidades": 55,
+      "cobertura": 1.0,
+      "tiempo_s": 0.08
+    }
+  ],
+  "ganador": "Louvain",
+  "criterio_ganador": "mayor modularidad; empate técnico (Δ≤0.001) se resuelve por menor tiempo",
+  "top_categorias_por_vendedores": [
+    {
+      "nodo": "health_beauty",
+      "grado": 492
+    },
+    {
+      "nodo": "sports_leisure",
+      "grado": 481
+    },
+    {
+      "nodo": "housewares",
+      "grado": 468
+    },
+    {
+      "nodo": "auto",
+      "grado": 383
+    },
+    {
+      "nodo": "furniture_decor",
+      "grado": 370
+    },
+    {
+      "nodo": "computers_accessories",
+      "grado": 287
+    },
+    {
+      "nodo": "cool_stuff",
+      "grado": 267
+    },
+    {
+      "nodo": "sin_categoria",
+      "grado": 257
+    },
+    {
+      "nodo": "toys",
+      "grado": 252
+    },
+    {
+      "nodo": "baby",
+      "grado": 244
+    }
+  ],
+  "top_vendedores_por_categorias": [
+    {
+      "nodo": "b2ba3715d723d245138f291a6fe42594",
+      "grado": 27
+    },
+    {
+      "nodo": "4e922959ae960d389249c378d1c939f5",
+      "grado": 24
+    },
+    {
+      "nodo": "955fee9216a65b617aa5c0531780ce60",
+      "grado": 23
+    },
+    {
+      "nodo": "1da3aeb70d7989d1e6d9b0e887f97c23",
+      "grado": 21
+    },
+    {
+      "nodo": "f8db351d8c4c4c22c6835c19a46f01b0",
+      "grado": 20
+    },
+    {
+      "nodo": "18a349e75d307f4b4cc646a691ed4216",
+      "grado": 17
+    },
+    {
+      "nodo": "44073f8b7e41514de3b7815dd0237f4f",
+      "grado": 15
+    },
+    {
+      "nodo": "6edacfd9f9074789dad6d62ba7950b9c",
+      "grado": 15
+    },
+    {
+      "nodo": "70a12e78e608ac31179aea7f8422044b",
+      "grado": 15
+    },
+    {
+      "nodo": "2ff97219cb8622eaf3cd89b7d9c09824",
+      "grado": 14
+    }
+  ],
+  "top_productos_pagerank": [
+    {
+      "producto": "99a4788cb24856965c36a24e339b6058",
+      "categoria": "bed_bath_table",
+      "pagerank": 0.001103,
+      "grado": 2
+    },
+    {
+      "producto": "aca2eb7d00ea1a7b8ebd4e68314663af",
+      "categoria": "furniture_decor",
+      "pagerank": 0.000425,
+      "grado": 1
+    },
+    {
+      "producto": "53b36df67ebb7c41585e8d54d6772e08",
+      "categoria": "watches_gifts",
+      "pagerank": 0.000411,
+      "grado": 3
+    },
+    {
+      "producto": "35afc973633aaeb6b877ff57b2793310",
+      "categoria": "home_confort",
+      "pagerank": 0.000377,
+      "grado": 2
+    },
+    {
+      "producto": "06edb72f1e0c64b14c5b79353f7abea3",
+      "categoria": "bed_bath_table",
+      "pagerank": 0.000346,
+      "grado": 1
+    },
+    {
+      "producto": "e0d64dcfaa3b6db5c54ca298ae101d05",
+      "categoria": "watches_gifts",
+      "pagerank": 0.0003,
+      "grado": 5
+    },
+    {
+      "producto": "d285360f29ac7fd97640bf0baef03de0",
+      "categoria": "watches_gifts",
+      "pagerank": 0.000286,
+      "grado": 8
+    },
+    {
+      "producto": "e44f675b60b3a3a2453ec36421e06f0f",
+      "categoria": "sports_leisure",
+      "pagerank": 0.000285,
+      "grado": 3
+    },
+    {
+      "producto": "bee2e070c39f3dd2f6883a17a5f0da45",
+      "categoria": "computers_accessories",
+      "pagerank": 0.000265,
+      "grado": 1
+    },
+    {
+      "producto": "78efe838c04bbc568be034082200ac20",
+      "categoria": "furniture_decor",
+      "pagerank": 0.000264,
+      "grado": 1
+    }
+  ],
+  "top_vendedores_por_productos": [
+    {
+      "nodo": "4a3ca9315b744ce9f8e9374361493884",
+      "grado": 399
+    },
+    {
+      "nodo": "cca3071e3e9bb7d12640c9fbe2301306",
+      "grado": 322
+    },
+    {
+      "nodo": "d91fb3b7d041e83b64a00a3edfb37e4f",
+      "grado": 315
+    },
+    {
+      "nodo": "fa1c13f2614d7b5c4749cbc52fecda94",
+      "grado": 289
+    },
+    {
+      "nodo": "7142540dd4c91e2237acb7e911c4eba2",
+      "grado": 266
+    },
+    {
+      "nodo": "6560211a19b47992c3666cc44a7e94c0",
+      "grado": 256
+    },
+    {
+      "nodo": "da8622b14eb17ae2831f4ac5b9dab84a",
+      "grado": 222
+    },
+    {
+      "nodo": "ea8482cd71df3c1969d7b9473ff13abc",
+      "grado": 220
+    },
+    {
+      "nodo": "3d871de0142ce09b7081e2b9d1733cb1",
+      "grado": 202
+    },
+    {
+      "nodo": "7c67e1448b00f6e969d365cea6b010ab",
+      "grado": 198
+    }
+  ],
+  "betweenness_aproximada": [
+    {
+      "nodo": "b2ba3715d723d245138f291a6fe42594",
+      "betweenness": 0.406015
+    },
+    {
+      "nodo": "612170e34b97004b3ba37eae81836b4c",
+      "betweenness": 0.249372
+    },
+    {
+      "nodo": "46dc3b2cc0980fb8ec44634e21d2718e",
+      "betweenness": 0.229972
+    },
+    {
+      "nodo": "2eb70248d66e0e3ef83659f71b244378",
+      "betweenness": 0.202772
+    },
+    {
+      "nodo": "8444e55c1f13cd5c179851e5ca5ebd00",
+      "betweenness": 0.202381
+    },
+    {
+      "nodo": "22a8168cf1f1c6347da8d29863b7f75e",
+      "betweenness": 0.190821
+    },
+    {
+      "nodo": "44073f8b7e41514de3b7815dd0237f4f",
+      "betweenness": 0.16264
+    },
+    {
+      "nodo": "2b2cde418c199f2ad971a7511cac11c0",
+      "betweenness": 0.154948
+    },
+    {
+      "nodo": "620c87c171fb2a6dd6e8bb4dec959fc6",
+      "betweenness": 0.148151
+    },
+    {
+      "nodo": "8b28d096634035667e8263d57ba3368c",
+      "betweenness": 0.143787
+    }
+  ],
+  "top_pares_co_compra": [
+    {
+      "producto_a": "36f60d45225e60c7da4558b070ce4b60",
+      "producto_b": "e53e557d5a159f5aa2c5e995dfdf244b",
+      "pedidos": 34
+    },
+    {
+      "producto_a": "99a4788cb24856965c36a24e339b6058",
+      "producto_b": "35afc973633aaeb6b877ff57b2793310",
+      "pedidos": 29
+    },
+    {
+      "producto_a": "4fcb3d9a5f4871e8362dfedbdb02b064",
+      "producto_b": "f4f67ccaece962d013a4e1d7dc3a61f7",
+      "pedidos": 17
+    },
+    {
+      "producto_a": "36f60d45225e60c7da4558b070ce4b60",
+      "producto_b": "3f14d740544f37ece8a9e7bc8349797e",
+      "pedidos": 12
+    },
+    {
+      "producto_a": "389d119b48cf3043d311335e499d9c6b",
+      "producto_b": "422879e10f46682990de24d770e7f83d",
+      "pedidos": 11
+    },
+    {
+      "producto_a": "389d119b48cf3043d311335e499d9c6b",
+      "producto_b": "53759a2ecddad2bb87a079a1f1519f73",
+      "pedidos": 9
+    },
+    {
+      "producto_a": "53759a2ecddad2bb87a079a1f1519f73",
+      "producto_b": "368c6c730842d78016ad823897a372db",
+      "pedidos": 8
+    },
+    {
+      "producto_a": "18486698933fbb64af6c0a255f7dd64c",
+      "producto_b": "dbb67791e405873b259e4656bf971246",
+      "pedidos": 7
+    },
+    {
+      "producto_a": "53759a2ecddad2bb87a079a1f1519f73",
+      "producto_b": "422879e10f46682990de24d770e7f83d",
+      "pedidos": 7
+    },
+    {
+      "producto_a": "060cb19345d90064d1015407193c233d",
+      "producto_b": "98d61056e0568ba048e5d78038790e77",
+      "pedidos": 6
+    }
+  ],
+  "top_pares_categorias": [
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "furniture_decor",
+      "pedidos": 70
+    },
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "home_confort",
+      "pedidos": 43
+    },
+    {
+      "categoria_a": "housewares",
+      "categoria_b": "furniture_decor",
+      "pedidos": 24
+    },
+    {
+      "categoria_a": "baby",
+      "categoria_b": "cool_stuff",
+      "pedidos": 20
+    },
+    {
+      "categoria_a": "bed_bath_table",
+      "categoria_b": "housewares",
+      "pedidos": 20
+    },
+    {
+      "categoria_a": "toys",
+      "categoria_b": "baby",
+      "pedidos": 19
+    },
+    {
+      "categoria_a": "baby",
+      "categoria_b": "bed_bath_table",
+      "pedidos": 17
+    },
+    {
+      "categoria_a": "garden_tools",
+      "categoria_b": "furniture_decor",
+      "pedidos": 17
+    },
+    {
+      "categoria_a": "housewares",
+      "categoria_b": "sin_categoria",
+      "pedidos": 14
+    },
+    {
+      "categoria_a": "sports_leisure",
+      "categoria_b": "health_beauty",
+      "pedidos": 14
+    }
+  ]
+}
