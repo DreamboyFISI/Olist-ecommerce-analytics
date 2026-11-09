@@ -117,6 +117,26 @@ Salidas específicas:
 - **Regresión:** valor real, predicción, error y métricas.
 - **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
 
+### Actualizar el módulo de grafos
+
+La vista de Grafos lee `artifacts/graphs/chart_data.json`; no entrena dentro de Streamlit. Cuando cambien
+los CSV de `data/raw/` o la tabla procesada:
+
+```bash
+python -m src.models.graphs --refresh
+```
+
+Ese comando reconstruye `data/processed/grafos/items_pedidos.csv` desde `data/raw/` y vuelve a generar
+todos los artefactos (`nodos.csv`, `aristas.csv`, `comunidades.csv`, `metricas.json`, `chart_data.json` y
+`manifest.json`). Si solo cambió `items_pedidos.csv`, basta con:
+
+```bash
+python -m src.models.graphs
+```
+
+La vista detecta si los artefactos están desactualizados y muestra un aviso con el comando que
+corresponde. El diagrama se redibuja desde los artefactos en cada recarga, sin imágenes ni datos fijos.
+
 ### Integración y evaluación
 
 La API expone inicialmente:

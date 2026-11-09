@@ -105,21 +105,21 @@
       "modularidad": 0.7596,
       "comunidades": 21,
       "cobertura": 1.0,
-      "tiempo_s": 0.08
+      "tiempo_s": 0.11
     },
     {
       "algoritmo": "Greedy Modularity",
       "modularidad": 0.76,
       "comunidades": 21,
       "cobertura": 1.0,
-      "tiempo_s": 3.07
+      "tiempo_s": 4.64
     },
     {
       "algoritmo": "Label Propagation",
       "modularidad": 0.4059,
       "comunidades": 55,
       "cobertura": 1.0,
-      "tiempo_s": 0.05
+      "tiempo_s": 0.08
     }
   ],
   "ganador": "Louvain",
@@ -315,43 +315,43 @@
   "betweenness_aproximada": [
     {
       "nodo": "b2ba3715d723d245138f291a6fe42594",
-      "betweenness": 0.454416
-    },
-    {
-      "nodo": "46dc3b2cc0980fb8ec44634e21d2718e",
-      "betweenness": 0.246902
+      "betweenness": 0.406015
     },
     {
       "nodo": "612170e34b97004b3ba37eae81836b4c",
-      "betweenness": 0.205497
+      "betweenness": 0.249372
     },
     {
-      "nodo": "2b2cde418c199f2ad971a7511cac11c0",
-      "betweenness": 0.174144
-    },
-    {
-      "nodo": "8444e55c1f13cd5c179851e5ca5ebd00",
-      "betweenness": 0.171122
+      "nodo": "46dc3b2cc0980fb8ec44634e21d2718e",
+      "betweenness": 0.229972
     },
     {
       "nodo": "2eb70248d66e0e3ef83659f71b244378",
-      "betweenness": 0.166975
+      "betweenness": 0.202772
+    },
+    {
+      "nodo": "8444e55c1f13cd5c179851e5ca5ebd00",
+      "betweenness": 0.202381
     },
     {
       "nodo": "22a8168cf1f1c6347da8d29863b7f75e",
-      "betweenness": 0.162541
+      "betweenness": 0.190821
+    },
+    {
+      "nodo": "44073f8b7e41514de3b7815dd0237f4f",
+      "betweenness": 0.16264
+    },
+    {
+      "nodo": "2b2cde418c199f2ad971a7511cac11c0",
+      "betweenness": 0.154948
     },
     {
       "nodo": "620c87c171fb2a6dd6e8bb4dec959fc6",
-      "betweenness": 0.14521
+      "betweenness": 0.148151
     },
     {
       "nodo": "8b28d096634035667e8263d57ba3368c",
-      "betweenness": 0.133437
-    },
-    {
-      "nodo": "7b7f91e98f8c6def45a1407923304402",
-      "betweenness": 0.128591
+      "betweenness": 0.143787
     }
   ],
   "top_pares_co_compra": [

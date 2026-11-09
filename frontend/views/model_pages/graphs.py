@@ -1,4 +1,7 @@
 import json
+import subprocess
+import sys
+from collections.abc import Iterable
 from pathlib import Path
 
 import networkx as nx
@@ -15,7 +18,61 @@ from frontend.components import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
-CHART_DATA = ROOT / "artifacts" / "graphs" / "chart_data.json"
+DEFAULT_CHART_DATA = ROOT / "artifacts" / "graphs" / "chart_data.json"
+ITEMS = ROOT / "data" / "processed" / "grafos" / "items_pedidos.csv"
+RAW_DIR = ROOT / "data" / "raw"
+
+
+def _chart_path(module: dict) -> Path:
+    """Respeta chart_data_path del manifest; usa la ruta habitual como respaldo."""
+    configured = module.get("chart_data_path")
+    if not configured:
+        return DEFAULT_CHART_DATA
+    path = Path(configured)
+    return path if path.is_absolute() else ROOT / path
+
+
+def _newest_mtime(paths: Iterable[Path]) -> float | None:
+    mtimes = [path.stat().st_mtime for path in paths if path.exists()]
+    return max(mtimes) if mtimes else None
+
+
+def _artifact_status(chart_path: Path) -> tuple[str, str] | None:
+    """Indica si los artefactos quedaron atrás respecto a los datos."""
+    if not chart_path.exists():
+        return None
+
+    raw_mtime = _newest_mtime(RAW_DIR.glob("*.csv"))
+    items_mtime = ITEMS.stat().st_mtime if ITEMS.exists() else None
+    chart_mtime = chart_path.stat().st_mtime
+
+    if raw_mtime is not None and (items_mtime is None or raw_mtime > items_mtime):
+        return (
+            "data",
+            "Los CSV de `data/raw/` son más recientes que `items_pedidos.csv`. "
+            "Ejecuta `python -m src.models.graphs --refresh` para reconstruir "
+            "los datos y los artefactos.",
+        )
+    if items_mtime is not None and items_mtime > chart_mtime:
+        return (
+            "chart",
+            "`items_pedidos.csv` es más reciente que `chart_data.json`. "
+            "Ejecuta `python -m src.models.graphs` para actualizar el diagrama.",
+        )
+    return None
+
+
+def _refresh_command(kind: str) -> list[str]:
+    command = [sys.executable, "-m", "src.models.graphs"]
+    if kind == "data":
+        command.append("--refresh")
+    return command
+
+
+def _can_refresh() -> bool:
+    return (ROOT / "src" / "models" / "graphs.py").exists() and (
+        ITEMS.exists() or RAW_DIR.exists()
+    )
 
 
 def _network_figure(data: dict) -> go.Figure:
@@ -100,15 +157,39 @@ def render(module: dict) -> None:
         unsafe_allow_html=True,
     )
 
-    if not module.get("manifest_available") or not CHART_DATA.exists():
+    chart_path = _chart_path(module)
+    chart_reference = module.get("chart_data_path") or "artifacts/graphs/chart_data.json"
+    if not module.get("manifest_available") or not chart_path.exists():
         render_empty_state(
             "Módulo preparado para su rama",
             "La navegación y el espacio visual ya están listos. Esta pantalla se activará "
-            "al agregar artifacts/graphs/manifest.json y los resultados reales.",
+            f"al agregar artifacts/graphs/manifest.json y {chart_reference}.",
         )
         return
 
-    data = json.loads(CHART_DATA.read_text(encoding="utf-8"))
+    stale = _artifact_status(chart_path)
+    if stale:
+        kind, message = stale
+        st.warning(message)
+        if _can_refresh():
+            if st.button("Actualizar grafos ahora", key="graphs_refresh", type="primary"):
+                try:
+                    with st.spinner("Reconstruyendo datos y artefactos..."):
+                        subprocess.run(
+                            _refresh_command(kind),
+                            cwd=ROOT,
+                            capture_output=True,
+                            text=True,
+                            check=True,
+                        )
+                except subprocess.CalledProcessError as exc:
+                    st.error("No se pudieron actualizar los grafos.")
+                    st.code(((exc.stderr or "") + (exc.stdout or ""))[-4000:])
+                else:
+                    st.success("Artefactos actualizados. Recargando la vista...")
+                    st.rerun()
+
+    data = json.loads(chart_path.read_text(encoding="utf-8"))
     metrics = module.get("metrics", {})
 
     st.caption(f"Periodo: {module.get('period')} · Dataset: {module.get('dataset')}")
@@ -129,9 +210,19 @@ def render(module: dict) -> None:
         f"Conectividad del grafo: {metrics.get('conectividad_grafo_principal_%', 0):.1f}%</div>",
         unsafe_allow_html=True,
     )
+    shown_nodes = len(data["grafo"]["nodos"])
+    shown_edges = len(data["grafo"]["aristas"])
+    total_nodes = int(metrics.get("nodos_grafo_principal", 0))
+    total_edges = int(metrics.get("aristas_grafo_principal", 0))
+    results_path = module.get("results_path", "artifacts/graphs/nodos.csv")
+    st.caption(
+        f"El diagrama muestra {shown_edges:,} de {total_edges:,} aristas y "
+        f"{shown_nodes:,} de {total_nodes:,} nodos, seleccionados por peso para "
+        "mantenerlo legible."
+    )
     st.caption(
         "Las etiquetas muestran los primeros 8 caracteres del ID. "
-        "Los IDs completos se conservan en artifacts/graphs/nodos.csv."
+        f"Los IDs completos se conservan en {results_path}."
     )
 
     st.markdown(

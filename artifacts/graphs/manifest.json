@@ -2,7 +2,7 @@
   "status": "Completado",
   "model_name": "Louvain sobre grafo bipartito categoría–vendedor",
   "version": "1.0.0",
-  "generated_at": "2026-11-02T20:29:35.318158+00:00",
+  "generated_at": "2026-11-09T20:56:49.369983+00:00",
   "dataset": "items_pedidos.csv (Olist, 112,650 ítems)",
   "period": "2016-09-04 a 2018-09-03",
   "metrics": {
@@ -28,7 +28,7 @@
   "limitations": [
     "El grafo de co-compra producto–producto es disperso: el componente gigante cubre 8.15% de sus nodos.",
     "Las aristas categoría–vendedor representan presencia, no volumen de ventas ni ingresos.",
-    "El periodo analizado (2016-09 a 2018-09) no refleja el comportamiento actual del mercado.",
+    "El periodo analizado (2016-09-04 a 2018-09-03) no refleja el comportamiento actual del mercado.",
     "Louvain es estocástico; se fijó random_state=42 para reproducibilidad.",
     "Betweenness se calculó de forma aproximada (k=100) sobre el componente gigante."
   ]

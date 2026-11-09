@@ -1,6 +1,7 @@
 """Módulo de grafos de Olist (fase 4 de CRISP-DM).
 
-    python -m src.models.graphs
+    python -m src.models.graphs              # usa items_pedidos.csv existente
+    python -m src.models.graphs --refresh    # reconstruye desde data/raw y genera todo
 
 Grafo principal: bipartito categoría–vendedor (100% conexo).
 Grafos complementarios: producto–vendedor y co-compra producto–producto.
@@ -8,6 +9,7 @@ Grafos complementarios: producto–vendedor y co-compra producto–producto.
 
 from __future__ import annotations
 
+import argparse
 import json
 import time
 from collections import Counter
@@ -22,16 +24,43 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 ITEMS = ROOT / "data" / "processed" / "grafos" / "items_pedidos.csv"
 ARTIFACTS = ROOT / "artifacts" / "graphs"
-PERIODO = "2016-09-04 a 2018-09-03"
 
 
 def load_items(path: Path = ITEMS) -> pd.DataFrame:
+    if not path.exists():
+        raise FileNotFoundError(
+            f"No existe {path}. Ejecuta `python -m src.models.graphs --refresh` "
+            "o `python -m src.data.build_graphs_data` para generarlo."
+        )
     dtype = {"order_id": "string", "product_id": "string", "seller_id": "string"}
     df = pd.read_csv(path, dtype=dtype)
     df["order_purchase_timestamp"] = pd.to_datetime(
         df["order_purchase_timestamp"], errors="coerce"
     )
     return df
+
+
+def data_period(df: pd.DataFrame) -> tuple[pd.Timestamp | None, pd.Timestamp | None]:
+    """Devuelve la primera y la última fecha válida de los pedidos."""
+    dates = pd.to_datetime(
+        df["order_purchase_timestamp"], errors="coerce"
+    ).dropna()
+    if dates.empty:
+        return None, None
+    return dates.min(), dates.max()
+
+
+def period_label(df: pd.DataFrame) -> str:
+    """Periodo en texto, calculado desde los datos y no desde una constante."""
+    start, end = data_period(df)
+    if start is None or end is None:
+        return "sin fechas válidas"
+    return f"{start:%Y-%m-%d} a {end:%Y-%m-%d}"
+
+
+def dataset_label(df: pd.DataFrame) -> str:
+    """Etiqueta del dataset con el número real de ítems procesados."""
+    return f"{ITEMS.name} (Olist, {len(df):,} ítems)"
 
 
 def build_bipartite(
@@ -190,9 +219,17 @@ def betweenness_top(graph: nx.Graph, limit: int = 10, k: int = 100) -> list[dict
     return rows[:limit]
 
 
-def main() -> None:
+def main(refresh: bool = False) -> None:
+    if refresh:
+        from src.data.build_graphs_data import main as build_items
+
+        print("Reconstruyendo items_pedidos.csv desde data/raw...")
+        build_items()
+
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     df = load_items()
+    period = period_label(df)
+    dataset = dataset_label(df)
 
     # 1. Grafo principal: categoría–vendedor.
     categorias = build_bipartite(
@@ -428,8 +465,8 @@ def main() -> None:
         "model_name": f"{winner} sobre grafo bipartito categoría–vendedor",
         "version": "1.0.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "dataset": "items_pedidos.csv (Olist, 112,650 ítems)",
-        "period": PERIODO,
+        "dataset": dataset,
+        "period": period,
         "metrics": {
             "modularidad_ganador": mejor["modularidad"],
             "comunidades_ganador": mejor["comunidades"],
@@ -465,7 +502,7 @@ def main() -> None:
             "El grafo de co-compra producto–producto es disperso: el componente gigante cubre "
             f"{co_compra_stats['componente_gigante_%']}% de sus nodos.",
             "Las aristas categoría–vendedor representan presencia, no volumen de ventas ni ingresos.",
-            "El periodo analizado (2016-09 a 2018-09) no refleja el comportamiento actual del mercado.",
+            f"El periodo analizado ({period}) no refleja el comportamiento actual del mercado.",
             "Louvain es estocástico; se fijó random_state=42 para reproducibilidad.",
             "Betweenness se calculó de forma aproximada (k=100) sobre el componente gigante.",
         ],
@@ -479,8 +516,22 @@ def main() -> None:
     print(f"Co-compra: {co_compra_stats['nodos']:,} nodos, "
           f"{co_compra_stats['aristas']:,} aristas, "
           f"gigante={co_compra_stats['componente_gigante_%']}%")
+    print(f"Periodo: {period} | Dataset: {dataset}")
     print(f"Artefactos en {ARTIFACTS}")
 
 
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--refresh",
+        action="store_true",
+        help=(
+            "Reconstruye data/processed/grafos/items_pedidos.csv desde data/raw "
+            "antes de generar los artefactos."
+        ),
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    main()
+    main(refresh=_parse_args().refresh)

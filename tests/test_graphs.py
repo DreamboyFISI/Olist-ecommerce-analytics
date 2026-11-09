@@ -19,7 +19,9 @@ from src.models.graphs import (  # noqa: E402
     build_bipartite,
     build_cooccurrence,
     compare_communities,
+    dataset_label,
     graph_stats,
+    period_label,
 )
 
 ARTIFACTS = ROOT / "artifacts" / "graphs"
@@ -73,6 +75,71 @@ def test_comparacion_elige_un_ganador_con_cobertura_total(items):
     assert winner in results
     assert results[winner]["cobertura"] == 1.0
     assert set(results) == {"Louvain", "Greedy Modularity", "Label Propagation"}
+
+
+def test_periodo_y_dataset_se_derivan_de_los_datos():
+    frame = pd.DataFrame(
+        {
+            "order_purchase_timestamp": pd.to_datetime(
+                ["2020-01-02", "2020-03-04", None]
+            ),
+        }
+    )
+
+    assert period_label(frame) == "2020-01-02 a 2020-03-04"
+    assert dataset_label(frame) == "items_pedidos.csv (Olist, 3 ítems)"
+
+
+def test_periodo_sin_fechas_validas():
+    frame = pd.DataFrame({"order_purchase_timestamp": pd.to_datetime([None, None])})
+
+    assert period_label(frame) == "sin fechas válidas"
+
+
+@pytest.mark.skipif(not ITEMS.exists(), reason="falta data/processed/grafos/items_pedidos.csv")
+@pytest.mark.skipif(not (ARTIFACTS / "manifest.json").exists(), reason="faltan artefactos")
+def test_manifest_refleja_el_dataset_actual():
+    manifest = json.loads((ARTIFACTS / "manifest.json").read_text(encoding="utf-8"))
+    frame = pd.read_csv(
+        ITEMS,
+        usecols=["order_purchase_timestamp"],
+        parse_dates=["order_purchase_timestamp"],
+    )
+
+    assert manifest["period"] == period_label(frame)
+    assert manifest["dataset"] == dataset_label(frame)
+
+
+@pytest.mark.skipif(not (ARTIFACTS / "chart_data.json").exists(), reason="faltan artefactos")
+def test_chart_data_tiene_estructura_para_la_vista():
+    data = json.loads((ARTIFACTS / "chart_data.json").read_text(encoding="utf-8"))
+
+    assert {
+        "grafo",
+        "comunidades",
+        "top_categorias",
+        "top_vendedores",
+        "top_productos",
+        "top_betweenness",
+        "co_compra_categorias",
+        "co_compra_productos",
+        "comparacion",
+    } <= set(data)
+    assert {"nodos", "aristas"} <= set(data["grafo"])
+
+    total_nodes = len(pd.read_csv(ARTIFACTS / "nodos.csv"))
+    total_edges = len(pd.read_csv(ARTIFACTS / "aristas.csv"))
+    assert 0 < len(data["grafo"]["nodos"]) <= total_nodes
+    assert 0 < len(data["grafo"]["aristas"]) <= total_edges
+
+    all_edges = {
+        (row.origen, row.destino)
+        for row in pd.read_csv(ARTIFACTS / "aristas.csv").itertuples(index=False)
+    }
+    chart_edges = {
+        (edge["origen"], edge["destino"]) for edge in data["grafo"]["aristas"]
+    }
+    assert chart_edges <= all_edges
 
 
 @pytest.mark.skipif(not ITEMS.exists(), reason="falta data/processed/grafos/items_pedidos.csv")
