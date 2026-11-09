@@ -1,0 +1,35 @@
+{
+  "status": "Completado",
+  "model_name": "Louvain sobre grafo bipartito categoría–vendedor",
+  "version": "1.0.0",
+  "generated_at": "2026-11-09T20:56:49.369983+00:00",
+  "dataset": "items_pedidos.csv (Olist, 112,650 ítems)",
+  "period": "2016-09-04 a 2018-09-03",
+  "metrics": {
+    "modularidad_ganador": 0.7596,
+    "comunidades_ganador": 21,
+    "cobertura_ganador": 1.0,
+    "nodos_grafo_principal": 3169,
+    "aristas_grafo_principal": 6616,
+    "conectividad_grafo_principal_%": 100.0,
+    "componente_gigante_producto_vendedor_%": 26.94,
+    "pedidos_con_2_o_mas_productos": 3236,
+    "aristas_co_compra": 4058
+  },
+  "winner": "Louvain",
+  "results_path": "artifacts/graphs/nodos.csv",
+  "chart_data_path": "artifacts/graphs/chart_data.json",
+  "business_conclusions": [
+    "El grafo categoría–vendedor está 100.0% conectado, por lo que permite analizar todas las categorías y vendedores sin descartar nodos.",
+    "health_beauty es la categoría con más vendedores (492), seguida de sports_leisure (481), lo que indica mercados con mayor competencia.",
+    "La co-compra de categorías más frecuente es bed_bath_table + furniture_decor (70 pedidos), una oportunidad de venta cruzada.",
+    "Solo 3,236 pedidos incluyen dos o más productos distintos, por lo que el grafo de co-compra directa es disperso y debe complementarse con reglas de asociación."
+  ],
+  "limitations": [
+    "El grafo de co-compra producto–producto es disperso: el componente gigante cubre 8.15% de sus nodos.",
+    "Las aristas categoría–vendedor representan presencia, no volumen de ventas ni ingresos.",
+    "El periodo analizado (2016-09-04 a 2018-09-03) no refleja el comportamiento actual del mercado.",
+    "Louvain es estocástico; se fijó random_state=42 para reproducibilidad.",
+    "Betweenness se calculó de forma aproximada (k=100) sobre el componente gigante."
+  ]
+}
