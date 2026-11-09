@@ -1,0 +1,43 @@
+{
+  "filas": 99441,
+  "columnas": 51,
+  "periodo": [
+    "2016-09-04",
+    "2018-10-17"
+  ],
+  "registros_validos": 98629,
+  "registros_marcados": 812,
+  "banderas": {
+    "flag_sin_items": 775,
+    "flag_sin_pago": 1,
+    "flag_pago_cero": 3,
+    "flag_entregado_sin_fecha": 8,
+    "flag_cancelado_con_entrega": 6,
+    "flag_entrega_antes_transportista": 23,
+    "flag_transportista_antes_aprobacion": 1359,
+    "flag_pago_descuadrado": 312
+  },
+  "nulos_%": {
+    "order_approved_at": 0.16,
+    "order_delivered_carrier_date": 1.79,
+    "order_delivered_customer_date": 2.98,
+    "n_items": 0.78,
+    "n_productos": 0.78,
+    "n_sellers": 0.78,
+    "n_categorias": 0.78,
+    "price_total": 0.78,
+    "freight_total": 0.78,
+    "categoria_principal": 0.78,
+    "seller_state": 0.78,
+    "peso_total_g": 0.78,
+    "review_score": 0.77,
+    "review_comment_message": 59.0,
+    "dias_entrega": 2.98,
+    "dias_retraso": 2.98,
+    "dias_aprobacion": 0.16,
+    "entrega_tardia": 2.98,
+    "ratio_flete": 0.78,
+    "ticket": 0.78,
+    "review_negativa": 0.77
+  }
+}

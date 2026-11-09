@@ -1,0 +1,74 @@
+{
+  "status": "Completado",
+  "model_name": "SARIMA(1, 1, 2)(1, 1, 1, 7) sobre log1p",
+  "version": "1.0.0",
+  "generated_at": "2026-11-02T07:41:52",
+  "dataset": "Olist — pedidos no cancelados y validos, agregados por dia",
+  "period": "2017-01-23 a 2018-08-22 (577 dias)",
+  "metrics": {
+    "MAE": 6906.94,
+    "RMSE": 8547.58,
+    "sMAPE_%": 19.08,
+    "MAPE_%": 21.53,
+    "MAE_baseline": 7263.44,
+    "mejora_vs_baseline_%": 4.9
+  },
+  "winner": "sarima",
+  "results_path": "artifacts/timeseries/forecast.csv",
+  "chart_data_path": "artifacts/timeseries/chart_data.json",
+  "serialized_model_path": "artifacts/timeseries/modelo_sarima.json",
+  "validation": "Walk-forward de 6 pliegues x 30 dias sobre 577 dias",
+  "models_compared": [
+    {
+      "modelo": "sarima",
+      "MAE": 6906.94,
+      "RMSE": 8547.58,
+      "MAPE": 21.53,
+      "sMAPE": 19.08,
+      "mejora_MAE_%": 4.9
+    },
+    {
+      "modelo": "sarimax",
+      "MAE": 7423.94,
+      "RMSE": 9100.35,
+      "MAPE": 23.7,
+      "sMAPE": 20.38,
+      "mejora_MAE_%": -2.2
+    },
+    {
+      "modelo": "naive_estacional",
+      "MAE": 7263.44,
+      "RMSE": 9217.12,
+      "MAPE": 21.5,
+      "sMAPE": 20.96,
+      "mejora_MAE_%": 0.0
+    },
+    {
+      "modelo": "prophet",
+      "MAE": 8060.97,
+      "RMSE": 9711.97,
+      "MAPE": 25.12,
+      "sMAPE": 22.33,
+      "mejora_MAE_%": -11.0
+    }
+  ],
+  "why_winner": [
+    "Es el unico de los cuatro que supera al baseline naive estacional (6907 frente a 7263 de MAE, 4.9% mejor).",
+    "Captura la estacionalidad semanal, que es real: el sabado vende 39% menos que el martes.",
+    "Modelar log1p en lugar del nivel reduce el error porque la serie es asimetrica y crece a lo largo del periodo.",
+    "El orden se elige por AIC sobre el train de cada pliegue, sin mirar el test.",
+    "SARIMAX no mejora porque sus regresores de calendario valen cero en los seis pliegues de validacion; ademas el dataset tiene un solo Black Friday, por lo que su efecto no puede estimarse y validarse a la vez.",
+    "Prophet quedo por debajo del baseline en las seis configuraciones probadas: 19 meses son pocos para su modelo de tendencia con changepoints."
+  ],
+  "business_conclusions": [
+    "El pronostico a 30 dias permite anticipar la demanda para planificar inventario y capacidad logistica.",
+    "La estacionalidad semanal es el patron dominante: el fin de semana cae hasta 39% frente al martes, lo que ordena la programacion de personal y despachos.",
+    "El KPI comprometido en el 1er avance (MAPE semanal <= 20%) ya lo cumple un baseline trivial con 16.5%, asi que la vara real es superar ese baseline."
+  ],
+  "limitations": [
+    "La serie util tiene 19 meses: no permite estimar estacionalidad anual, solo la semanal (s=7).",
+    "Un unico Black Friday en todo el periodo impide modelar eventos especiales.",
+    "El arranque de 2017 y los dias posteriores al 22-ago-2018 se excluyen por no ser representativos (lanzamiento y corte de extraccion).",
+    "El dataset termina en 2018: el pronostico es una demostracion metodologica, no una proyeccion operativa vigente."
+  ]
+}
