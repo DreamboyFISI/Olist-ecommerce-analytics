@@ -1,0 +1,38 @@
+{
+  "status": "Completado",
+  "model_name": "Riesgo de reseña negativa",
+  "version": "1.0.0",
+  "generated_at": "2026-11-03T20:31:04.084417+00:00",
+  "dataset": "Olist Brazilian E-Commerce",
+  "period": "Entrenamiento 2017-01 a 2018-05; prueba 2018-06 a 2018-08",
+  "metrics": {
+    "roc_auc": 0.7241,
+    "pr_auc": 0.3999,
+    "f1": 0.4124,
+    "precision": 0.5925,
+    "recall": 0.3162,
+    "balanced_accuracy": 0.6451,
+    "brier": 0.0783,
+    "umbral": 0.2907,
+    "prevalencia_test": 0.1067,
+    "cv_pr_auc": 0.5543,
+    "n_train": 78801,
+    "n_test": 18789
+  },
+  "winner": "HistGradientBoosting (sin tratamiento, ajustado)",
+  "results_path": "artifacts/classification/results.csv",
+  "chart_data_path": "artifacts/classification/chart_data.json",
+  "business_conclusions": [
+    "Priorización accionable: contactar el 10% de pedidos con mayor riesgo captura el 40.0% de las reseñas negativas (lift 4.0x); con el 30% se captura el 59.9%.",
+    "La promesa de entrega es la palanca principal: los pedidos pendientes al enviar la encuesta tienen 74.0% de negativas y los entregados tarde 19.5%, frente a 9.2% de los puntuales. Variables más influyentes: pendiente_en_encuesta, dias_retraso, n_items.",
+    "Con el umbral 0.29 el modelo detecta el 31.6% de las negativas con una precisión del 59.3% (PR-AUC 0.400 frente a una prevalencia de 0.107).",
+    "Al momento de la compra el riesgo es poco anticipable (PR-AUC 0.181 vs 0.400 con seguimiento logístico): la acción preventiva debe apoyarse en el monitoreo del despacho y la entrega, no solo en el perfil del pedido."
+  ],
+  "limitations": [
+    "Momento de predicción: el modelo se aplica al enviar la encuesta; para usarlo antes (al comprar o al despachar) el desempeño cae, como muestra el escenario complementario.",
+    "Deriva temporal: la tasa de negativas varía entre meses (picos en nov-2017 y feb–mar 2018); el modelo debe reentrenarse periódicamente y vigilar la prevalencia (test: 10.7%).",
+    "Brecha validación–test: la PR-AUC baja de 0.554 (CV) a 0.400 (test) sobre todo porque la prevalencia cae de 15.0% a 10.7%; el lift sobre el azar se mantiene, pero la ROC-AUC también desciende, señal de deriva a monitorear.",
+    "Sin variables de texto ni historial del vendedor: el comentario de la reseña es posterior a la predicción y el historial de reputación del vendedor no se incluyó para evitar fuga temporal."
+  ],
+  "serialized_model_path": "artifacts/classification/model.joblib"
+}
