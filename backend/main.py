@@ -12,7 +12,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:8501", "http://127.0.0.1:8501"],
     allow_credentials=False,
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 app.include_router(router)

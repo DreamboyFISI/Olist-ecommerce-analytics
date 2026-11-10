@@ -5,8 +5,9 @@ seaborn
 openpyxl
 kagglehub
 jupyter
-scikit-learn
-xgboost
+scikit-learn==1.6.1
+xgboost==3.4.1
+holidays
 mlxtend          # Apriori / FP-Growth
 statsmodels
 prophet
@@ -21,6 +22,8 @@ evidently        # data drift
 fastapi
 uvicorn
 streamlit
+folium
+streamlit-folium
 plotly
 psycopg2-binary
 sqlalchemy
