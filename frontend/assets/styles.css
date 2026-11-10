@@ -17,7 +17,10 @@
 .section-intro p { color:var(--muted); margin-top:0; }
 [data-testid="stMetric"] { background:rgba(255,255,255,.9); border:1px solid rgba(17,76,95,.12); border-top:4px solid var(--bondi); border-radius:1rem; padding:1rem; box-shadow:0 10px 28px rgba(17,76,95,.07); }
 [data-testid="stMetricLabel"] { color:var(--muted); }
-[data-testid="stMetricValue"] { color:var(--eden); font-weight:750; }
+[data-testid="stMetricLabel"] p { white-space:normal!important; line-height:1.25; overflow-wrap:anywhere; }
+[data-testid="stMetric"] { min-height:8.25rem; }
+[data-testid="stMetricValue"] { color:var(--eden); font-weight:750; white-space:normal!important; overflow:visible!important; }
+[data-testid="stMetricValue"] > div,[data-testid="stMetricValue"] p { white-space:normal!important; overflow:visible!important; text-overflow:clip!important; overflow-wrap:anywhere; line-height:1.08; font-size:clamp(1.45rem,2.4vw,2.25rem)!important; }
 [data-testid="stPlotlyChart"],[data-testid="stDataFrame"] { background:rgba(255,255,255,.92); border:1px solid rgba(17,76,95,.10); border-radius:1rem; padding:.5rem; box-shadow:0 8px 24px rgba(17,76,95,.05); }
 .status-badge { display:inline-flex; align-items:center; min-height:1.8rem; padding:.18rem .65rem; border-radius:999px; font-size:.78rem; font-weight:800; }
 .status-ready { background:#d9f3ea; color:#075c45; }

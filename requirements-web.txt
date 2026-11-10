@@ -1,6 +1,13 @@
 fastapi
 uvicorn[standard]
 streamlit
+folium
+streamlit-folium
 plotly
 pandas>=2.0
+numpy
+joblib>=1.4,<2
+scikit-learn==1.6.1
+xgboost==3.4.1
+holidays
 networkx
