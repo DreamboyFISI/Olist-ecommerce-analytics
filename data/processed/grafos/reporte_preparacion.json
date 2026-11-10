@@ -1,0 +1,25 @@
+{
+  "filas": 112650,
+  "pedidos": 98666,
+  "productos": 32951,
+  "vendedores": 3095,
+  "categorias": 74,
+  "duplicados_eliminados": 0,
+  "items_sin_categoria": 1603,
+  "productos_sin_categoria": 610,
+  "pedidos_por_estado": {
+    "approved": 2,
+    "canceled": 461,
+    "delivered": 96478,
+    "invoiced": 312,
+    "processing": 301,
+    "shipped": 1106,
+    "unavailable": 6
+  },
+  "fechas_invalidas": 0,
+  "nulos_%": {},
+  "periodo": [
+    "2016-09-04",
+    "2018-09-03"
+  ]
+}

@@ -117,6 +117,57 @@ Salidas específicas:
 - **Regresión:** valor real, predicción, error y métricas.
 - **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
 
+### Ejecución de módulos de modelamiento (ejemplos: Clustering y Asociación)
+
+Antes de iniciar el dashboard o levantar el entorno con Docker, se debe ejecutar el pipeline productivo para entrenar los modelos y generar los artefactos requeridos por el contrato:
+
+```bash
+python -m src.models.clustering
+```
+
+Para el módulo de Asociación (Market Basket Analysis):
+
+```bash
+python -m src.models.association
+```
+
+Para ejecutar las pruebas unitarias del módulo de asociación:
+
+```bash
+python tests/test_association.py
+```
+
+El script ejecuta de principio a fin:
+1. Agrupación RFM por `customer_unique_id` a partir de `data/raw/`.
+2. Preprocesamiento con `log1p` y `StandardScaler`.
+3. Comparación de modelos (K-Means k=3..6, DBSCAN y GMM) mediante Silhouette Score, Davies-Bouldin y Calinski-Harabasz.
+4. Generación y validación de los cuatro artefactos en `artifacts/clustering/` (`manifest.json`, `results.csv`, `chart_data.json` y `model.joblib`).
+
+Para verificar el cumplimiento del contrato antes de confirmar los cambios:
+
+```bash
+python -c "import json, jsonschema, pathlib; jsonschema.validate(json.loads(pathlib.Path('artifacts/clustering/manifest.json').read_text(encoding='utf-8')), json.loads(pathlib.Path('docs/module_contract.schema.json').read_text(encoding='utf-8'))); print('Contrato válido')"
+```
+
+### Actualizar el módulo de grafos
+
+La vista de Grafos lee `artifacts/graphs/chart_data.json`; no entrena dentro de Streamlit. Cuando cambien
+los CSV de `data/raw/` o la tabla procesada:
+
+```bash
+python -m src.models.graphs --refresh
+```
+
+Ese comando reconstruye `data/processed/grafos/items_pedidos.csv` desde `data/raw/` y vuelve a generar
+todos los artefactos (`nodos.csv`, `aristas.csv`, `comunidades.csv`, `metricas.json`, `chart_data.json` y
+`manifest.json`). Si solo cambió `items_pedidos.csv`, basta con:
+
+```bash
+python -m src.models.graphs
+```
+
+La vista detecta si los artefactos están desactualizados y muestra un aviso con el comando que
+corresponde. El diagrama se redibuja desde los artefactos en cada recarga, sin imágenes ni datos fijos.
 ### Integración y evaluación
 
 La API expone inicialmente:

@@ -1,0 +1,32 @@
+{
+  "status": "Completado",
+  "model_name": "Reglas de Asociación y Venta Cruzada",
+  "version": "1.0.0",
+  "generated_at": "2026-11-03T23:50:17.123325+00:00",
+  "dataset": "Brazilian E-Commerce Public Dataset by Olist (5 tablas)",
+  "period": "2016-09-04 a 2018-10-17",
+  "metrics": {
+    "rules_count": 10,
+    "max_lift": 15.1457,
+    "avg_lift": 4.3316,
+    "avg_confidence": 0.0453,
+    "min_support_used": 2e-05,
+    "exec_time_sec": 0.7105
+  },
+  "winner": "FP-Growth - Canasta por Pedido",
+  "results_path": "artifacts/association/results.csv",
+  "chart_data_path": "artifacts/association/chart_data.json",
+  "business_conclusions": [
+    "Especializacion extrema: El 99.2% de los pedidos contiene una sola categoria, reflejando compras puntuales de necesidad inmediata y escasa navegacion horizontal.",
+    "Afinidad en moda infantil: La regla fashion_childrens_clothes -> fashion_bags_accessories alcanza Lift de 15.15 y confianza de 28.6%, siendo la mayor oportunidad de venta cruzada en checkout.",
+    "Sinergia en hogar y descanso: home_confort y bed_bath_table muestran asociacion bidireccional (Lift 1.14, confianza 11.0%), ideal para bundles y promociones por segundo articulo.",
+    "Desacoplamiento en recompras: Con solo 3.0% de recompra historica, la estrategia de empaquetamiento debe priorizar la conversion inmediata sobre campanas diferidas."
+  ],
+  "limitations": [
+    "Baja tasa multicategoria: Solo el 0.81% de los pedidos combina categorias, requiriendo soportes minimos bajos para identificar reglas no triviales.",
+    "Granularidad por categoria: El analisis a nivel de categoria agregada no distingue afinidades directas entre SKUs o marcas especificas.",
+    "Simetria temporal: La transaccion no registra el orden de incorporacion al carrito, asumiendo simultaneidad en la compra.",
+    "Sin telemetria de navegacion: Solo se evaluan compras aprobadas, omitiendo sesiones de navegacion, comparaciones o carritos abandonados."
+  ],
+  "serialized_model_path": "artifacts/association/model.joblib"
+}

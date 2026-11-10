@@ -12,6 +12,7 @@ mlxtend          # Apriori / FP-Growth
 statsmodels
 prophet
 networkx
+scipy            # requerido por PageRank/betweenness de NetworkX
 python-louvain   # comunidades en grafos
 nltk
 spacy

@@ -1,0 +1,32 @@
+{
+  "status": "Completado",
+  "model_name": "Segmentación de Clientes RFM",
+  "version": "1.0.0",
+  "generated_at": "2026-11-03T17:39:45.563639+00:00",
+  "dataset": "Brazilian E-Commerce Public Dataset by Olist (9 tablas)",
+  "period": "2016-09-04 a 2018-10-17",
+  "metrics": {
+    "silhouette_score": 0.4003,
+    "davies_bouldin_index": 0.7537,
+    "calinski_harabasz_index": 60934.7,
+    "stability_ari_10_runs": 0.9947,
+    "baseline_rfm_quantiles_ari": 0.1617,
+    "explainability_tree_accuracy": 0.9696
+  },
+  "winner": "K-Means (k=4) - Conjunto A (RFM)",
+  "results_path": "artifacts/clustering/results.csv",
+  "chart_data_path": "artifacts/clustering/chart_data.json",
+  "business_conclusions": [
+    "Concentración extrema de recompra: Apenas el 3.0% de los clientes ha realizado más de un pedido ('Recompradores Leales VIP'). La casi-constancia de F debilita el RFM tradicional pero convierte la retención en la palanca de mayor ROI.",
+    "Deserción de clientes de alto gasto: El segmento 'Alto Valor en Riesgo' acumula el 61.7% de los ingresos históricos pero presenta 272 días de inactividad, una satisfacción inferior (4.04★) y la mayor tasa de retrasos (9.46%), confirmando la correlación hallada en el EDA entre retrasos logísticos y abandono.",
+    "Ventana crítica de reactivación: El segmento 'Recientes / Nuevos' (17.3% de la base) posee recencia media de 42 días, satisfacción máxima (4.32★) y mínima tasa de retrasos (6.04%), conformando la cohorte óptima para programas de bienvenida y estímulo a la segunda compra.",
+    "Masa ocasional de ticket bajo: El 45.3% de los clientes pertenece a 'Ocasionales de Bajo Valor' (gasto medio R$ 68.3), para los cuales se requieren incentivos por umbral de envío gratuito."
+  ],
+  "limitations": [
+    "Distribución degenerada en frecuencia: El 97.0% de los clientes registra exactamente una compra, limitando la aplicabilidad de modelos probabilísticos tradicionales como BG/NBD y requiriendo transformaciones asimétricas.",
+    "Horizonte temporal estático (2016-2018): Los datos culminan en octubre de 2018. Sin ingesta en tiempo real, la recencia aumenta artificialmente para toda la base si no se calcula respecto a ventanas relativas de cohorte.",
+    "Inexistencia de telemetría y navegación: La plataforma solo registra pedidos aprobados; la ausencia de eventos de visualización, sesiones web o carritos abandonados impide segmentar según intención previa a la compra.",
+    "Sensibilidad al flete interestatal: En Brasil el costo de envío representa una fricción decisiva que no se deriva puramente de la preferencia del consumidor sino de la distancia geográfica al vendedor."
+  ],
+  "serialized_model_path": "artifacts/clustering/model.joblib"
+}
