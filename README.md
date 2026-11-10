@@ -117,12 +117,24 @@ Salidas específicas:
 - **Regresión:** valor real, predicción, error y métricas.
 - **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
 
-### Ejecución de módulos de modelamiento (ejemplo: Clustering)
+### Ejecución de módulos de modelamiento (ejemplos: Clustering y Asociación)
 
 Antes de iniciar el dashboard o levantar el entorno con Docker, se debe ejecutar el pipeline productivo para entrenar los modelos y generar los artefactos requeridos por el contrato:
 
 ```bash
 python -m src.models.clustering
+```
+
+Para el módulo de Asociación (Market Basket Analysis):
+
+```bash
+python -m src.models.association
+```
+
+Para ejecutar las pruebas unitarias del módulo de asociación:
+
+```bash
+python tests/test_association.py
 ```
 
 El script ejecuta de principio a fin:

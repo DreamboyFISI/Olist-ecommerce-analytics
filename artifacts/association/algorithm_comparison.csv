@@ -1,0 +1,7 @@
+algoritmo,canasta,min_support,n_itemsets,n_rules,tiempo_segundos,memoria_mb
+Apriori,Canasta por Pedido,0.0003,66,2,3.1321,557.25
+FP-Growth,Canasta por Pedido,0.0003,66,2,6.688,0.14
+ECLAT,Canasta por Pedido,0.0003,66,2,0.4577,8.12
+Apriori,Canasta por Cliente,0.0003,72,2,2.67,539.22
+FP-Growth,Canasta por Cliente,0.0003,72,2,6.1912,0.24
+ECLAT,Canasta por Cliente,0.0003,72,2,0.5488,8.08
