@@ -1,0 +1,31 @@
+{
+  "status": "Completado",
+  "model_name": "XGBRegressor",
+  "version": "2.1.0",
+  "generated_at": "2026-11-10T11:33:38-05:00",
+  "dataset": "Brazilian E-Commerce Public Dataset by Olist",
+  "period": "Entrenamiento cronológico 2016-2018; prueba del 2018-05-28 al 2018-08-29",
+  "metrics": {"MAE": 3.4600961195625772, "RMSE": 4.72921945846244, "R2": 0.21760690692363083},
+  "winner": "XGBoost",
+  "results_path": "artifacts/regression/metrics.csv",
+  "chart_data_path": "artifacts/regression/predictions.csv",
+  "serialized_model_path": "artifacts/regression/model.joblib",
+  "business_conclusions": [
+    "XGBoost reduce el error absoluto medio aproximadamente 28.3% frente al baseline de la mediana.",
+    "El error absoluto medio es de 3.46 días y el rango mostrado ayuda a comunicar la incertidumbre de manera comprensible.",
+    "Los feriados, la promesa de entrega, la distancia y la ruta geográfica permiten personalizar la estimación por pedido."
+  ],
+  "limitations": [
+    "El R2 de 0.218 indica que todavía existe variabilidad logística no explicada.",
+    "El modelo fue entrenado con pedidos históricos de Brasil entre 2016 y 2018.",
+    "El entrenamiento excluye el 1% de entregas extremas superiores a 46.1 días; la estimación representa entregas habituales.",
+    "La predicción no incorpora clima, tráfico ni capacidad logística en tiempo real.",
+    "El artefacto debe ejecutarse con scikit-learn 1.6.1 y XGBoost 3.4.1 para mantener compatibilidad."
+  ],
+  "metric_history": [
+    {"version": "V1", "cambios": "Modelo inicial", "MAE": 4.42, "RMSE": 5.98, "R2": -0.027},
+    {"version": "V2", "cambios": "Limpieza, ingeniería y distancia en km", "MAE": 3.63, "RMSE": 4.88, "R2": 0.168},
+    {"version": "V3", "cambios": "Feriados y calendario laboral", "MAE": 3.48, "RMSE": 4.76, "R2": 0.207},
+    {"version": "V4", "cambios": "Selección final sin macroregiones redundantes", "MAE": 3.4600961195625772, "RMSE": 4.72921945846244, "R2": 0.21760690692363083}
+  ]
+}
