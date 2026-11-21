@@ -3,6 +3,8 @@ numpy
 matplotlib
 seaborn
 openpyxl
+jsonschema
+pytest
 kagglehub
 jupyter
 scikit-learn==1.6.1
