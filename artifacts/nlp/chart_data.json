@@ -1,0 +1,2339 @@
+{
+  "clases": [
+    {
+      "id": 0,
+      "nombre": "Negativo",
+      "corto": "neg"
+    },
+    {
+      "id": 1,
+      "nombre": "Neutro",
+      "corto": "neu"
+    },
+    {
+      "id": 2,
+      "nombre": "Positivo",
+      "corto": "pos"
+    }
+  ],
+  "distribucion_clases": {
+    "train": [
+      {
+        "clase": "Negativo",
+        "resenas": 8207,
+        "porcentaje": 0.29274121633672195
+      },
+      {
+        "clase": "Neutro",
+        "resenas": 2559,
+        "porcentaje": 0.09127875869448904
+      },
+      {
+        "clase": "Positivo",
+        "resenas": 17269,
+        "porcentaje": 0.615980024968789
+      }
+    ],
+    "test": [
+      {
+        "clase": "Negativo",
+        "resenas": 2052,
+        "porcentaje": 0.2927664431445285
+      },
+      {
+        "clase": "Neutro",
+        "resenas": 640,
+        "porcentaje": 0.09131117135111999
+      },
+      {
+        "clase": "Positivo",
+        "resenas": 4317,
+        "porcentaje": 0.6159223855043515
+      }
+    ]
+  },
+  "comparacion_modelos": [
+    {
+      "modelo": "Regresión Logística",
+      "tipo": "clásico",
+      "macro_f1_cv": 0.677,
+      "macro_f1_test": 0.6769,
+      "weighted_f1_test": 0.8349,
+      "accuracy_test": 0.8368,
+      "balanced_accuracy_test": 0.6815,
+      "cohen_kappa_test": 0.8309,
+      "negative_pr_auc_test": 0.8786,
+      "negative_roc_auc_test": 0.9542,
+      "macro_f1_balanceado": 0.6476,
+      "n_test": 7009,
+      "n_balanceado": 1500,
+      "tiempo_cv_seg": 29.7
+    },
+    {
+      "modelo": "SVM lineal calibrado",
+      "tipo": "clásico",
+      "macro_f1_cv": 0.6061,
+      "macro_f1_test": 0.6157,
+      "weighted_f1_test": 0.8214,
+      "accuracy_test": 0.8528,
+      "balanced_accuracy_test": 0.634,
+      "cohen_kappa_test": 0.8193,
+      "negative_pr_auc_test": 0.8812,
+      "negative_roc_auc_test": 0.9555,
+      "macro_f1_balanceado": 0.5344,
+      "n_test": 7009,
+      "n_balanceado": 1500,
+      "tiempo_cv_seg": 30.5
+    },
+    {
+      "modelo": "Naive Bayes (ComplementNB)",
+      "tipo": "clásico",
+      "macro_f1_cv": 0.608,
+      "macro_f1_test": 0.6126,
+      "weighted_f1_test": 0.8046,
+      "accuracy_test": 0.8259,
+      "balanced_accuracy_test": 0.6346,
+      "cohen_kappa_test": 0.7736,
+      "negative_pr_auc_test": 0.8435,
+      "negative_roc_auc_test": 0.9437,
+      "macro_f1_balanceado": 0.5548,
+      "n_test": 7009,
+      "n_balanceado": 1500,
+      "tiempo_cv_seg": 16.9
+    },
+    {
+      "modelo": "Baseline (clase mayoritaria)",
+      "tipo": "clásico",
+      "macro_f1_cv": 0.2541,
+      "macro_f1_test": 0.2541,
+      "weighted_f1_test": 0.4695,
+      "accuracy_test": 0.6159,
+      "balanced_accuracy_test": 0.3333,
+      "cohen_kappa_test": 0.0,
+      "negative_pr_auc_test": 0.2928,
+      "negative_roc_auc_test": 0.5,
+      "macro_f1_balanceado": 0.1667,
+      "n_test": 7009,
+      "n_balanceado": 1500,
+      "tiempo_cv_seg": 17.2
+    },
+    {
+      "modelo": "Transformer BERTimbau (referencia zero-shot)",
+      "tipo": "transformer externo",
+      "macro_f1_cv": null,
+      "macro_f1_test": null,
+      "weighted_f1_test": 0.6485882210983079,
+      "accuracy_test": 0.6873333333333334,
+      "balanced_accuracy_test": 0.6873333333333335,
+      "cohen_kappa_test": 0.7432784041630529,
+      "negative_pr_auc_test": null,
+      "negative_roc_auc_test": null,
+      "macro_f1_balanceado": 0.6485882210983079,
+      "n_test": 1500,
+      "n_balanceado": 1500,
+      "tiempo_cv_seg": 15.53
+    }
+  ],
+  "matriz_confusion": [
+    [
+      1803,
+      162,
+      87
+    ],
+    [
+      288,
+      169,
+      183
+    ],
+    [
+      185,
+      239,
+      3893
+    ]
+  ],
+  "metricas_por_clase": {
+    "Negativo": {
+      "precision": 0.7921792618629174,
+      "recall": 0.8786549707602339,
+      "f1": 0.8331792975970426,
+      "support": 2052
+    },
+    "Neutro": {
+      "precision": 0.2964912280701754,
+      "recall": 0.2640625,
+      "f1": 0.2793388429752066,
+      "support": 640
+    },
+    "Positivo": {
+      "precision": 0.9351429257746817,
+      "recall": 0.901783646050498,
+      "f1": 0.9181603773584905,
+      "support": 4317
+    }
+  },
+  "metricas_ganador": {
+    "macro_f1": 0.6768928393102466,
+    "weighted_f1": 0.8349492263132925,
+    "accuracy": 0.836781281209873,
+    "balanced_accuracy": 0.6815003722702441,
+    "cohen_kappa": 0.8308654863744408,
+    "n": 7009,
+    "confusion_matrix": [
+      [
+        1803,
+        162,
+        87
+      ],
+      [
+        288,
+        169,
+        183
+      ],
+      [
+        185,
+        239,
+        3893
+      ]
+    ],
+    "per_class": {
+      "Negativo": {
+        "precision": 0.7921792618629174,
+        "recall": 0.8786549707602339,
+        "f1": 0.8331792975970426,
+        "support": 2052
+      },
+      "Neutro": {
+        "precision": 0.2964912280701754,
+        "recall": 0.2640625,
+        "f1": 0.2793388429752066,
+        "support": 640
+      },
+      "Positivo": {
+        "precision": 0.9351429257746817,
+        "recall": 0.901783646050498,
+        "f1": 0.9181603773584905,
+        "support": 4317
+      }
+    },
+    "negative_pr_auc": 0.8785960055296074,
+    "negative_roc_auc": 0.9541618346630927,
+    "negative_brier": 0.07945572127707277,
+    "negative_precision": 0.7765246449456976,
+    "negative_recall": 0.9059454191033138,
+    "negative_f1": 0.8362573099415205,
+    "negative_threshold": 0.3744908157202858
+  },
+  "umbral_negativo": {
+    "threshold": 0.3744908157202858,
+    "oof_f1": 0.826941380661777,
+    "oof_precision": 0.7649678889579449,
+    "oof_recall": 0.8998415986353113,
+    "oof_pr_auc": 0.8757277395168948
+  },
+  "terminos": {
+    "Negativo": {
+      "asociados": [
+        {
+          "termino": "nao",
+          "peso": 5.576913531765537
+        },
+        {
+          "termino": "nao recomendo",
+          "peso": 4.290001518682217
+        },
+        {
+          "termino": "comprei",
+          "peso": 2.4792336348695216
+        },
+        {
+          "termino": "nao gostei",
+          "peso": 2.0302784158879557
+        },
+        {
+          "termino": "pessima",
+          "peso": 1.7845698946481872
+        },
+        {
+          "termino": "nem",
+          "peso": 1.757418663945425
+        },
+        {
+          "termino": "produto nao",
+          "peso": 1.7222147414029874
+        },
+        {
+          "termino": "pessimo",
+          "peso": 1.6353293183715218
+        },
+        {
+          "termino": "nao chegou",
+          "peso": 1.525009996061267
+        },
+        {
+          "termino": "nao recebi",
+          "peso": 1.5086831448860272
+        },
+        {
+          "termino": "mal",
+          "peso": 1.4658677327927392
+        },
+        {
+          "termino": "insatisfeita",
+          "peso": 1.426546261928777
+        },
+        {
+          "termino": "ruim",
+          "peso": 1.382303906641828
+        },
+        {
+          "termino": "horrivel",
+          "peso": 1.3404524079507982
+        },
+        {
+          "termino": "meu produto",
+          "peso": 1.2271768202483606
+        },
+        {
+          "termino": "com defeito",
+          "peso": 1.222756963245125
+        },
+        {
+          "termino": "diferente",
+          "peso": 1.1985713002943623
+        },
+        {
+          "termino": "quero",
+          "peso": 1.1204976398458624
+        },
+        {
+          "termino": "defeito",
+          "peso": 1.0261755827554349
+        },
+        {
+          "termino": "insatisfeito",
+          "peso": 1.0128729145022894
+        }
+      ],
+      "opuestos": [
+        {
+          "termino": "bom",
+          "peso": -2.6443047187395865
+        },
+        {
+          "termino": "otimo",
+          "peso": -2.2813911187738403
+        },
+        {
+          "termino": "so nao",
+          "peso": -1.908606424699166
+        },
+        {
+          "termino": "antes",
+          "peso": -1.8736348294188454
+        },
+        {
+          "termino": "recomendo",
+          "peso": -1.8332523614728282
+        },
+        {
+          "termino": "no prazo",
+          "peso": -1.8026562458943634
+        },
+        {
+          "termino": "excelente",
+          "peso": -1.7963097147143812
+        },
+        {
+          "termino": "otima",
+          "peso": -1.7388958041869786
+        },
+        {
+          "termino": "antes do",
+          "peso": -1.649394836577601
+        },
+        {
+          "termino": "muito bom",
+          "peso": -1.6137888893156032
+        },
+        {
+          "termino": "tudo",
+          "peso": -1.5613333407135292
+        },
+        {
+          "termino": "amei",
+          "peso": -1.5597222803889659
+        },
+        {
+          "termino": "parabens",
+          "peso": -1.5340901644393248
+        },
+        {
+          "termino": "rapida",
+          "peso": -1.524410394864494
+        },
+        {
+          "termino": "lindo",
+          "peso": -1.466789538496918
+        },
+        {
+          "termino": "rapido",
+          "peso": -1.4590613604421376
+        },
+        {
+          "termino": "boa",
+          "peso": -1.4314783258472015
+        },
+        {
+          "termino": "adorei",
+          "peso": -1.376923707308384
+        },
+        {
+          "termino": "satisfeito",
+          "peso": -1.3475362947374796
+        },
+        {
+          "termino": "prazo",
+          "peso": -1.169309669424518
+        }
+      ]
+    },
+    "Neutro": {
+      "asociados": [
+        {
+          "termino": "porem",
+          "peso": 2.8156536650972557
+        },
+        {
+          "termino": "estou satisfeita",
+          "peso": 1.5147014841521222
+        },
+        {
+          "termino": "da compra",
+          "peso": 1.49852809233292
+        },
+        {
+          "termino": "esperava mais",
+          "peso": 1.4917430659386524
+        },
+        {
+          "termino": "entrega muito",
+          "peso": 1.4150861623105608
+        },
+        {
+          "termino": "prazo material",
+          "peso": 1.4142546335899826
+        },
+        {
+          "termino": "prazo entrega",
+          "peso": 1.3593534840673522
+        },
+        {
+          "termino": "faltou",
+          "peso": 1.3562658255512516
+        },
+        {
+          "termino": "me atendeu",
+          "peso": 1.3342156938218162
+        },
+        {
+          "termino": "otimo muito",
+          "peso": 1.3220574393936515
+        },
+        {
+          "termino": "de um",
+          "peso": 1.283178957997711
+        },
+        {
+          "termino": "previsto obrigada",
+          "peso": 1.2568369111045077
+        },
+        {
+          "termino": "produto excelente",
+          "peso": 1.2422999088082451
+        },
+        {
+          "termino": "ruim nao",
+          "peso": 1.2046112600195071
+        },
+        {
+          "termino": "produto com",
+          "peso": 1.2044312125020076
+        },
+        {
+          "termino": "funcional",
+          "peso": 1.1798397780527294
+        },
+        {
+          "termino": "material do",
+          "peso": 1.1714056384751108
+        },
+        {
+          "termino": "certo antes",
+          "peso": 1.1653239715679522
+        },
+        {
+          "termino": "so recebi",
+          "peso": 1.1646663143689802
+        },
+        {
+          "termino": "que comprei",
+          "peso": 1.1633006977802351
+        }
+      ],
+      "opuestos": [
+        {
+          "termino": "antes do",
+          "peso": -1.9837977067615364
+        },
+        {
+          "termino": "gostei muito",
+          "peso": -1.7857938378685076
+        },
+        {
+          "termino": "nao entregue",
+          "peso": -1.7651778175155146
+        },
+        {
+          "termino": "muito bom",
+          "peso": -1.5825327855024487
+        },
+        {
+          "termino": "otimo",
+          "peso": -1.5751417121864022
+        },
+        {
+          "termino": "amei",
+          "peso": -1.3839021740700297
+        },
+        {
+          "termino": "bom entrega",
+          "peso": -1.3318204579008792
+        },
+        {
+          "termino": "lindo",
+          "peso": -1.3123367760729627
+        },
+        {
+          "termino": "bem embalado",
+          "peso": -1.3031409307604218
+        },
+        {
+          "termino": "gostei",
+          "peso": -1.2847150989177316
+        },
+        {
+          "termino": "muito boa",
+          "peso": -1.2765191705791357
+        },
+        {
+          "termino": "parabens",
+          "peso": -1.2247659135722888
+        },
+        {
+          "termino": "nao recomendo",
+          "peso": -1.2210205322230985
+        },
+        {
+          "termino": "com entrega",
+          "peso": -1.1968094427894655
+        },
+        {
+          "termino": "veio outro",
+          "peso": -1.153450251644775
+        },
+        {
+          "termino": "mas so",
+          "peso": -1.1399422012782285
+        },
+        {
+          "termino": "top",
+          "peso": -1.1223116490686178
+        },
+        {
+          "termino": "demorou um",
+          "peso": -1.0993258893173774
+        },
+        {
+          "termino": "produto ate",
+          "peso": -1.0913277490956792
+        },
+        {
+          "termino": "adorei",
+          "peso": -1.0885930652093068
+        }
+      ]
+    },
+    "Positivo": {
+      "asociados": [
+        {
+          "termino": "otimo",
+          "peso": 2.2111380860880225
+        },
+        {
+          "termino": "antes do",
+          "peso": 1.8095200235143933
+        },
+        {
+          "termino": "antes",
+          "peso": 1.7595199711504221
+        },
+        {
+          "termino": "amei",
+          "peso": 1.6734624902932538
+        },
+        {
+          "termino": "muito bom",
+          "peso": 1.6227264177385257
+        },
+        {
+          "termino": "parabens",
+          "peso": 1.6195696070149934
+        },
+        {
+          "termino": "excelente",
+          "peso": 1.5785707677900749
+        },
+        {
+          "termino": "otima",
+          "peso": 1.545745236327661
+        },
+        {
+          "termino": "lindo",
+          "peso": 1.5391386021410765
+        },
+        {
+          "termino": "no prazo",
+          "peso": 1.4811149423030625
+        },
+        {
+          "termino": "adorei",
+          "peso": 1.4749327184365393
+        },
+        {
+          "termino": "tudo",
+          "peso": 1.4486213921286974
+        },
+        {
+          "termino": "rapido",
+          "peso": 1.3878607688316118
+        },
+        {
+          "termino": "recomendo",
+          "peso": 1.307289972572188
+        },
+        {
+          "termino": "produto entregue",
+          "peso": 1.300210933567586
+        },
+        {
+          "termino": "so nao",
+          "peso": 1.245343111175102
+        },
+        {
+          "termino": "gostei",
+          "peso": 1.1940325392991376
+        },
+        {
+          "termino": "gostei muito",
+          "peso": 1.1913762762431976
+        },
+        {
+          "termino": "boa",
+          "peso": 1.1575263449729922
+        },
+        {
+          "termino": "perfeito",
+          "peso": 1.1541113196100996
+        }
+      ],
+      "opuestos": [
+        {
+          "termino": "nao",
+          "peso": -5.556271624700336
+        },
+        {
+          "termino": "nao recomendo",
+          "peso": -2.6002170882069433
+        },
+        {
+          "termino": "nao recebi",
+          "peso": -2.1260279062693646
+        },
+        {
+          "termino": "comprei",
+          "peso": -1.9325212965305958
+        },
+        {
+          "termino": "produto nao",
+          "peso": -1.8259534131883004
+        },
+        {
+          "termino": "nao gostei",
+          "peso": -1.5389406855488805
+        },
+        {
+          "termino": "pessima",
+          "peso": -1.47087406784581
+        },
+        {
+          "termino": "ruim",
+          "peso": -1.4153616060791383
+        },
+        {
+          "termino": "nem",
+          "peso": -1.3862667371966153
+        },
+        {
+          "termino": "nao chegou",
+          "peso": -1.337071417005455
+        },
+        {
+          "termino": "pessimo",
+          "peso": -1.2500352691866756
+        },
+        {
+          "termino": "veio",
+          "peso": -1.2223653335831057
+        },
+        {
+          "termino": "porem",
+          "peso": -1.192324504033196
+        },
+        {
+          "termino": "com defeito",
+          "peso": -1.185848071943558
+        },
+        {
+          "termino": "defeito",
+          "peso": -1.0566826438816064
+        },
+        {
+          "termino": "diferente",
+          "peso": -1.0536667860647977
+        },
+        {
+          "termino": "nao foi",
+          "peso": -1.0428469663176398
+        },
+        {
+          "termino": "mal",
+          "peso": -1.034199265595828
+        },
+        {
+          "termino": "baixa",
+          "peso": -0.9954666441902461
+        },
+        {
+          "termino": "insatisfeita",
+          "peso": -0.9880991406639491
+        }
+      ]
+    }
+  },
+  "insights_negocio": {
+    "resumen": {
+      "resenas": 7009,
+      "tasa_negativa_predicha": 0.32472535311742046,
+      "tasa_positiva_predicha": 0.5939506348979883,
+      "confianza_media": 0.7621313999221034
+    },
+    "por_estado_entrega": [
+      {
+        "estado_entrega": "Entrega a tiempo",
+        "resenas": 5857,
+        "tasa_negativa": 0.2356,
+        "tasa_positiva": 0.6778
+      },
+      {
+        "estado_entrega": "Entrega tardía",
+        "resenas": 800,
+        "tasa_negativa": 0.7275,
+        "tasa_positiva": 0.21
+      },
+      {
+        "estado_entrega": "Sin entrega",
+        "resenas": 352,
+        "tasa_negativa": 0.892,
+        "tasa_positiva": 0.071
+      }
+    ],
+    "por_categoria": [
+      {
+        "categoria_principal": "bed_bath_table",
+        "resenas": 685,
+        "tasa_negativa": 0.3489,
+        "tasa_positiva": 0.5474
+      },
+      {
+        "categoria_principal": "health_beauty",
+        "resenas": 572,
+        "tasa_negativa": 0.2885,
+        "tasa_positiva": 0.6538
+      },
+      {
+        "categoria_principal": "sports_leisure",
+        "resenas": 495,
+        "tasa_negativa": 0.3354,
+        "tasa_positiva": 0.6061
+      },
+      {
+        "categoria_principal": "computers_accessories",
+        "resenas": 474,
+        "tasa_negativa": 0.3376,
+        "tasa_positiva": 0.5675
+      },
+      {
+        "categoria_principal": "watches_gifts",
+        "resenas": 466,
+        "tasa_negativa": 0.2897,
+        "tasa_positiva": 0.6202
+      },
+      {
+        "categoria_principal": "furniture_decor",
+        "resenas": 432,
+        "tasa_negativa": 0.3565,
+        "tasa_positiva": 0.5463
+      },
+      {
+        "categoria_principal": "housewares",
+        "resenas": 398,
+        "tasa_negativa": 0.299,
+        "tasa_positiva": 0.6131
+      },
+      {
+        "categoria_principal": "telephony",
+        "resenas": 325,
+        "tasa_negativa": 0.3415,
+        "tasa_positiva": 0.5323
+      },
+      {
+        "categoria_principal": "auto",
+        "resenas": 275,
+        "tasa_negativa": 0.3236,
+        "tasa_positiva": 0.6145
+      },
+      {
+        "categoria_principal": "garden_tools",
+        "resenas": 273,
+        "tasa_negativa": 0.3077,
+        "tasa_positiva": 0.619
+      },
+      {
+        "categoria_principal": "cool_stuff",
+        "resenas": 238,
+        "tasa_negativa": 0.2521,
+        "tasa_positiva": 0.6723
+      },
+      {
+        "categoria_principal": "toys",
+        "resenas": 235,
+        "tasa_negativa": 0.3064,
+        "tasa_positiva": 0.6255
+      },
+      {
+        "categoria_principal": "perfumery",
+        "resenas": 210,
+        "tasa_negativa": 0.2857,
+        "tasa_positiva": 0.6381
+      },
+      {
+        "categoria_principal": "electronics",
+        "resenas": 192,
+        "tasa_negativa": 0.349,
+        "tasa_positiva": 0.5781
+      },
+      {
+        "categoria_principal": "baby",
+        "resenas": 191,
+        "tasa_negativa": 0.3717,
+        "tasa_positiva": 0.6021
+      }
+    ],
+    "por_mes": [
+      {
+        "mes": "2018-08",
+        "resenas": 694,
+        "tasa_negativa": 0.2954,
+        "tasa_positiva": 0.6542
+      },
+      {
+        "mes": "2018-05",
+        "resenas": 563,
+        "tasa_negativa": 0.2718,
+        "tasa_positiva": 0.6625
+      },
+      {
+        "mes": "2018-03",
+        "resenas": 548,
+        "tasa_negativa": 0.4763,
+        "tasa_positiva": 0.4343
+      },
+      {
+        "mes": "2018-06",
+        "resenas": 530,
+        "tasa_negativa": 0.2566,
+        "tasa_positiva": 0.6717
+      },
+      {
+        "mes": "2017-12",
+        "resenas": 520,
+        "tasa_negativa": 0.3827,
+        "tasa_positiva": 0.5404
+      },
+      {
+        "mes": "2018-04",
+        "resenas": 514,
+        "tasa_negativa": 0.4377,
+        "tasa_positiva": 0.4883
+      },
+      {
+        "mes": "2018-01",
+        "resenas": 440,
+        "tasa_negativa": 0.35,
+        "tasa_positiva": 0.5614
+      },
+      {
+        "mes": "2018-02",
+        "resenas": 434,
+        "tasa_negativa": 0.3871,
+        "tasa_positiva": 0.5207
+      },
+      {
+        "mes": "2018-07",
+        "resenas": 429,
+        "tasa_negativa": 0.2121,
+        "tasa_positiva": 0.7226
+      },
+      {
+        "mes": "2017-11",
+        "resenas": 338,
+        "tasa_negativa": 0.3107,
+        "tasa_positiva": 0.6095
+      },
+      {
+        "mes": "2017-09",
+        "resenas": 294,
+        "tasa_negativa": 0.2653,
+        "tasa_positiva": 0.6224
+      },
+      {
+        "mes": "2017-08",
+        "resenas": 291,
+        "tasa_negativa": 0.268,
+        "tasa_positiva": 0.622
+      },
+      {
+        "mes": "2017-10",
+        "resenas": 277,
+        "tasa_negativa": 0.3032,
+        "tasa_positiva": 0.6173
+      },
+      {
+        "mes": "2017-05",
+        "resenas": 237,
+        "tasa_negativa": 0.3122,
+        "tasa_positiva": 0.5907
+      },
+      {
+        "mes": "2017-06",
+        "resenas": 230,
+        "tasa_negativa": 0.3,
+        "tasa_positiva": 0.5826
+      },
+      {
+        "mes": "2017-07",
+        "resenas": 226,
+        "tasa_negativa": 0.2257,
+        "tasa_positiva": 0.7035
+      },
+      {
+        "mes": "2017-03",
+        "resenas": 153,
+        "tasa_negativa": 0.3203,
+        "tasa_positiva": 0.6078
+      },
+      {
+        "mes": "2017-04",
+        "resenas": 145,
+        "tasa_negativa": 0.3724,
+        "tasa_positiva": 0.5241
+      },
+      {
+        "mes": "2017-02",
+        "resenas": 84,
+        "tasa_negativa": 0.25,
+        "tasa_positiva": 0.5595
+      },
+      {
+        "mes": "2016-10",
+        "resenas": 30,
+        "tasa_negativa": 0.2667,
+        "tasa_positiva": 0.6667
+      }
+    ],
+    "por_estado_cliente": [
+      {
+        "customer_state": "SP",
+        "resenas": 2903,
+        "tasa_negativa": 0.3024,
+        "tasa_positiva": 0.6159
+      },
+      {
+        "customer_state": "RJ",
+        "resenas": 990,
+        "tasa_negativa": 0.4222,
+        "tasa_positiva": 0.497
+      },
+      {
+        "customer_state": "MG",
+        "resenas": 806,
+        "tasa_negativa": 0.2854,
+        "tasa_positiva": 0.6352
+      },
+      {
+        "customer_state": "RS",
+        "resenas": 357,
+        "tasa_negativa": 0.3109,
+        "tasa_positiva": 0.605
+      },
+      {
+        "customer_state": "PR",
+        "resenas": 332,
+        "tasa_negativa": 0.3102,
+        "tasa_positiva": 0.6325
+      },
+      {
+        "customer_state": "BA",
+        "resenas": 252,
+        "tasa_negativa": 0.3532,
+        "tasa_positiva": 0.5556
+      },
+      {
+        "customer_state": "SC",
+        "resenas": 227,
+        "tasa_negativa": 0.2907,
+        "tasa_positiva": 0.63
+      },
+      {
+        "customer_state": "ES",
+        "resenas": 159,
+        "tasa_negativa": 0.283,
+        "tasa_positiva": 0.6226
+      },
+      {
+        "customer_state": "GO",
+        "resenas": 143,
+        "tasa_negativa": 0.2937,
+        "tasa_positiva": 0.6364
+      },
+      {
+        "customer_state": "DF",
+        "resenas": 130,
+        "tasa_negativa": 0.3154,
+        "tasa_positiva": 0.5615
+      },
+      {
+        "customer_state": "PE",
+        "resenas": 114,
+        "tasa_negativa": 0.3158,
+        "tasa_positiva": 0.6053
+      },
+      {
+        "customer_state": "CE",
+        "resenas": 102,
+        "tasa_negativa": 0.4608,
+        "tasa_positiva": 0.4412
+      }
+    ],
+    "por_longitud": [
+      {
+        "tramo_longitud": "6–10",
+        "resenas": 2190,
+        "tasa_negativa": 0.1968,
+        "tasa_positiva": 0.7452
+      },
+      {
+        "tramo_longitud": "11–20",
+        "resenas": 2040,
+        "tasa_negativa": 0.3554,
+        "tasa_positiva": 0.5451
+      },
+      {
+        "tramo_longitud": "21–40",
+        "resenas": 1463,
+        "tasa_negativa": 0.6241,
+        "tasa_positiva": 0.2481
+      },
+      {
+        "tramo_longitud": "1–5",
+        "resenas": 1287,
+        "tasa_negativa": 0.1476,
+        "tasa_positiva": 0.8151
+      },
+      {
+        "tramo_longitud": ">40",
+        "resenas": 29,
+        "tasa_negativa": 0.5862,
+        "tasa_positiva": 0.2414
+      }
+    ]
+  },
+  "calibracion": [
+    {
+      "probabilidad_media": 0.0020256716463479124,
+      "fraccion_negativas": 0.0042796005706134095
+    },
+    {
+      "probabilidad_media": 0.006249141769470683,
+      "fraccion_negativas": 0.0028530670470756064
+    },
+    {
+      "probabilidad_media": 0.014216527010349015,
+      "fraccion_negativas": 0.007132667617689016
+    },
+    {
+      "probabilidad_media": 0.02936141504730595,
+      "fraccion_negativas": 0.009985734664764621
+    },
+    {
+      "probabilidad_media": 0.06256741559598368,
+      "fraccion_negativas": 0.014265335235378032
+    },
+    {
+      "probabilidad_media": 0.15752752571941864,
+      "fraccion_negativas": 0.06714285714285714
+    },
+    {
+      "probabilidad_media": 0.35723186887170705,
+      "fraccion_negativas": 0.3780313837375178
+    },
+    {
+      "probabilidad_media": 0.5609848596896678,
+      "fraccion_negativas": 0.6961483594864479
+    },
+    {
+      "probabilidad_media": 0.6993699379798544,
+      "fraccion_negativas": 0.818830242510699
+    },
+    {
+      "probabilidad_media": 0.8387631872059107,
+      "fraccion_negativas": 0.9286733238231099
+    }
+  ],
+  "errores": [
+    {
+      "texto": "Recebi o produto muito antes do prazo.Isso é excelente. Muito satisfeito",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.9880559969386107,
+      "prob_negativo": 0.001468226939863312,
+      "prob_neutro": 0.010475776121526103,
+      "prob_positivo": 0.9880559969386107
+    },
+    {
+      "texto": "Gostei muito de comprar na loja pois o produto chegou bem antes do prazo, e eu amei um produto de ótima qualidade",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9840532666788829,
+      "prob_negativo": 0.0011145025462580445,
+      "prob_neutro": 0.01483223077485895,
+      "prob_positivo": 0.9840532666788829
+    },
+    {
+      "texto": "ChegoChegou antes do prazo",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.9747802572137867,
+      "prob_negativo": 0.0030205502812541696,
+      "prob_neutro": 0.022199192504959102,
+      "prob_positivo": 0.9747802572137867
+    },
+    {
+      "texto": "Adorei. Gostei muito do produto e chegou rapidinho 💖",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9705631418988537,
+      "prob_negativo": 0.008091276459947562,
+      "prob_neutro": 0.021345581641198732,
+      "prob_positivo": 0.9705631418988537
+    },
+    {
+      "texto": "Muito rapido. Gostei muito",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.9671174698055357,
+      "prob_negativo": 0.005219761006112673,
+      "prob_neutro": 0.027662769188351668,
+      "prob_positivo": 0.9671174698055357
+    },
+    {
+      "texto": "10. otimo foi entrege antes do prazo",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9636507460993542,
+      "prob_negativo": 0.00689834600106897,
+      "prob_neutro": 0.029450907899576953,
+      "prob_positivo": 0.9636507460993542
+    },
+    {
+      "texto": "Recomendo, produto de ótima qualidade. Superou espectativas",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.963399383272798,
+      "prob_negativo": 0.0069748794108158855,
+      "prob_neutro": 0.02962573731638629,
+      "prob_positivo": 0.963399383272798
+    },
+    {
+      "texto": "recebi antes do prazo; o produto original otimo",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.959975816329068,
+      "prob_negativo": 0.007115171533579878,
+      "prob_neutro": 0.03290901213735212,
+      "prob_positivo": 0.959975816329068
+    },
+    {
+      "texto": "Muito bom, correu tudo conforme combinado",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9591798953198252,
+      "prob_negativo": 0.003065137911615222,
+      "prob_neutro": 0.037754966768559585,
+      "prob_positivo": 0.9591798953198252
+    },
+    {
+      "texto": "Eu adorei muito",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9586354571139374,
+      "prob_negativo": 0.014090651576964694,
+      "prob_neutro": 0.027273891309097832,
+      "prob_positivo": 0.9586354571139374
+    },
+    {
+      "texto": "Entrega feito muito rápido",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9535638135627472,
+      "prob_negativo": 0.017860718592096623,
+      "prob_neutro": 0.028575467845156147,
+      "prob_positivo": 0.9535638135627472
+    },
+    {
+      "texto": "Gostei muito chegou bem rápido",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9482339041555805,
+      "prob_negativo": 0.0014337261765738263,
+      "prob_neutro": 0.050332369667845704,
+      "prob_positivo": 0.9482339041555805
+    },
+    {
+      "texto": "Bom. Ótimo produto entregue no prazo",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9455571269438225,
+      "prob_negativo": 0.0012326341746711066,
+      "prob_neutro": 0.05321023888150623,
+      "prob_positivo": 0.9455571269438225
+    },
+    {
+      "texto": "Excelente Produto recomendo a todos do ML",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9446766682143746,
+      "prob_negativo": 0.005145864995451934,
+      "prob_neutro": 0.050177466790173396,
+      "prob_positivo": 0.9446766682143746
+    },
+    {
+      "texto": "ótimo atendimento e produto",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9440817123720343,
+      "prob_negativo": 0.01906762041738019,
+      "prob_neutro": 0.03685066721058558,
+      "prob_positivo": 0.9440817123720343
+    },
+    {
+      "texto": "Adorei minha frigideira, grande e resistente do jeito que eu queria,recomendo. A data prevista era p 26/05 e chegou 16/05 muito bom",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9433171662917273,
+      "prob_negativo": 0.03570173231310352,
+      "prob_neutro": 0.02098110139516911,
+      "prob_positivo": 0.9433171662917273
+    },
+    {
+      "texto": "Recomendado. Entrega dentro do prazo previsto. Satisfeito",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.94163441175001,
+      "prob_negativo": 0.00895633692012303,
+      "prob_neutro": 0.04940925132986692,
+      "prob_positivo": 0.94163441175001
+    },
+    {
+      "texto": "Gostei receber antes do prazo fiquei muito feliz",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.939886826038918,
+      "prob_negativo": 0.014746480240175283,
+      "prob_neutro": 0.04536669372090678,
+      "prob_positivo": 0.939886826038918
+    },
+    {
+      "texto": "Produto não entregue",
+      "real": "Neutro",
+      "prediccion": "Negativo",
+      "confianza": 0.9354996139208671,
+      "prob_negativo": 0.9354996139208671,
+      "prob_neutro": 0.05964272993459275,
+      "prob_positivo": 0.0048576561445401656
+    },
+    {
+      "texto": "BOM ATENDIMENTO, FACIL DE COMPRAR ENTREGA RAPIDA",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.934546277912328,
+      "prob_negativo": 0.008404477702091724,
+      "prob_neutro": 0.057049244385580254,
+      "prob_positivo": 0.934546277912328
+    },
+    {
+      "texto": "Satisfeita. Produto entregue dentro do prazo, aliás bem antes da data final prevista",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9344450288372538,
+      "prob_negativo": 0.009851248556089041,
+      "prob_neutro": 0.055703722606657104,
+      "prob_positivo": 0.9344450288372538
+    },
+    {
+      "texto": "a loja é otima",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9341769867919241,
+      "prob_negativo": 0.024128607579762807,
+      "prob_neutro": 0.041694405628313065,
+      "prob_positivo": 0.9341769867919241
+    },
+    {
+      "texto": "Ótimo!. Produto bem e rapidez na entrega!!",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9316072818352156,
+      "prob_negativo": 0.011744305896008368,
+      "prob_neutro": 0.05664841226877606,
+      "prob_positivo": 0.9316072818352156
+    },
+    {
+      "texto": "Ótima loija produto entregue dentro do prazo,Produto muito bom",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.9289272635743058,
+      "prob_negativo": 0.002221986260088041,
+      "prob_neutro": 0.06885075016560616,
+      "prob_positivo": 0.9289272635743058
+    },
+    {
+      "texto": "Otima. Muito Agel com a entrega obrigado",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.9283681578387768,
+      "prob_negativo": 0.023809529186693493,
+      "prob_neutro": 0.047822312974529796,
+      "prob_positivo": 0.9283681578387768
+    },
+    {
+      "texto": "me venderam o produto, no estoque constavam 03 paguei mas não recebi",
+      "real": "Positivo",
+      "prediccion": "Negativo",
+      "confianza": 0.9280190701741363,
+      "prob_negativo": 0.9280190701741363,
+      "prob_neutro": 0.056085558464332996,
+      "prob_positivo": 0.01589537136153078
+    },
+    {
+      "texto": "produto chegou em perfeito estado e com antecedencia",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9226350978307689,
+      "prob_negativo": 0.022296703141424207,
+      "prob_neutro": 0.05506819902780689,
+      "prob_positivo": 0.9226350978307689
+    },
+    {
+      "texto": "Recomendo. produto entregue na data prevista conforme prazo estipulado",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9181839242399571,
+      "prob_negativo": 0.020252785418177748,
+      "prob_neutro": 0.06156329034186525,
+      "prob_positivo": 0.9181839242399571
+    },
+    {
+      "texto": "Muito bom a compra",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9137071018201002,
+      "prob_negativo": 0.012570148494713692,
+      "prob_neutro": 0.07372274968518602,
+      "prob_positivo": 0.9137071018201002
+    },
+    {
+      "texto": "Ótimo site para comprar muito confiável",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.912163451076238,
+      "prob_negativo": 0.012070200325828645,
+      "prob_neutro": 0.07576634859793335,
+      "prob_positivo": 0.912163451076238
+    },
+    {
+      "texto": "Produto entregue. Recomendo",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9118875839605615,
+      "prob_negativo": 0.0288188401263336,
+      "prob_neutro": 0.05929357591310492,
+      "prob_positivo": 0.9118875839605615
+    },
+    {
+      "texto": "tudo bom",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9099722062230409,
+      "prob_negativo": 0.0034054700456842835,
+      "prob_neutro": 0.08662232373127496,
+      "prob_positivo": 0.9099722062230409
+    },
+    {
+      "texto": "de parabéns lannister e baratheon",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9091128648702044,
+      "prob_negativo": 0.06029189278837348,
+      "prob_neutro": 0.030595242341422198,
+      "prob_positivo": 0.9091128648702044
+    },
+    {
+      "texto": "Bom. Produto entregue em perfeito estado dentro do prazo estipulado, tudo ok. Grata",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9027313317376501,
+      "prob_negativo": 0.0021263759403307566,
+      "prob_neutro": 0.09514229232201916,
+      "prob_positivo": 0.9027313317376501
+    },
+    {
+      "texto": "Sai mto rapido",
+      "real": "Negativo",
+      "prediccion": "Positivo",
+      "confianza": 0.902613480115085,
+      "prob_negativo": 0.04652696623265929,
+      "prob_neutro": 0.05085955365225578,
+      "prob_positivo": 0.902613480115085
+    },
+    {
+      "texto": "Compatível com o valor ,a entrega super rápida. Parabéns pra lojas!!!",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9025492738511404,
+      "prob_negativo": 0.0383374385418569,
+      "prob_neutro": 0.059113287607002706,
+      "prob_positivo": 0.9025492738511404
+    },
+    {
+      "texto": "recomendo. bom",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.901656268881825,
+      "prob_negativo": 0.002155719445268891,
+      "prob_neutro": 0.09618801167290612,
+      "prob_positivo": 0.901656268881825
+    },
+    {
+      "texto": "Jeane Jesus da Silva. Eu gostei muito do produto e estou satisfeita,muito obrigado",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.9015224926588465,
+      "prob_negativo": 0.023987501987982145,
+      "prob_neutro": 0.07449000535317132,
+      "prob_positivo": 0.9015224926588465
+    },
+    {
+      "texto": "Entregou no prazo correto",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.8985677375594009,
+      "prob_negativo": 0.030910011889832903,
+      "prob_neutro": 0.07052225055076608,
+      "prob_positivo": 0.8985677375594009
+    },
+    {
+      "texto": "recomemndo.. valeu \r\nmuito bom",
+      "real": "Neutro",
+      "prediccion": "Positivo",
+      "confianza": 0.8982611565370242,
+      "prob_negativo": 0.011135258110414633,
+      "prob_neutro": 0.0906035853525612,
+      "prob_positivo": 0.8982611565370242
+    }
+  ],
+  "longitud_texto": [
+    {
+      "label_name": "Negativo",
+      "n_words": 1,
+      "resenas": 11
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 2,
+      "resenas": 24
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 3,
+      "resenas": 24
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 4,
+      "resenas": 65
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 5,
+      "resenas": 60
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 6,
+      "resenas": 79
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 7,
+      "resenas": 79
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 8,
+      "resenas": 81
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 9,
+      "resenas": 96
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 10,
+      "resenas": 85
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 11,
+      "resenas": 73
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 12,
+      "resenas": 77
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 13,
+      "resenas": 77
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 14,
+      "resenas": 69
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 15,
+      "resenas": 65
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 16,
+      "resenas": 48
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 17,
+      "resenas": 62
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 18,
+      "resenas": 62
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 19,
+      "resenas": 63
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 20,
+      "resenas": 52
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 21,
+      "resenas": 50
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 22,
+      "resenas": 48
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 23,
+      "resenas": 51
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 24,
+      "resenas": 37
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 25,
+      "resenas": 52
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 26,
+      "resenas": 52
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 27,
+      "resenas": 51
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 28,
+      "resenas": 35
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 29,
+      "resenas": 30
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 30,
+      "resenas": 44
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 31,
+      "resenas": 43
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 32,
+      "resenas": 38
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 33,
+      "resenas": 46
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 34,
+      "resenas": 50
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 35,
+      "resenas": 47
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 36,
+      "resenas": 37
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 37,
+      "resenas": 28
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 38,
+      "resenas": 15
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 39,
+      "resenas": 17
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 40,
+      "resenas": 13
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 41,
+      "resenas": 11
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 42,
+      "resenas": 4
+    },
+    {
+      "label_name": "Negativo",
+      "n_words": 43,
+      "resenas": 1
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 1,
+      "resenas": 1
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 2,
+      "resenas": 11
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 3,
+      "resenas": 19
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 4,
+      "resenas": 25
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 5,
+      "resenas": 21
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 6,
+      "resenas": 30
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 7,
+      "resenas": 37
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 8,
+      "resenas": 24
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 9,
+      "resenas": 25
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 10,
+      "resenas": 32
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 11,
+      "resenas": 29
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 12,
+      "resenas": 25
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 13,
+      "resenas": 32
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 14,
+      "resenas": 26
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 15,
+      "resenas": 24
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 16,
+      "resenas": 12
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 17,
+      "resenas": 24
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 18,
+      "resenas": 15
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 19,
+      "resenas": 16
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 20,
+      "resenas": 16
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 21,
+      "resenas": 10
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 22,
+      "resenas": 21
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 23,
+      "resenas": 12
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 24,
+      "resenas": 15
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 25,
+      "resenas": 11
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 26,
+      "resenas": 8
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 27,
+      "resenas": 10
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 28,
+      "resenas": 12
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 29,
+      "resenas": 11
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 30,
+      "resenas": 7
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 31,
+      "resenas": 8
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 32,
+      "resenas": 9
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 33,
+      "resenas": 9
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 34,
+      "resenas": 13
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 35,
+      "resenas": 9
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 36,
+      "resenas": 14
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 37,
+      "resenas": 9
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 38,
+      "resenas": 4
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 39,
+      "resenas": 1
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 40,
+      "resenas": 1
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 41,
+      "resenas": 1
+    },
+    {
+      "label_name": "Neutro",
+      "n_words": 42,
+      "resenas": 1
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 1,
+      "resenas": 40
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 2,
+      "resenas": 157
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 3,
+      "resenas": 210
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 4,
+      "resenas": 291
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 5,
+      "resenas": 328
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 6,
+      "resenas": 368
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 7,
+      "resenas": 348
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 8,
+      "resenas": 342
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 9,
+      "resenas": 301
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 10,
+      "resenas": 263
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 11,
+      "resenas": 229
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 12,
+      "resenas": 193
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 13,
+      "resenas": 162
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 14,
+      "resenas": 143
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 15,
+      "resenas": 130
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 16,
+      "resenas": 68
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 17,
+      "resenas": 83
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 18,
+      "resenas": 62
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 19,
+      "resenas": 48
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 20,
+      "resenas": 55
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 21,
+      "resenas": 48
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 22,
+      "resenas": 40
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 23,
+      "resenas": 40
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 24,
+      "resenas": 27
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 25,
+      "resenas": 24
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 26,
+      "resenas": 37
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 27,
+      "resenas": 28
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 28,
+      "resenas": 35
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 29,
+      "resenas": 19
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 30,
+      "resenas": 23
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 31,
+      "resenas": 31
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 32,
+      "resenas": 24
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 33,
+      "resenas": 22
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 34,
+      "resenas": 16
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 35,
+      "resenas": 20
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 36,
+      "resenas": 19
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 37,
+      "resenas": 11
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 38,
+      "resenas": 7
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 39,
+      "resenas": 9
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 40,
+      "resenas": 5
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 41,
+      "resenas": 4
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 42,
+      "resenas": 3
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 43,
+      "resenas": 3
+    },
+    {
+      "label_name": "Positivo",
+      "n_words": 48,
+      "resenas": 1
+    }
+  ],
+  "ordinal_5_estrellas": {
+    "exact_accuracy": 0.6744186046511628,
+    "off_by_one_accuracy": 0.8875731202739335,
+    "quadratic_weighted_kappa": 0.8410392852955118,
+    "macro_f1": 0.46706899114465816,
+    "negative_pr_auc": 0.8781348692109969,
+    "classes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "confusion_matrix": [
+      [
+        1360,
+        123,
+        126,
+        28,
+        25
+      ],
+      [
+        221,
+        67,
+        68,
+        26,
+        8
+      ],
+      [
+        206,
+        82,
+        171,
+        96,
+        85
+      ],
+      [
+        76,
+        41,
+        154,
+        214,
+        505
+      ],
+      [
+        64,
+        24,
+        79,
+        245,
+        2915
+      ]
+    ],
+    "per_class": {
+      "1": {
+        "precision": 0.7057602490918526,
+        "recall": 0.8182912154031288,
+        "f1": 0.7578712733351909,
+        "support": 1662
+      },
+      "2": {
+        "precision": 0.19881305637982197,
+        "recall": 0.1717948717948718,
+        "f1": 0.1843191196698762,
+        "support": 390
+      },
+      "3": {
+        "precision": 0.28595317725752506,
+        "recall": 0.2671875,
+        "f1": 0.2762520193861066,
+        "support": 640
+      },
+      "4": {
+        "precision": 0.35139573070607555,
+        "recall": 0.21616161616161617,
+        "f1": 0.267667292057536,
+        "support": 990
+      },
+      "5": {
+        "precision": 0.823911814584511,
+        "recall": 0.8761647129546137,
+        "f1": 0.8492352512745812,
+        "support": 3327
+      }
+    }
+  },
+  "ajuste_logistico": [
+    {
+      "C": 0.5,
+      "macro_f1_medio": 0.6733071601525508,
+      "macro_f1_std": 0.002258780561709514,
+      "ranking": 1
+    },
+    {
+      "C": 0.3,
+      "macro_f1_medio": 0.6722847176358312,
+      "macro_f1_std": 0.0023412765304775796,
+      "ranking": 2
+    },
+    {
+      "C": 0.7,
+      "macro_f1_medio": 0.6706692860692587,
+      "macro_f1_std": 0.001646396486082971,
+      "ranking": 3
+    },
+    {
+      "C": 1.0,
+      "macro_f1_medio": 0.6673689262534636,
+      "macro_f1_std": 0.0017493391244978829,
+      "ranking": 4
+    }
+  ],
+  "transformer_referencia": {
+    "model_id": "Eduardo211000/bertimbau-sentimento-b2w",
+    "model_url": "https://huggingface.co/Eduardo211000/bertimbau-sentimento-b2w",
+    "model_name": "BERTimbau fine-tuneado en reseñas B2W (referencia externa)",
+    "task": "text-classification",
+    "language": "Portugués brasileño (e-commerce)",
+    "evaluated_at": "2026-11-23T16:52:45.153224+00:00",
+    "device": "cuda",
+    "runtime_sec": 15.53,
+    "throughput_resenas_por_seg": 96.6,
+    "sample": {
+      "n": 1500,
+      "per_class": 500,
+      "strategy": "Test estratificado balanceado (misma partición que el modelo clásico)",
+      "note": "Muestra balanceada para comparar macro-F1 entre clases. No representa la prevalencia natural del test."
+    },
+    "label_mapping": {
+      "model_id2label": {
+        "0": "negativo",
+        "1": "neutro",
+        "2": "positivo"
+      },
+      "olist_target": {
+        "0": 0,
+        "1": 1,
+        "2": 2
+      },
+      "unknown_labels": []
+    },
+    "metrics": {
+      "macro_f1": 0.6485882210983079,
+      "weighted_f1": 0.6485882210983079,
+      "accuracy": 0.6873333333333334,
+      "balanced_accuracy": 0.6873333333333335,
+      "cohen_kappa": 0.7432784041630529,
+      "n": 1500,
+      "confusion_matrix": [
+        [
+          459,
+          23,
+          18
+        ],
+        [
+          249,
+          133,
+          118
+        ],
+        [
+          23,
+          38,
+          439
+        ]
+      ],
+      "per_class": {
+        "Negativo": {
+          "precision": 0.627906976744186,
+          "recall": 0.918,
+          "f1": 0.7457351746547523,
+          "support": 500
+        },
+        "Neutro": {
+          "precision": 0.6855670103092784,
+          "recall": 0.266,
+          "f1": 0.38328530259365995,
+          "support": 500
+        },
+        "Positivo": {
+          "precision": 0.7634782608695653,
+          "recall": 0.878,
+          "f1": 0.8167441860465117,
+          "support": 500
+        }
+      },
+      "negative_pr_auc": 0.7676444540665905,
+      "negative_roc_auc": 0.891764,
+      "negative_brier": 0.16008631268231155,
+      "negative_precision": 0.627906976744186,
+      "negative_recall": 0.918,
+      "negative_f1": 0.7457351746547523
+    },
+    "notes": [
+      "Evaluación zero-shot: el modelo no vio reseñas de Olist durante su entrenamiento.",
+      "El modelo se entrenó con reseñas de B2W, otro e-commerce brasileño; el dominio es cercano, pero no idéntico.",
+      "No se fine-tuneó BERTimbau con Olist para evitar fuga de datos y porque el costo en CPU es alto.",
+      "El modelo no se despliega en la API: se usa solo como referencia comparativa."
+    ]
+  },
+  "resumen": {
+    "n_total": 35044,
+    "n_train": 28035,
+    "n_test": 7009,
+    "n_clases": 3,
+    "palabras_medias": 13.641108320967927,
+    "periodo": {
+      "desde": "2016-10-02",
+      "hasta": "2018-08-31"
+    }
+  }
+}
