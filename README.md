@@ -6,6 +6,7 @@ Proyecto Integrador · Minería de Datos · UNMSM FISI · 2026
 - [x] 1° avance (S8): comprensión del negocio y de los datos — `notebooks/01_eda/`
 - [ ] 2° avance (S12): preparación, asociación, clustering, series, grafos, regresión, prototipo
 - [ ] Entrega final (S14): clasificación, NLP, explicabilidad, monitoreo, app web
+- [x] Módulo NLP / sentimientos de reseñas — `notebooks/09_nlp/`, `src/models/sentiment.py`
 
 ## Cómo ejecutar el EDA
 ```bash
@@ -33,18 +34,42 @@ Genera:
 | Clientes con recompra | 3.06% |
 | Pedidos con más de una categoría | 0.80% |
 
+## Resultados del módulo de sentimientos (NLP)
+
+El módulo clasifica el texto de las reseñas en **negativo (1–2★), neutro (3★) y positivo (4–5★)**
+usando 35,044 reseñas únicas en portugués. En esta población con texto, 29.3% son negativas, 9.1%
+neutras y 61.6% positivas (la tasa de 14.69% de todo el dataset incluye reseñas sin comentario).
+La métrica principal es **macro-F1** por el desbalance de clases; también se reporta PR-AUC de la
+clase negativa y QWK para la nota ordinal 1–5.
+
+| Indicador | Valor |
+|---|---:|
+| Macro-F1 (test) | 0.677 |
+| Accuracy | 83.7% |
+| PR-AUC negativa | 0.879 |
+| Recall negativa (umbral 0.374) | 90.6% |
+| QWK nota 1–5 (modelo auxiliar) | 0.841 |
+| Acierto ±1 estrella | 88.8% |
+| Transformer externo zero-shot (macro-F1 balanceado) | 0.649 |
+
+El modelo desplegado es una **regresión logística con TF-IDF de palabras y caracteres**; el
+transformer BERTimbau entrenado en B2W se evalúa solo como referencia. Detalle metodológico y
+limitaciones en [`docs/nlp_resumen.md`](docs/nlp_resumen.md).
+
 ## Dataset
 [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) (CC BY-NC-SA 4.0) — 9 tablas, pedidos de sep-2016 a oct-2018.
 
 ## Dashboard analítico
 
-El repositorio incluye una base modular para que seis integrantes trabajen en ramas separadas sin
+El repositorio incluye una base modular para que los integrantes trabajen en ramas separadas sin
 modificar la navegación o los componentes compartidos. La interfaz usa Streamlit y Plotly con las
 pantallas conectadas mediante un menú lateral accesible.
 
 La página **EDA y calidad** consume `docs/hallazgos_eda.json` y presenta KPIs, gráficas interactivas y
-las figuras originales del notebook. Las pantallas de modelamiento muestran un estado vacío explícito
-hasta que exista un artefacto real; no se publican resultados simulados.
+las figuras originales del notebook. La página **Sentimientos** consume `artifacts/nlp/` y permite
+analizar una reseña en portugués, comparar modelos y revisar los cruces con logística. Las pantallas
+de modelamiento muestran un estado vacío explícito hasta que exista un artefacto real; no se publican
+resultados simulados.
 
 ### Ejecutar backend y frontend
 
@@ -80,6 +105,7 @@ iniciar Streamlit.
 - `feature/graphs`
 - `feature/regression`
 - `feature/classification`
+- `feature/nlp`
 
 Cada integrante trabaja en su notebook, módulo productivo, pruebas, carpeta dentro de `artifacts/` y
 pantalla correspondiente. No debe colocar entrenamiento pesado dentro de Streamlit ni repetir la
@@ -116,6 +142,7 @@ Salidas específicas:
 - **Grafos:** nodos, aristas, peso, comunidad y centralidad.
 - **Regresión:** valor real, predicción, error y métricas.
 - **Clasificación:** clase real, probabilidad, predicción, matriz de confusión y métricas.
+- **NLP / Sentimientos:** sentimiento predicho, probabilidad, términos influyentes y cruces con logística.
 
 ### Ejecución de módulos de modelamiento (ejemplos: Clustering y Asociación)
 
@@ -137,7 +164,7 @@ Para ejecutar las pruebas unitarias del módulo de asociación:
 python tests/test_association.py
 ```
 
-El script ejecuta de principio a fin:
+El pipeline de clustering ejecuta de principio a fin:
 1. Agrupación RFM por `customer_unique_id` a partir de `data/raw/`.
 2. Preprocesamiento con `log1p` y `StandardScaler`.
 3. Comparación de modelos (K-Means k=3..6, DBSCAN y GMM) mediante Silhouette Score, Davies-Bouldin y Calinski-Harabasz.
@@ -147,6 +174,30 @@ Para verificar el cumplimiento del contrato antes de confirmar los cambios:
 
 ```bash
 python -c "import json, jsonschema, pathlib; jsonschema.validate(json.loads(pathlib.Path('artifacts/clustering/manifest.json').read_text(encoding='utf-8')), json.loads(pathlib.Path('docs/module_contract.schema.json').read_text(encoding='utf-8'))); print('Contrato válido')"
+```
+
+### Análisis de sentimientos (NLP)
+
+Para entrenar el módulo de sentimientos y generar sus artefactos:
+
+```bash
+python -m src.models.sentiment
+```
+
+Genera `artifacts/nlp/manifest.json`, `results.csv`, `chart_data.json`, `model.joblib`,
+`comparacion_modelos.csv`, `metricas_por_clase.csv` y `terminos_por_clase.csv`.
+El benchmark opcional con un transformer preentrenado se ejecuta aparte y requiere
+`requirements-nlp.txt`:
+
+```bash
+pip install -r requirements-nlp.txt
+python scripts/benchmark_transformer.py --sample-per-class 500
+```
+
+Para ejecutar las pruebas del módulo de sentimientos:
+
+```bash
+python -m pytest tests/test_sentiment.py -q
 ```
 
 ### Actualizar el módulo de grafos
@@ -175,6 +226,8 @@ La API expone inicialmente:
 - `GET /health`
 - `GET /api/v1/eda/summary`
 - `GET /api/v1/modules`
+- `GET /api/v1/nlp/results`
+- `POST /api/v1/nlp/predict`
 
 La evaluación comparativa es transversal. Cada integrante compara los algoritmos de su módulo y
 publica las métricas bajo el contrato común. El dashboard consolida ganadores y versiones sin comparar
@@ -234,6 +287,7 @@ El Pull Request debe apuntar de `feature/nombre-modulo` hacia `develop`.
 | `feature/graphs` | Notebook `06_graphs`, nodos, aristas, centralidad, Louvain y `graphs.py`. |
 | `feature/regression` | Notebook `07_regression`, días de entrega, comparación por MAE y `regression.py`. |
 | `feature/classification` | Notebook `08_classification`, reseña negativa, Recall/F1/PR-AUC y `classification.py`. |
+| `feature/nlp` | Notebook `09_nlp`, sentimiento de reseñas, TF-IDF/SVM/Naive Bayes/BERTimbau, macro-F1 y `sentiment.py`. |
 
 Flujo obligatorio de cada módulo:
 
@@ -263,3 +317,4 @@ se coordinan previamente en `develop`.
 | **Grafos** | ¿Qué productos, categorías o vendedores están más conectados? | Detectar comunidades, productos centrales y relaciones relevantes. |
 | **Regresión** | ¿Cuántos días tardará en llegar un pedido? | Anticipar retrasos y ofrecer fechas de entrega más precisas. |
 | **Clasificación** | ¿Qué pedidos podrían recibir una reseña negativa? | Identificar riesgos y actuar antes de que el cliente quede insatisfecho. |
+| **NLP / Sentimientos** | ¿Qué dicen y sienten los clientes en sus reseñas? | Priorizar quejas, detectar temas críticos y monitorear la satisfacción. |
