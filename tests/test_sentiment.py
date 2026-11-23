@@ -212,6 +212,18 @@ def test_manifest_cumple_contrato():
     assert manifest["metrics"]["n_test"] > 0
 
 
+@pytest.mark.skipif(not (ARTIFACTS_DIR / "chart_data.json").exists(), reason="falta ejecutar el pipeline de sentimientos")
+def test_errores_muestran_la_nota_original():
+    chart = json.loads((ARTIFACTS_DIR / "chart_data.json").read_text(encoding="utf-8"))
+    errors = chart.get("errores", [])
+    assert errors, "El análisis de errores debería tener casos"
+    first = errors[0]
+    assert "review_score" in first
+    assert 1 <= int(first["review_score"]) <= 5
+    assert first["real"] in LABEL_NAMES.values()
+    assert first["prediccion"] in LABEL_NAMES.values()
+
+
 @pytest.mark.skipif(not (ARTIFACTS_DIR / "model.joblib").exists(), reason="falta el modelo de sentimientos")
 def test_servicio_de_inferencia():
     from backend.services.sentiment import predict_sentiment

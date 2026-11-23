@@ -67,7 +67,7 @@
       "macro_f1_balanceado": 0.6476,
       "n_test": 7009,
       "n_balanceado": 1500,
-      "tiempo_cv_seg": 29.7
+      "tiempo_cv_seg": 17.8
     },
     {
       "modelo": "SVM lineal calibrado",
@@ -83,7 +83,7 @@
       "macro_f1_balanceado": 0.5344,
       "n_test": 7009,
       "n_balanceado": 1500,
-      "tiempo_cv_seg": 30.5
+      "tiempo_cv_seg": 18.1
     },
     {
       "modelo": "Naive Bayes (ComplementNB)",
@@ -99,7 +99,7 @@
       "macro_f1_balanceado": 0.5548,
       "n_test": 7009,
       "n_balanceado": 1500,
-      "tiempo_cv_seg": 16.9
+      "tiempo_cv_seg": 9.9
     },
     {
       "modelo": "Baseline (clase mayoritaria)",
@@ -115,7 +115,7 @@
       "macro_f1_balanceado": 0.1667,
       "n_test": 7009,
       "n_balanceado": 1500,
-      "tiempo_cv_seg": 17.2
+      "tiempo_cv_seg": 10.1
     },
     {
       "modelo": "Transformer BERTimbau (referencia zero-shot)",
@@ -1122,7 +1122,9 @@
   ],
   "errores": [
     {
+      "order_id": "4093b84461e9ee4cfa6b1f720d1003ac",
       "texto": "Recebi o produto muito antes do prazo.Isso é excelente. Muito satisfeito",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.9880559969386107,
@@ -1131,7 +1133,9 @@
       "prob_positivo": 0.9880559969386107
     },
     {
+      "order_id": "136286e8ffa587be2d282d0975515ad3",
       "texto": "Gostei muito de comprar na loja pois o produto chegou bem antes do prazo, e eu amei um produto de ótima qualidade",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9840532666788829,
@@ -1140,7 +1144,9 @@
       "prob_positivo": 0.9840532666788829
     },
     {
+      "order_id": "378a499627b8ffb6fe276c42c57a44a2",
       "texto": "ChegoChegou antes do prazo",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.9747802572137867,
@@ -1149,7 +1155,9 @@
       "prob_positivo": 0.9747802572137867
     },
     {
+      "order_id": "d81520699c4e69201429ec07d1d92213",
       "texto": "Adorei. Gostei muito do produto e chegou rapidinho 💖",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9705631418988537,
@@ -1158,7 +1166,9 @@
       "prob_positivo": 0.9705631418988537
     },
     {
+      "order_id": "96656dd1c9f0e6b415561d8a6734ffef",
       "texto": "Muito rapido. Gostei muito",
+      "review_score": 2,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.9671174698055357,
@@ -1167,7 +1177,9 @@
       "prob_positivo": 0.9671174698055357
     },
     {
+      "order_id": "75ac959e92dad3a1807efc845e07e439",
       "texto": "10. otimo foi entrege antes do prazo",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9636507460993542,
@@ -1176,7 +1188,9 @@
       "prob_positivo": 0.9636507460993542
     },
     {
+      "order_id": "2f313baa6fdec2fc305719ee717b26a2",
       "texto": "Recomendo, produto de ótima qualidade. Superou espectativas",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.963399383272798,
@@ -1185,7 +1199,9 @@
       "prob_positivo": 0.963399383272798
     },
     {
+      "order_id": "43c1be92476a64a1b407df92c9a8c903",
       "texto": "recebi antes do prazo; o produto original otimo",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.959975816329068,
@@ -1194,7 +1210,9 @@
       "prob_positivo": 0.959975816329068
     },
     {
+      "order_id": "61f70a8bbfeb4e14d01039a3cb4140d1",
       "texto": "Muito bom, correu tudo conforme combinado",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9591798953198252,
@@ -1203,7 +1221,9 @@
       "prob_positivo": 0.9591798953198252
     },
     {
+      "order_id": "5ae9bb819d9fe122f095fe919a408e17",
       "texto": "Eu adorei muito",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9586354571139374,
@@ -1212,7 +1232,9 @@
       "prob_positivo": 0.9586354571139374
     },
     {
+      "order_id": "01719300f9ca182b8361556a3873d8ed",
       "texto": "Entrega feito muito rápido",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9535638135627472,
@@ -1221,7 +1243,9 @@
       "prob_positivo": 0.9535638135627472
     },
     {
+      "order_id": "947e7e0eac14a5d58e68cdb9daa8f2a5",
       "texto": "Gostei muito chegou bem rápido",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9482339041555805,
@@ -1230,7 +1254,9 @@
       "prob_positivo": 0.9482339041555805
     },
     {
+      "order_id": "c8213e60d923c834447d410caab1898d",
       "texto": "Bom. Ótimo produto entregue no prazo",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9455571269438225,
@@ -1239,7 +1265,9 @@
       "prob_positivo": 0.9455571269438225
     },
     {
+      "order_id": "fedc929029b296446e7a6d15adef783f",
       "texto": "Excelente Produto recomendo a todos do ML",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9446766682143746,
@@ -1248,7 +1276,9 @@
       "prob_positivo": 0.9446766682143746
     },
     {
+      "order_id": "c171b5e40886fdb5a21408a037b5e737",
       "texto": "ótimo atendimento e produto",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9440817123720343,
@@ -1257,7 +1287,9 @@
       "prob_positivo": 0.9440817123720343
     },
     {
+      "order_id": "ee814067b8f3badaf5625948bc89076d",
       "texto": "Adorei minha frigideira, grande e resistente do jeito que eu queria,recomendo. A data prevista era p 26/05 e chegou 16/05 muito bom",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9433171662917273,
@@ -1266,7 +1298,9 @@
       "prob_positivo": 0.9433171662917273
     },
     {
+      "order_id": "c82aafbe44928b0afb27adf31ff6e78a",
       "texto": "Recomendado. Entrega dentro do prazo previsto. Satisfeito",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.94163441175001,
@@ -1275,7 +1309,9 @@
       "prob_positivo": 0.94163441175001
     },
     {
+      "order_id": "524ce46da48efa23b92e2efe62168f87",
       "texto": "Gostei receber antes do prazo fiquei muito feliz",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.939886826038918,
@@ -1284,7 +1320,9 @@
       "prob_positivo": 0.939886826038918
     },
     {
+      "order_id": "b15a1712256b8250cd6f952c85e4c65a",
       "texto": "Produto não entregue",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Negativo",
       "confianza": 0.9354996139208671,
@@ -1293,7 +1331,9 @@
       "prob_positivo": 0.0048576561445401656
     },
     {
+      "order_id": "00f6ac4816d12f49026b09f2aa77d15f",
       "texto": "BOM ATENDIMENTO, FACIL DE COMPRAR ENTREGA RAPIDA",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.934546277912328,
@@ -1302,7 +1342,9 @@
       "prob_positivo": 0.934546277912328
     },
     {
+      "order_id": "61a0ecb5082b25a8cf031a6402a1e030",
       "texto": "Satisfeita. Produto entregue dentro do prazo, aliás bem antes da data final prevista",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9344450288372538,
@@ -1311,7 +1353,9 @@
       "prob_positivo": 0.9344450288372538
     },
     {
+      "order_id": "6611ba034599c08d41ef42aced5adecd",
       "texto": "a loja é otima",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9341769867919241,
@@ -1320,7 +1364,9 @@
       "prob_positivo": 0.9341769867919241
     },
     {
+      "order_id": "ee24a4c9f2a2d7aa315838be51c92fd2",
       "texto": "Ótimo!. Produto bem e rapidez na entrega!!",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9316072818352156,
@@ -1329,7 +1375,9 @@
       "prob_positivo": 0.9316072818352156
     },
     {
+      "order_id": "0d1125edf803ac46b5804fc0d29730c3",
       "texto": "Ótima loija produto entregue dentro do prazo,Produto muito bom",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.9289272635743058,
@@ -1338,7 +1386,9 @@
       "prob_positivo": 0.9289272635743058
     },
     {
+      "order_id": "957835fcdd687e80443310e35eb113b9",
       "texto": "Otima. Muito Agel com a entrega obrigado",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.9283681578387768,
@@ -1347,7 +1397,9 @@
       "prob_positivo": 0.9283681578387768
     },
     {
+      "order_id": "858f8fbff9d717450f931fc6e9d15029",
       "texto": "me venderam o produto, no estoque constavam 03 paguei mas não recebi",
+      "review_score": 4,
       "real": "Positivo",
       "prediccion": "Negativo",
       "confianza": 0.9280190701741363,
@@ -1356,7 +1408,9 @@
       "prob_positivo": 0.01589537136153078
     },
     {
+      "order_id": "452b706af12e25e6c8c740b4dc493ab0",
       "texto": "produto chegou em perfeito estado e com antecedencia",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9226350978307689,
@@ -1365,7 +1419,9 @@
       "prob_positivo": 0.9226350978307689
     },
     {
+      "order_id": "f09bc0ed04e322d111f6df0db249d65f",
       "texto": "Recomendo. produto entregue na data prevista conforme prazo estipulado",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9181839242399571,
@@ -1374,7 +1430,9 @@
       "prob_positivo": 0.9181839242399571
     },
     {
+      "order_id": "de1fd807103f4bbdf1bd55bcceec0276",
       "texto": "Muito bom a compra",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9137071018201002,
@@ -1383,7 +1441,9 @@
       "prob_positivo": 0.9137071018201002
     },
     {
+      "order_id": "c6e024e14773d2ff5afd6daeaaa9239c",
       "texto": "Ótimo site para comprar muito confiável",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.912163451076238,
@@ -1392,7 +1452,9 @@
       "prob_positivo": 0.912163451076238
     },
     {
+      "order_id": "b867ed36fe57004358a5c654d886d389",
       "texto": "Produto entregue. Recomendo",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9118875839605615,
@@ -1401,7 +1463,9 @@
       "prob_positivo": 0.9118875839605615
     },
     {
+      "order_id": "b0593d721031fb2a0a18f31d0a82abe5",
       "texto": "tudo bom",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9099722062230409,
@@ -1410,7 +1474,9 @@
       "prob_positivo": 0.9099722062230409
     },
     {
+      "order_id": "9bdc2095c034062781104665d6e3b9b6",
       "texto": "de parabéns lannister e baratheon",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9091128648702044,
@@ -1419,7 +1485,9 @@
       "prob_positivo": 0.9091128648702044
     },
     {
+      "order_id": "8993af9c591e49725d6658a86ab3314c",
       "texto": "Bom. Produto entregue em perfeito estado dentro do prazo estipulado, tudo ok. Grata",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9027313317376501,
@@ -1428,7 +1496,9 @@
       "prob_positivo": 0.9027313317376501
     },
     {
+      "order_id": "fe97f3949cbc37b9ab48ac5769514cbe",
       "texto": "Sai mto rapido",
+      "review_score": 1,
       "real": "Negativo",
       "prediccion": "Positivo",
       "confianza": 0.902613480115085,
@@ -1437,7 +1507,9 @@
       "prob_positivo": 0.902613480115085
     },
     {
+      "order_id": "4fc0a813a474373185c8f141a18878b3",
       "texto": "Compatível com o valor ,a entrega super rápida. Parabéns pra lojas!!!",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9025492738511404,
@@ -1446,7 +1518,9 @@
       "prob_positivo": 0.9025492738511404
     },
     {
+      "order_id": "450b2dfcd82c6f60f6ea30628ebf2945",
       "texto": "recomendo. bom",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.901656268881825,
@@ -1455,7 +1529,9 @@
       "prob_positivo": 0.901656268881825
     },
     {
+      "order_id": "88821a1158691d3d5f4e35004aeb2aee",
       "texto": "Jeane Jesus da Silva. Eu gostei muito do produto e estou satisfeita,muito obrigado",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.9015224926588465,
@@ -1464,7 +1540,9 @@
       "prob_positivo": 0.9015224926588465
     },
     {
+      "order_id": "7d021c7feafd7a1903f66a05481eafa8",
       "texto": "Entregou no prazo correto",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.8985677375594009,
@@ -1473,7 +1551,9 @@
       "prob_positivo": 0.8985677375594009
     },
     {
+      "order_id": "4908721d56a113679fe934dfce599add",
       "texto": "recomemndo.. valeu \r\nmuito bom",
+      "review_score": 3,
       "real": "Neutro",
       "prediccion": "Positivo",
       "confianza": 0.8982611565370242,

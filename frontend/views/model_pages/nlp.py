@@ -11,6 +11,7 @@ tiempo real. No entrena modelos dentro de Streamlit.
 from __future__ import annotations
 
 import json
+import random
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 
@@ -20,9 +21,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from frontend.components import PALETTE, section_intro, style_figure
+from frontend.components import (
+    PALETTE,
+    page_header,
+    render_empty_state,
+    section_intro,
+    status_badge,
+    style_figure,
+)
 from frontend.data_client import predict_nlp
-from frontend.views.module_template import render_module
 
 ROOT = Path(__file__).resolve().parents[3]
 ARTIFACTS_DIR = ROOT / "artifacts" / "nlp"
@@ -110,6 +117,7 @@ def _render_summary(chart_data: dict) -> None:
         "Resumen del modelo",
         "Comparación de algoritmos, matriz de confusión y desempeño por clase.",
     )
+    _render_metrics_guide()
 
     distribution = chart_data.get("distribucion_clases", {})
     rows = []
@@ -135,8 +143,13 @@ def _render_summary(chart_data: dict) -> None:
             color_discrete_sequence=[PALETTE["sinbad"], PALETTE["bondi"]],
             category_orders={"Sentimiento": LABEL_ORDER},
         )
-        fig.update_traces(texttemplate="%{text:.1%}", textposition="outside")
+        fig.update_traces(
+            texttemplate="%{text:.1%}",
+            textposition="outside",
+            cliponaxis=False,
+        )
         fig = style_figure(fig, title="Distribución de clases", height=360)
+        fig.update_yaxes(range=[0, float(dist_df["Reseñas"].max()) * 1.22])
         st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
 
     comparison = pd.DataFrame(chart_data.get("comparacion_modelos", []))
@@ -153,8 +166,14 @@ def _render_summary(chart_data: dict) -> None:
             color_discrete_sequence=[PALETTE["bondi"], PALETTE["eden"]],
             labels={"macro_f1_balanceado": "Macro-F1 en muestra balanceada", "modelo": ""},
         )
-        fig.update_traces(texttemplate="%{text:.3f}", textposition="outside")
+        fig.update_traces(
+            texttemplate="%{text:.3f}",
+            textposition="outside",
+            cliponaxis=False,
+        )
         fig = style_figure(fig, title="Comparación de modelos (muestra balanceada)", height=380)
+        max_score = float(plot_df["macro_f1_balanceado"].max())
+        fig.update_xaxes(range=[0, min(1.15, max_score * 1.22)])
         st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
 
         display = comparison.copy()
@@ -293,24 +312,75 @@ def _render_analyzer() -> None:
     )
 
     examples = {
-        "Negativa": "O produto chegou com um arranhão e a entrega atrasou duas semanas. Muito ruim.",
-        "Neutra": "O produto é ok, chegou no prazo, mas a embalagem veio amassada. Ainda não sei se recomendo.",
-        "Positiva": "Produto excelente, chegou antes do prazo e em perfeito estado. Recomendo muito!",
+        "Negativa": [
+            "O produto chegou com um arranhão e a entrega atrasou duas semanas. Muito ruim.",
+            "Não recebi o pedido e ninguém respondeu. Quero meu dinheiro de volta.",
+            "Veio com defeito e diferente do anúncio. Muito decepcionado.",
+            "A embalagem chegou danificada e faltou uma peça. Não recomendo.",
+        ],
+        "Neutra": [
+            "O produto é ok, chegou no prazo, mas a embalagem veio amassada. Ainda não sei se recomendo.",
+            "O produto é bom, porém o preço poderia ser melhor.",
+            "Recebi o produto, mas ainda não usei. A embalagem estava ok.",
+            "O produto é bom, mas veio com um pequeno detalhe na embalagem.",
+        ],
+        "Positiva": [
+            "Produto excelente, chegou antes do prazo e em perfeito estado. Recomendo muito!",
+            "Adorei! Qualidade ótima e entrega super rápida.",
+            "Muito bom, exatamente como descrito. Voltarei a comprar.",
+            "Chegou rápido, bem embalado e funcionando perfeitamente. Nota 10.",
+        ],
     }
 
     if "nlp_text" not in st.session_state:
-        st.session_state["nlp_text"] = examples["Negativa"]
+        st.session_state["nlp_text"] = examples["Negativa"][0]
+    if "nlp_category" not in st.session_state:
+        st.session_state["nlp_category"] = "Negativa"
 
-    example_cols = st.columns(3)
-    for column, (label, text) in zip(example_cols, examples.items()):
+    def _change_example() -> None:
+        category = st.session_state.get("nlp_category", "Negativa")
+        options = examples.get(category, examples["Negativa"])
+        current = st.session_state.get("nlp_text")
+        choices = [text for text in options if text != current] or options
+        st.session_state["nlp_text"] = random.choice(choices)
+        st.session_state.pop("nlp_result", None)
+
+    def _set_category(category: str) -> None:
+        st.session_state["nlp_category"] = category
+        _change_example()
+
+    st.caption("Elige un sentimiento para cargar un ejemplo:")
+    selected_category = st.session_state.get("nlp_category", "Negativa")
+    category_cols = st.columns(3)
+    for column, category in zip(category_cols, examples):
         with column:
-            if st.button(f"Ejemplo {label.lower()}", use_container_width=True):
-                st.session_state["nlp_text"] = text
+            st.button(
+                category,
+                key=f"nlp-category-{category}",
+                on_click=_set_category,
+                args=(category,),
+                use_container_width=True,
+                type="primary" if category == selected_category else "secondary",
+            )
+    st.caption("El 🎲 cambia la frase manteniendo el sentimiento elegido.")
+
+    label_col, dice_col = st.columns([11, 1], vertical_alignment="center")
+    with label_col:
+        st.markdown("**Reseña en portugués**")
+    with dice_col:
+        st.button(
+            "🎲",
+            key="nlp-dice",
+            on_click=_change_example,
+            help="Cambiar por otra frase de ejemplo del mismo sentimiento",
+            use_container_width=True,
+        )
 
     text = st.text_area(
         "Reseña en portugués",
         key="nlp_text",
         height=150,
+        label_visibility="collapsed",
         placeholder="Ex.: O produto chegou rápido, mas veio com um defeito.",
     )
 
@@ -346,11 +416,20 @@ def _render_analyzer() -> None:
             color="Sentimiento",
             color_discrete_map=CLASS_COLORS,
             text="Probabilidad",
-            range_x=[0, 1],
+            range_x=[0, 1.15],
         )
-        fig.update_traces(texttemplate="%{text:.1%}", textposition="outside")
+        fig.update_traces(
+            texttemplate="%{text:.1%}",
+            textposition="outside",
+            cliponaxis=False,
+        )
         fig = style_figure(fig, title="Probabilidades por clase", height=300)
-        fig.update_layout(showlegend=False)
+        fig.update_layout(showlegend=False, xaxis_title="Probabilidad")
+        fig.update_xaxes(
+            range=[0, 1.15],
+            tickvals=[0, 0.2, 0.4, 0.6, 0.8, 1.0],
+            tickformat=".0%",
+        )
         st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
 
     st.caption(
@@ -398,13 +477,21 @@ def _render_terms(chart_data: dict) -> None:
         labels={"peso": "Peso en el modelo", "termino": "Término"},
         text="peso",
     )
-    fig.update_traces(texttemplate="%{text:.2f}", textposition="outside")
+    fig.update_traces(
+        texttemplate="%{text:.2f}",
+        textposition="outside",
+        cliponaxis=False,
+    )
     fig = style_figure(
         fig,
         title=f"Términos {selected_group} a {selected_class.lower()}",
         height=520,
     )
     fig.update_layout(yaxis_title=None)
+    min_weight = min(0.0, float(frame["peso"].min()))
+    max_weight = max(0.0, float(frame["peso"].max()))
+    padding = max(0.2, (max_weight - min_weight) * 0.12)
+    fig.update_xaxes(range=[min_weight - padding, max_weight + padding])
     st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
 
 
@@ -442,9 +529,18 @@ def _render_business(chart_data: dict) -> None:
                 text="tasa_negativa",
                 labels={"tasa_negativa": "Tasa de negativas", "estado_entrega": ""},
             )
-            fig.update_traces(texttemplate="%{text:.1%}", textposition="outside")
+            fig.update_traces(
+                texttemplate="%{text:.1%}",
+                textposition="outside",
+                cliponaxis=False,
+            )
             fig = style_figure(fig, title="Negatividad por entrega", height=340)
-            fig.update_layout(showlegend=False, xaxis_tickformat=".0%")
+            fig.update_layout(showlegend=False)
+            max_rate = float(delivery["tasa_negativa"].max())
+            fig.update_xaxes(
+                range=[0, min(1.15, max_rate * 1.2 + 0.08)],
+                tickformat=".0%",
+            )
             st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
     with col_category:
         categories = pd.DataFrame(insights.get("por_categoria", []))
@@ -463,9 +559,18 @@ def _render_business(chart_data: dict) -> None:
                 text="tasa_negativa",
                 labels={"tasa_negativa": "Tasa de negativas", "categoria_principal": ""},
             )
-            fig.update_traces(texttemplate="%{text:.1%}", textposition="outside")
+            fig.update_traces(
+                texttemplate="%{text:.1%}",
+                textposition="outside",
+                cliponaxis=False,
+            )
             fig = style_figure(fig, title="Categorías con más negatividad", height=420)
-            fig.update_layout(coloraxis_showscale=False, xaxis_tickformat=".0%")
+            fig.update_layout(coloraxis_showscale=False)
+            max_rate = float(categories["tasa_negativa"].max())
+            fig.update_xaxes(
+                range=[0, min(1.15, max_rate * 1.2 + 0.08)],
+                tickformat=".0%",
+            )
             st.plotly_chart(fig, use_container_width=True, config={"displaylogo": False})
 
     monthly = pd.DataFrame(insights.get("por_mes", []))
@@ -533,33 +638,54 @@ def _render_ordinal(chart_data: dict) -> None:
 
 def _render_errors(chart_data: dict) -> None:
     section_intro(
-        "Análisis de errores",
-        "Casos de test donde la predicción no coincide con la clase construida desde la nota. "
-        "Útil para detectar ironía, ambigüedad y reseñas mal etiquetadas.",
+        "Análisis de errores y ruido de etiqueta",
+        "Casos de test donde la predicción no coincide con la clase derivada de la nota. "
+        "No es una etiqueta manual de sentimiento: si alguien escribió algo positivo pero "
+        "calificó con 1–2★, aparece aquí aunque el modelo haya acertado por el texto.",
+    )
+    st.info(
+        "La columna **Clase según nota** se construye así: 1–2★ = Negativo, 3★ = Neutro, "
+        "4–5★ = Positivo. La **Predicción** es lo que infiere el modelo del texto. Cuando no "
+        "coinciden, puede ser ironía, ambigüedad, un error del modelo o una inconsistencia "
+        "entre lo que escribió el cliente y la nota que puso."
     )
     errors = pd.DataFrame(chart_data.get("errores", []))
     if errors.empty:
         st.info("No hay errores registrados.")
         return
-    selected = st.selectbox("Filtrar por sentimiento real", ["Todos"] + LABEL_ORDER)
+    selected = st.selectbox("Filtrar por clase según nota", ["Todos"] + LABEL_ORDER)
     if selected != "Todos":
         errors = errors[errors["real"] == selected]
     display = errors.rename(
         columns={
             "texto": "Reseña",
-            "real": "Real",
+            "review_score": "Nota (1–5)",
+            "real": "Clase según nota",
             "prediccion": "Predicción",
             "confianza": "Confianza",
+            "prob_negativo": "P(negativo)",
+            "prob_neutro": "P(neutro)",
+            "prob_positivo": "P(positivo)",
         }
-    )
+    ).drop(columns=["order_id"], errors="ignore")
     st.dataframe(
         display,
         hide_index=True,
         use_container_width=True,
         column_config={
+            "Nota (1–5)": st.column_config.NumberColumn(format="%d"),
             "Confianza": st.column_config.NumberColumn(format="%.3f"),
+            "P(negativo)": st.column_config.NumberColumn(format="%.3f"),
+            "P(neutro)": st.column_config.NumberColumn(format="%.3f"),
+            "P(positivo)": st.column_config.NumberColumn(format="%.3f"),
             "Reseña": st.column_config.TextColumn(width="large"),
         },
+    )
+    st.caption(
+        "Ejemplo: una reseña que dice «chegou antes do prazo, adorei» con nota 1★ aparecerá "
+        "como Predicción Positiva y Clase según nota Negativa. El modelo leyó bien el texto; "
+        "la estrella es la que contradice el comentario. Esas discrepancias son candidatas a "
+        "revisión manual y explican parte del techo de las métricas."
     )
 
 
@@ -569,11 +695,19 @@ def _render_errors(chart_data: dict) -> None:
 
 
 def render(module: dict) -> None:
-    render_module(
-        module,
-        "Sentimiento predicho, probabilidad, términos influyentes y cruces con logística.",
+    page_header(
+        "Experiencia del cliente",
+        "Sentimientos de las reseñas",
+        "Descubre qué sienten los clientes en sus comentarios, qué temas explican la "
+        "insatisfacción y dónde conviene actuar primero.",
     )
+    st.markdown(status_badge(module.get("status", "Completado")), unsafe_allow_html=True)
+
     if not module.get("manifest_available"):
+        render_empty_state(
+            "Módulo en preparación",
+            "Los resultados aparecerán cuando exista artifacts/nlp/manifest.json.",
+        )
         return
 
     chart_data = _load_chart_data()
@@ -583,33 +717,51 @@ def render(module: dict) -> None:
         return
 
     metrics = module.get("metrics", {})
-    columns = st.columns(5)
-    columns[0].metric("Macro-F1", f"{metrics.get('macro_f1', 0):.3f}")
-    columns[1].metric("Accuracy", f"{metrics.get('accuracy', 0) * 100:.1f}%")
-    columns[2].metric("QWK 5 estrellas", f"{metrics.get('qwk_5_estrellas', 0):.3f}")
-    columns[3].metric("PR-AUC negativa", f"{metrics.get('negative_pr_auc', 0):.3f}")
-    columns[4].metric("Reseñas", f"{metrics.get('n_total', 0):,}")
+    insights = chart_data.get("insights_negocio", {})
+    summary = insights.get("resumen", {})
+    delivery = insights.get("por_estado_entrega", [])
+    late = next((row for row in delivery if row.get("estado_entrega") == "Entrega tardía"), None)
+    late_rate = late.get("tasa_negativa") if late else None
 
-    _render_metrics_guide()
+    columns = st.columns(5)
+    columns[0].metric("Reseñas analizadas", f"{metrics.get('n_total', 0):,}")
+    columns[1].metric(
+        "Negativas predichas",
+        f"{summary.get('tasa_negativa_predicha', 0) * 100:.1f}%",
+    )
+    columns[2].metric(
+        "Entregas tardías con queja",
+        f"{late_rate * 100:.1f}%" if late_rate is not None else "—",
+        help="Porcentaje de reseñas negativas predichas entre los pedidos entregados tarde.",
+    )
+    columns[3].metric("Confianza media", f"{summary.get('confianza_media', 0) * 100:.1f}%")
+    columns[4].metric("QWK nota 1–5", f"{metrics.get('qwk_5_estrellas', 0):.3f}")
+
+    st.caption(
+        f"Ficha técnica: Macro-F1 {metrics.get('macro_f1', 0):.3f} · "
+        f"Accuracy {metrics.get('accuracy', 0) * 100:.1f}% · "
+        f"PR-AUC negativa {metrics.get('negative_pr_auc', 0):.3f} · "
+        f"Modelo: {module.get('winner', '—')} (v{module.get('version', '—')})."
+    )
 
     tabs = st.tabs(
         [
-            "Resumen",
             "Analizador",
-            "Términos",
             "Negocio",
+            "Términos",
+            "Resumen técnico",
             "Nota 1–5",
-            "Errores",
+            "Errores / ruido",
         ]
     )
     with tabs[0]:
-        _render_summary(chart_data)
-    with tabs[1]:
         _render_analyzer()
+    with tabs[1]:
+        _render_business(chart_data)
     with tabs[2]:
         _render_terms(chart_data)
     with tabs[3]:
-        _render_business(chart_data)
+        _render_summary(chart_data)
     with tabs[4]:
         _render_ordinal(chart_data)
     with tabs[5]:

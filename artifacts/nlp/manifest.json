@@ -2,7 +2,7 @@
   "status": "Completado",
   "model_name": "Análisis de sentimientos de reseñas",
   "version": "1.0.0",
-  "generated_at": "2026-11-23T17:07:13.637277+00:00",
+  "generated_at": "2026-11-23T20:40:36.649996+00:00",
   "dataset": "Olist Brazilian E-Commerce — olist_order_reviews_dataset.csv",
   "period": "2016-10-02 a 2018-08-31",
   "metrics": {

@@ -130,7 +130,8 @@ explicabilidad. Fine-tunear BERTimbau con Olist en GPU es la mejora natural sigu
   `muito bom`, `no prazo`, `antes do prazo`.
 - **Ruido de etiqueta.** Hay reseñas con texto positivo y nota negativa (y viceversa), lo que
   confirma que la nota no es una anotación perfecta de sentimiento. Esas discrepancias son
-  candidatas a revisión manual, no necesariamente errores del modelo.
+  candidatas a revisión manual, no necesariamente errores del modelo. La vista de errores muestra
+  la nota exacta (1–5) para distinguir un fallo del modelo de una contradicción texto-nota.
 
 ## Limitaciones
 

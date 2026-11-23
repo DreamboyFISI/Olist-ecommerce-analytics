@@ -1,6 +1,6 @@
 modelo,tipo,macro_f1_cv,macro_f1_test,weighted_f1_test,accuracy_test,balanced_accuracy_test,cohen_kappa_test,negative_pr_auc_test,negative_roc_auc_test,macro_f1_balanceado,n_test,n_balanceado,tiempo_cv_seg
-Regresión Logística,clásico,0.677,0.6769,0.8349,0.8368,0.6815,0.8309,0.8786,0.9542,0.6476,7009,1500,29.7
-SVM lineal calibrado,clásico,0.6061,0.6157,0.8214,0.8528,0.634,0.8193,0.8812,0.9555,0.5344,7009,1500,30.5
-Naive Bayes (ComplementNB),clásico,0.608,0.6126,0.8046,0.8259,0.6346,0.7736,0.8435,0.9437,0.5548,7009,1500,16.9
-Baseline (clase mayoritaria),clásico,0.2541,0.2541,0.4695,0.6159,0.3333,0.0,0.2928,0.5,0.1667,7009,1500,17.2
+Regresión Logística,clásico,0.677,0.6769,0.8349,0.8368,0.6815,0.8309,0.8786,0.9542,0.6476,7009,1500,17.8
+SVM lineal calibrado,clásico,0.6061,0.6157,0.8214,0.8528,0.634,0.8193,0.8812,0.9555,0.5344,7009,1500,18.1
+Naive Bayes (ComplementNB),clásico,0.608,0.6126,0.8046,0.8259,0.6346,0.7736,0.8435,0.9437,0.5548,7009,1500,9.9
+Baseline (clase mayoritaria),clásico,0.2541,0.2541,0.4695,0.6159,0.3333,0.0,0.2928,0.5,0.1667,7009,1500,10.1
 Transformer BERTimbau (referencia zero-shot),transformer externo,,,0.6485882210983079,0.6873333333333334,0.6873333333333335,0.7432784041630529,,,0.6485882210983079,1500,1500,15.53

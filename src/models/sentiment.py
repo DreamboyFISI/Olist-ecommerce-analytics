@@ -960,7 +960,9 @@ def export_artifacts(
     errors = results[~results["acierto"]].sort_values("confianza", ascending=False).head(40)
     error_rows = [
         {
+            "order_id": row["order_id"],
             "texto": str(row["text"])[:400],
+            "review_score": int(row["review_score"]),
             "real": LABEL_NAMES[int(row["label"])],
             "prediccion": LABEL_NAMES[int(row["label_pred"])],
             "confianza": float(row["confianza"]),
