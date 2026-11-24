@@ -1,10 +1,33 @@
 services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-datasmart}
+      POSTGRES_USER: ${POSTGRES_USER:-datasmart}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-datasmart}
+    ports:
+      - "5432:5432"
+    volumes:
+      - datasmart_pgdata:/var/lib/postgresql/data
+      - ./deployment/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-datasmart} -d ${POSTGRES_DB:-datasmart}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   backend:
     build:
       context: .
       dockerfile: Dockerfile
       target: backend
     command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-datasmart}:${POSTGRES_PASSWORD:-datasmart}@db:5432/${POSTGRES_DB:-datasmart}
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - "8010:8000"
     volumes:
@@ -44,3 +67,6 @@ services:
       retries: 5
       start_period: 15s
     restart: unless-stopped
+
+volumes:
+  datasmart_pgdata:

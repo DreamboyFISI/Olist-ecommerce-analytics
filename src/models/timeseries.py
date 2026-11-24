@@ -205,8 +205,32 @@ def detalle_por_pliegue(serie: pd.Series, horizonte: int = 30, n_pliegues: int =
     return pd.concat(filas, ignore_index=True)
 
 
-def pronostico_final(serie: pd.Series, horizonte: int = 30, alpha: float = 0.05):
-    """Reajusta el ganador con toda la serie y pronostica con intervalos."""
+HORIZONTES = (7, 30, 60, 90)
+
+
+def resumen_horizontes(futuro: pd.DataFrame, horizontes=HORIZONTES) -> list[dict]:
+    """Ventas acumuladas esperadas a 7, 30, 60 y 90 días con su intervalo."""
+    filas = []
+    for h in horizontes:
+        if h > len(futuro):
+            continue
+        tramo = futuro.iloc[:h]
+        filas.append({"dias": int(h), "desde": str(pd.Timestamp(tramo.fecha.iloc[0]).date()),
+                      "hasta": str(pd.Timestamp(tramo.fecha.iloc[-1]).date()),
+                      "ventas_esperadas": round(float(tramo.pronostico.sum()), 2),
+                      "inferior": round(float(tramo.inferior.sum()), 2),
+                      "superior": round(float(tramo.superior.sum()), 2),
+                      "promedio_diario": round(float(tramo.pronostico.mean()), 2)})
+    return filas
+
+
+def pronostico_final(serie: pd.Series, horizonte: int = 90, alpha: float = 0.05):
+    """Reajusta el ganador con toda la serie y pronostica con intervalos.
+
+    El horizonte por defecto es 90 días para cubrir los cuatro plazos de la
+    propuesta (7, 30, 60 y 90); el error validado corresponde a 30 días, por lo
+    que los tramos largos deben leerse con su intervalo, que se ensancha.
+    """
     y = np.log1p(serie)
     order, seasonal = _mejor_orden(y)
     ajuste = _ajustar_sarimax(y, order, seasonal)
@@ -252,8 +276,9 @@ def generar_artefactos() -> dict:
 
     ganador = resumen.iloc[0]
     backtest = backtest_ultimo_pliegue(serie)
-    futuro, ajuste, (order, seasonal) = pronostico_final(serie)
+    futuro, ajuste, (order, seasonal) = pronostico_final(serie, horizonte=max(HORIZONTES))
     futuro["error"] = np.nan
+    horizontes = resumen_horizontes(futuro)
     pd.concat([backtest, futuro], ignore_index=True).to_csv(ARTIFACTS / "forecast.csv", index=False)
 
     modelo = {"order": list(order), "seasonal_order": list(seasonal), "log1p": True,
@@ -277,6 +302,7 @@ def generar_artefactos() -> dict:
                    "inferior": [round(v, 2) for v in futuro.inferior],
                    "superior": [round(v, 2) for v in futuro.superior]},
         "comparacion": resumen.round(2).to_dict("records"),
+        "horizontes": horizontes,
     }
     with (ARTIFACTS / "chart_data.json").open("w", encoding="utf-8") as f:
         json.dump(chart, f, ensure_ascii=False, indent=2)
@@ -302,6 +328,7 @@ def generar_artefactos() -> dict:
         "chart_data_path": "artifacts/timeseries/chart_data.json",
         "serialized_model_path": "artifacts/timeseries/modelo_sarima.json",
         "validation": f"Walk-forward de 6 pliegues x 30 dias sobre {len(serie)} dias",
+        "horizontes": horizontes,
         "models_compared": resumen.round(2).to_dict("records"),
         "why_winner": [
             "Es el unico de los cuatro que supera al baseline naive estacional "

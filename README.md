@@ -7,6 +7,11 @@ Proyecto Integrador · Minería de Datos · UNMSM FISI · 2026
 - [ ] 2° avance (S12): preparación, asociación, clustering, series, grafos, regresión, prototipo
 - [ ] Entrega final (S14): clasificación, NLP, explicabilidad, monitoreo, app web
 - [x] Módulo NLP / sentimientos de reseñas — `notebooks/09_nlp/`, `src/models/sentiment.py`
+- [x] Módulo de clasificación / riesgo de reseña negativa — `notebooks/08_classification/`, `src/models/classification.py`
+- [x] Explicabilidad (SHAP, LIME, permutación, árbol sustituto) — `src/explainability/`, página **Explicabilidad**
+- [x] Monitoreo, versionado, auditoría y reentrenamiento (sin orquestador) — `src/monitoring/`, página **Monitoreo**
+- [x] PostgreSQL en Compose y carga de artefactos — `deployment/`, `scripts/load_artifacts_to_db.py`
+- [x] Informe técnico consolidado — `python scripts/build_report.py` → `docs/informe_tecnico.md`
 
 ## Cómo ejecutar el EDA
 ```bash
@@ -176,6 +181,29 @@ Para verificar el cumplimiento del contrato antes de confirmar los cambios:
 python -c "import json, jsonschema, pathlib; jsonschema.validate(json.loads(pathlib.Path('artifacts/clustering/manifest.json').read_text(encoding='utf-8')), json.loads(pathlib.Path('docs/module_contract.schema.json').read_text(encoding='utf-8'))); print('Contrato válido')"
 ```
 
+### Clasificación: riesgo de reseña negativa
+
+El módulo predice, al momento en que Olist envía la encuesta de satisfacción, qué pedidos
+recibirán 1 o 2 estrellas. Entrena desde `data/raw/`, compara seis algoritmos con validación
+cruzada estratificada, elige el más simple entre los empatados, calibra el umbral fuera de
+muestra y evalúa en una partición temporal (junio–agosto 2018):
+
+```bash
+python -m src.models.classification            # corrida completa (≈ 10–15 min)
+python -m src.models.classification --quick    # corrida corta para verificar el flujo
+```
+
+Genera `artifacts/classification/manifest.json`, `results.csv`, `chart_data.json` y `model.joblib`
+(pipeline + umbral + lista de variables). La página **Clasificación** permite evaluar un pedido
+(formulario → `POST /api/v1/classification/predict`) y revisa comparación de modelos, curvas,
+matriz de confusión, ganancia por deciles, importancia por permutación y escenarios.
+
+Pruebas del módulo:
+
+```bash
+pytest tests/test_classification.py
+```
+
 ### Análisis de sentimientos (NLP)
 
 Para entrenar el módulo de sentimientos y generar sus artefactos:
@@ -228,14 +256,53 @@ La API expone inicialmente:
 - `GET /api/v1/modules`
 - `GET /api/v1/nlp/results`
 - `POST /api/v1/nlp/predict`
+- `GET /api/v1/classification/results`
+- `POST /api/v1/classification/predict`
+- `POST /api/v1/classification/explain?method=shap|lime|perturbacion`
+- `GET /api/v1/monitoring/report?refresh=false`
 
 La evaluación comparativa es transversal. Cada integrante compara los algoritmos de su módulo y
 publica las métricas bajo el contrato común. El dashboard consolida ganadores y versiones sin comparar
 directamente métricas incompatibles como MAE, Silhouette, lift, modularidad y F1.
 
-Docker ya empaqueta Streamlit y FastAPI. PostgreSQL y n8n se incorporarán después de estabilizar los
-modelos y sus contratos; n8n orquestará validación, detección de drift y reentrenamiento, pero la
-lógica analítica permanecerá en Python.
+Docker empaqueta PostgreSQL, Streamlit y FastAPI (ver `deployment/README.md`). La validación, la
+detección de deriva y el reentrenamiento no usan orquestador externo: viven en `src/monitoring/`
+y se programan con el planificador del sistema.
+
+### Monitoreo, versionado, auditoría y reentrenamiento
+
+```bash
+python -m src.monitoring                    # reporte en artifacts/monitoring/ + bitácora
+python -m src.monitoring --retrain --dry-run  # plan de reentrenamiento (qué está en Alerta)
+python -m src.monitoring --retrain          # reentrena los módulos en Alerta y respalda su manifest
+```
+
+El monitoreo recalcula por periodo la métrica principal de cada módulo con las predicciones
+fechadas de sus artefactos, mide la deriva de probabilidades/errores (PSI) y de la tasa objetivo,
+registra versión, fecha y huella SHA-256 de cada artefacto (`model_registry.json`) y agrega una
+fila por módulo a `audit_log.csv` en cada corrida. Umbrales: PSI 0.10 / 0.25; degradación 10 % / 20 %;
+antigüedad máxima 90 días. La página **Monitoreo** del dashboard muestra todo esto.
+
+### Explicabilidad
+
+`src/explainability/explain.py` explica predicciones individuales con SHAP (modelos de árboles),
+LIME (si existe `explain_background.csv`) o perturbación con valores típicos, agregando las columnas
+one-hot a su variable original. La página **Clasificación** muestra el "por qué" de cada pedido
+evaluado y la página **Explicabilidad** consolida importancias, el árbol sustituto de clustering,
+las variables del modelo de fletes y los términos del modelo de sentimientos.
+
+### Base de datos
+
+`compose.yaml` incluye `db` (PostgreSQL 16) y `deployment/schema.sql` crea las tablas estables.
+`python scripts/load_artifacts_to_db.py` carga registro de modelos, métricas, predicciones de cada
+módulo, reporte de monitoreo y bitácora; sin `DATABASE_URL` usa SQLite en `data/processed/`.
+
+### Ingeniería de características
+
+`src/features/selection.py` reúne el filtro de colinealidad, la selección por importancia (árboles o
+permutación), PCA/LDA y la referencia LDA/QDA; `src/models/classification.py` compara sin
+tratamiento, ponderación de clases, SMOTE y ADASYN. La serie temporal pronostica 90 días y resume
+ventas esperadas a 7, 30, 60 y 90 días (`generar_artefactos()`).
 
 ## Ejecución con Docker
 
