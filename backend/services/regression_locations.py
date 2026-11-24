@@ -1,4 +1,5 @@
 from functools import lru_cache
+from math import cos, radians
 from pathlib import Path
 
 import pandas as pd
@@ -48,3 +49,20 @@ def list_locations(role: str, state: str, city: str) -> list[dict]:
             "lng": round(float(row.lng), 6),
         })
     return records
+
+
+def resolve_state(lat: float, lng: float) -> dict:
+    """Aproxima el estado usando el punto georreferenciado de cliente más cercano."""
+    catalog = _load_catalog("customer")
+    longitude_scale = cos(radians(lat))
+    distance_score = (
+        (catalog["lat"] - lat).pow(2)
+        + ((catalog["lng"] - lng) * longitude_scale).pow(2)
+    )
+    nearest = catalog.loc[distance_score.idxmin()]
+    return {
+        "state": str(nearest["state"]),
+        "city_reference": str(nearest["city"]),
+        "reference_lat": round(float(nearest["lat"]), 6),
+        "reference_lng": round(float(nearest["lng"]), 6),
+    }
