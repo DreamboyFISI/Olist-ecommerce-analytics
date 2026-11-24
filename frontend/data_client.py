@@ -77,6 +77,11 @@ def get_locations(role: str, state: str, city: str) -> list[dict]:
     return api_get(f"/api/v1/regression/locations?{query}")
 
 
+def resolve_location_state(lat: float, lng: float) -> dict:
+    query = urlencode({"lat": lat, "lng": lng})
+    return api_get(f"/api/v1/regression/locations/resolve-state?{query}")
+
+
 @st.cache_data(ttl=60, show_spinner=False)
 def get_nlp_results() -> dict:
     return api_get("/api/v1/nlp/results")
