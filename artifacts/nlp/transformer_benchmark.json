@@ -1,0 +1,87 @@
+{
+  "model_id": "Eduardo211000/bertimbau-sentimento-b2w",
+  "model_url": "https://huggingface.co/Eduardo211000/bertimbau-sentimento-b2w",
+  "model_name": "BERTimbau fine-tuneado en reseñas B2W (referencia externa)",
+  "task": "text-classification",
+  "language": "Portugués brasileño (e-commerce)",
+  "evaluated_at": "2026-11-23T16:52:45.153224+00:00",
+  "device": "cuda",
+  "runtime_sec": 15.53,
+  "throughput_resenas_por_seg": 96.6,
+  "sample": {
+    "n": 1500,
+    "per_class": 500,
+    "strategy": "Test estratificado balanceado (misma partición que el modelo clásico)",
+    "note": "Muestra balanceada para comparar macro-F1 entre clases. No representa la prevalencia natural del test."
+  },
+  "label_mapping": {
+    "model_id2label": {
+      "0": "negativo",
+      "1": "neutro",
+      "2": "positivo"
+    },
+    "olist_target": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    },
+    "unknown_labels": []
+  },
+  "metrics": {
+    "macro_f1": 0.6485882210983079,
+    "weighted_f1": 0.6485882210983079,
+    "accuracy": 0.6873333333333334,
+    "balanced_accuracy": 0.6873333333333335,
+    "cohen_kappa": 0.7432784041630529,
+    "n": 1500,
+    "confusion_matrix": [
+      [
+        459,
+        23,
+        18
+      ],
+      [
+        249,
+        133,
+        118
+      ],
+      [
+        23,
+        38,
+        439
+      ]
+    ],
+    "per_class": {
+      "Negativo": {
+        "precision": 0.627906976744186,
+        "recall": 0.918,
+        "f1": 0.7457351746547523,
+        "support": 500
+      },
+      "Neutro": {
+        "precision": 0.6855670103092784,
+        "recall": 0.266,
+        "f1": 0.38328530259365995,
+        "support": 500
+      },
+      "Positivo": {
+        "precision": 0.7634782608695653,
+        "recall": 0.878,
+        "f1": 0.8167441860465117,
+        "support": 500
+      }
+    },
+    "negative_pr_auc": 0.7676444540665905,
+    "negative_roc_auc": 0.891764,
+    "negative_brier": 0.16008631268231155,
+    "negative_precision": 0.627906976744186,
+    "negative_recall": 0.918,
+    "negative_f1": 0.7457351746547523
+  },
+  "notes": [
+    "Evaluación zero-shot: el modelo no vio reseñas de Olist durante su entrenamiento.",
+    "El modelo se entrenó con reseñas de B2W, otro e-commerce brasileño; el dominio es cercano, pero no idéntico.",
+    "No se fine-tuneó BERTimbau con Olist para evitar fuga de datos y porque el costo en CPU es alto.",
+    "El modelo no se despliega en la API: se usa solo como referencia comparativa."
+  ]
+}

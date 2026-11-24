@@ -22,7 +22,7 @@ module_by_title = {module["title"]: module for module in module_registry}
 with st.sidebar:
     st.markdown("## DataSmart")
     st.caption("Olist analytics")
-    navigation = st.radio("Navegación principal", ["Resumen", "EDA y calidad", "Asociación", "Clustering", "Series temporales", "Grafos", "Regresión", "Clasificación", "Evaluación comparativa"], label_visibility="collapsed")
+    navigation = st.radio("Navegación principal", ["Resumen", "EDA y calidad", "Asociación", "Clustering", "Series temporales", "Grafos", "Regresión", "Clasificación", "Sentimientos", "Evaluación comparativa"], label_visibility="collapsed")
     st.divider()
     marker = "●" if api_connected else "○"
     st.caption(f"{marker} {api_label}")

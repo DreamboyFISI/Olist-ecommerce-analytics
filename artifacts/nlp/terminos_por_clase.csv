@@ -1,0 +1,121 @@
+clase,grupo,termino,peso
+Negativo,asociados,nao,5.576913531765537
+Negativo,asociados,nao recomendo,4.290001518682217
+Negativo,asociados,comprei,2.4792336348695216
+Negativo,asociados,nao gostei,2.0302784158879557
+Negativo,asociados,pessima,1.7845698946481872
+Negativo,asociados,nem,1.757418663945425
+Negativo,asociados,produto nao,1.7222147414029874
+Negativo,asociados,pessimo,1.6353293183715218
+Negativo,asociados,nao chegou,1.525009996061267
+Negativo,asociados,nao recebi,1.5086831448860272
+Negativo,asociados,mal,1.4658677327927392
+Negativo,asociados,insatisfeita,1.426546261928777
+Negativo,asociados,ruim,1.382303906641828
+Negativo,asociados,horrivel,1.3404524079507982
+Negativo,asociados,meu produto,1.2271768202483606
+Negativo,asociados,com defeito,1.222756963245125
+Negativo,asociados,diferente,1.1985713002943623
+Negativo,asociados,quero,1.1204976398458624
+Negativo,asociados,defeito,1.0261755827554349
+Negativo,asociados,insatisfeito,1.0128729145022894
+Negativo,opuestos,bom,-2.6443047187395865
+Negativo,opuestos,otimo,-2.2813911187738403
+Negativo,opuestos,so nao,-1.908606424699166
+Negativo,opuestos,antes,-1.8736348294188454
+Negativo,opuestos,recomendo,-1.8332523614728282
+Negativo,opuestos,no prazo,-1.8026562458943634
+Negativo,opuestos,excelente,-1.7963097147143812
+Negativo,opuestos,otima,-1.7388958041869786
+Negativo,opuestos,antes do,-1.649394836577601
+Negativo,opuestos,muito bom,-1.6137888893156032
+Negativo,opuestos,tudo,-1.5613333407135292
+Negativo,opuestos,amei,-1.5597222803889659
+Negativo,opuestos,parabens,-1.5340901644393248
+Negativo,opuestos,rapida,-1.524410394864494
+Negativo,opuestos,lindo,-1.466789538496918
+Negativo,opuestos,rapido,-1.4590613604421376
+Negativo,opuestos,boa,-1.4314783258472015
+Negativo,opuestos,adorei,-1.376923707308384
+Negativo,opuestos,satisfeito,-1.3475362947374796
+Negativo,opuestos,prazo,-1.169309669424518
+Neutro,asociados,porem,2.8156536650972557
+Neutro,asociados,estou satisfeita,1.5147014841521222
+Neutro,asociados,da compra,1.49852809233292
+Neutro,asociados,esperava mais,1.4917430659386524
+Neutro,asociados,entrega muito,1.4150861623105608
+Neutro,asociados,prazo material,1.4142546335899826
+Neutro,asociados,prazo entrega,1.3593534840673522
+Neutro,asociados,faltou,1.3562658255512516
+Neutro,asociados,me atendeu,1.3342156938218162
+Neutro,asociados,otimo muito,1.3220574393936515
+Neutro,asociados,de um,1.283178957997711
+Neutro,asociados,previsto obrigada,1.2568369111045077
+Neutro,asociados,produto excelente,1.2422999088082451
+Neutro,asociados,ruim nao,1.2046112600195071
+Neutro,asociados,produto com,1.2044312125020076
+Neutro,asociados,funcional,1.1798397780527294
+Neutro,asociados,material do,1.1714056384751108
+Neutro,asociados,certo antes,1.1653239715679522
+Neutro,asociados,so recebi,1.1646663143689802
+Neutro,asociados,que comprei,1.1633006977802351
+Neutro,opuestos,antes do,-1.9837977067615364
+Neutro,opuestos,gostei muito,-1.7857938378685076
+Neutro,opuestos,nao entregue,-1.7651778175155146
+Neutro,opuestos,muito bom,-1.5825327855024487
+Neutro,opuestos,otimo,-1.5751417121864022
+Neutro,opuestos,amei,-1.3839021740700297
+Neutro,opuestos,bom entrega,-1.3318204579008792
+Neutro,opuestos,lindo,-1.3123367760729627
+Neutro,opuestos,bem embalado,-1.3031409307604218
+Neutro,opuestos,gostei,-1.2847150989177316
+Neutro,opuestos,muito boa,-1.2765191705791357
+Neutro,opuestos,parabens,-1.2247659135722888
+Neutro,opuestos,nao recomendo,-1.2210205322230985
+Neutro,opuestos,com entrega,-1.1968094427894655
+Neutro,opuestos,veio outro,-1.153450251644775
+Neutro,opuestos,mas so,-1.1399422012782285
+Neutro,opuestos,top,-1.1223116490686178
+Neutro,opuestos,demorou um,-1.0993258893173774
+Neutro,opuestos,produto ate,-1.0913277490956792
+Neutro,opuestos,adorei,-1.0885930652093068
+Positivo,asociados,otimo,2.2111380860880225
+Positivo,asociados,antes do,1.8095200235143933
+Positivo,asociados,antes,1.7595199711504221
+Positivo,asociados,amei,1.6734624902932538
+Positivo,asociados,muito bom,1.6227264177385257
+Positivo,asociados,parabens,1.6195696070149934
+Positivo,asociados,excelente,1.5785707677900749
+Positivo,asociados,otima,1.545745236327661
+Positivo,asociados,lindo,1.5391386021410765
+Positivo,asociados,no prazo,1.4811149423030625
+Positivo,asociados,adorei,1.4749327184365393
+Positivo,asociados,tudo,1.4486213921286974
+Positivo,asociados,rapido,1.3878607688316118
+Positivo,asociados,recomendo,1.307289972572188
+Positivo,asociados,produto entregue,1.300210933567586
+Positivo,asociados,so nao,1.245343111175102
+Positivo,asociados,gostei,1.1940325392991376
+Positivo,asociados,gostei muito,1.1913762762431976
+Positivo,asociados,boa,1.1575263449729922
+Positivo,asociados,perfeito,1.1541113196100996
+Positivo,opuestos,nao,-5.556271624700336
+Positivo,opuestos,nao recomendo,-2.6002170882069433
+Positivo,opuestos,nao recebi,-2.1260279062693646
+Positivo,opuestos,comprei,-1.9325212965305958
+Positivo,opuestos,produto nao,-1.8259534131883004
+Positivo,opuestos,nao gostei,-1.5389406855488805
+Positivo,opuestos,pessima,-1.47087406784581
+Positivo,opuestos,ruim,-1.4153616060791383
+Positivo,opuestos,nem,-1.3862667371966153
+Positivo,opuestos,nao chegou,-1.337071417005455
+Positivo,opuestos,pessimo,-1.2500352691866756
+Positivo,opuestos,veio,-1.2223653335831057
+Positivo,opuestos,porem,-1.192324504033196
+Positivo,opuestos,com defeito,-1.185848071943558
+Positivo,opuestos,defeito,-1.0566826438816064
+Positivo,opuestos,diferente,-1.0536667860647977
+Positivo,opuestos,nao foi,-1.0428469663176398
+Positivo,opuestos,mal,-1.034199265595828
+Positivo,opuestos,baixa,-0.9954666441902461
+Positivo,opuestos,insatisfeita,-0.9880991406639491
