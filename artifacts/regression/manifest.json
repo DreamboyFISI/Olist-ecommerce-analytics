@@ -1,5 +1,9 @@
 {
   "module": "hybrid_freight_regression",
+  "status": "Completado",
+  "winner": "Sistema híbrido XGBoost",
+  "version": "3.0",
+  "generated_at": "2026-11-23T22:54:28-05:00",
   "target": "freight_total",
   "currency": "BRL",
   "high_freight_limit": 30.0,

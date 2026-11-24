@@ -61,7 +61,10 @@ def render(eda: dict, source_label: str) -> None:
             st.metric("Negativas · entrega a tiempo", f"{eda['%_negativas_a_tiempo']:.2f}%")
             st.metric("Negativas · entrega tardía", f"{eda['%_negativas_tardias']:.2f}%")
             st.metric("MAE de la promesa de Olist", f"{eda['MAE_estimacion_olist_dias']:.2f} días")
-            st.info("La puntualidad es la señal más accionable del EDA y orienta regresión y clasificación.")
+            st.info(
+                "La puntualidad orienta el riesgo de reseñas negativas; para estimar el flete, "
+                "las señales clave son la ruta, la distancia, el peso y el volumen."
+            )
         st.plotly_chart(_correlation_chart(eda), use_container_width=True, config={"displaylogo": False})
     with tab_commerce:
         controls = st.columns([1, 1, 2])
