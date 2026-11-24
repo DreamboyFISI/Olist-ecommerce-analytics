@@ -4,3 +4,6 @@ data/processed/*.csv
 __pycache__/
 .ipynb_checkpoints/
 .env
+data/processed/*.db
+artifacts/monitoring/monitoring.log
+artifacts/monitoring/backups/

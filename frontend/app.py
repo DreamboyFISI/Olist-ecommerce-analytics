@@ -10,7 +10,7 @@ if str(ROOT) not in sys.path:
 
 from frontend.components import inject_styles
 from frontend.data_client import get_eda_summary, get_health, get_modules
-from frontend.views import comparison, eda, modules, overview
+from frontend.views import comparison, eda, explainability, modules, monitoring, overview
 
 st.set_page_config(page_title="DataSmart · Olist", page_icon="📦", layout="wide", initial_sidebar_state="expanded")
 inject_styles()
@@ -22,7 +22,7 @@ module_by_title = {module["title"]: module for module in module_registry}
 with st.sidebar:
     st.markdown("## DataSmart")
     st.caption("Olist analytics")
-    navigation = st.radio("Navegación principal", ["Resumen", "EDA y calidad", "Asociación", "Clustering", "Series temporales", "Grafos", "Regresión", "Clasificación", "Sentimientos", "Evaluación comparativa"], label_visibility="collapsed")
+    navigation = st.radio("Navegación principal", ["Resumen", "EDA y calidad", "Asociación", "Clustering", "Series temporales", "Grafos", "Regresión", "Clasificación", "Sentimientos", "Evaluación comparativa", "Explicabilidad", "Monitoreo"], label_visibility="collapsed")
     st.divider()
     marker = "●" if api_connected else "○"
     st.caption(f"{marker} {api_label}")
@@ -34,5 +34,9 @@ elif navigation == "EDA y calidad":
     eda.render(eda_summary, eda_source)
 elif navigation == "Evaluación comparativa":
     comparison.render(module_registry)
+elif navigation == "Explicabilidad":
+    explainability.render()
+elif navigation == "Monitoreo":
+    monitoring.render()
 else:
     modules.render(module_by_title[navigation])

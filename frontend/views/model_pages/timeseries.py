@@ -43,7 +43,7 @@ def _grafico(chart: dict, dias_historia: int) -> go.Figure:
         line=dict(color=PALETTE["bondi"], width=2.2, dash="dot"),
         hovertemplate="%{x}: %{y:,.0f} BRL<extra></extra>"))
     fig.add_trace(go.Scatter(
-        x=futuro.fecha, y=futuro.pronostico, mode="lines", name="Pronóstico 30 días",
+        x=futuro.fecha, y=futuro.pronostico, mode="lines", name=f"Pronóstico {len(futuro)} días",
         line=dict(color=PALETTE["san_marino"], width=2.6),
         hovertemplate="%{x}: %{y:,.0f} BRL<extra></extra>"))
     fig.update_yaxes(title="Ventas diarias (BRL)")
@@ -76,6 +76,20 @@ def render(module: dict) -> None:
                      help="Controla cuánta serie histórica se muestra junto al pronóstico.")
     st.plotly_chart(_grafico(chart, dias), use_container_width=True,
                     config={"displaylogo": False})
+
+    horizontes = chart.get("horizontes") or []
+    if horizontes:
+        section_intro("Ventas esperadas por horizonte",
+                      "Acumulado del pronóstico a 7, 30, 60 y 90 días con su intervalo del 95 %. "
+                      "El error se validó a 30 días; los plazos largos se leen con su intervalo.")
+        cols = st.columns(len(horizontes))
+        for col, h in zip(cols, horizontes):
+            col.metric(f"{h['dias']} días", f"R$ {h['ventas_esperadas']:,.0f}",
+                       f"R$ {h['inferior']:,.0f} – {h['superior']:,.0f}", delta_color="off")
+        st.caption(" · ".join(f"{h['dias']} días: {h['desde']} a {h['hasta']}" for h in horizontes))
+    else:
+        st.caption("El pronóstico cargado cubre 30 días; al regenerar los artefactos con "
+                   "`generar_artefactos()` se obtienen los horizontes de 7, 30, 60 y 90 días.")
 
     section_intro("Comparación de modelos",
                   "Los cuatro evaluados con el mismo walk-forward de 6 pliegues × 30 días.")

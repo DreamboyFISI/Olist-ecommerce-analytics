@@ -83,6 +83,40 @@ def resolve_location_state(lat: float, lng: float) -> dict:
 
 
 @st.cache_data(ttl=60, show_spinner=False)
+def get_classification_results() -> dict:
+    try:
+        return api_get("/api/v1/classification/results")
+    except (HTTPError, URLError, TimeoutError, ValueError):
+        from backend.services.classification import load_classification_results
+        return load_classification_results()
+
+
+def predict_classification(payload: dict) -> dict:
+    try:
+        return api_post("/api/v1/classification/predict", payload)
+    except (HTTPError, URLError, TimeoutError):
+        from backend.services.classification import predict_risk
+        return predict_risk(payload)
+
+
+def explain_classification(payload: dict, method: str = "shap") -> dict:
+    try:
+        return api_post(f"/api/v1/classification/explain?method={method}", payload)
+    except (HTTPError, URLError, TimeoutError):
+        from backend.services.classification import explain_prediction
+        return explain_prediction(payload, prefer=method)
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def get_monitoring_report(refresh: bool = False) -> dict:
+    try:
+        return api_get(f"/api/v1/monitoring/report?refresh={'true' if refresh else 'false'}")
+    except (HTTPError, URLError, TimeoutError, ValueError):
+        from backend.services.monitoring import load_monitoring_report
+        return load_monitoring_report(refresh=refresh)
+
+
+@st.cache_data(ttl=60, show_spinner=False)
 def get_nlp_results() -> dict:
     return api_get("/api/v1/nlp/results")
 
