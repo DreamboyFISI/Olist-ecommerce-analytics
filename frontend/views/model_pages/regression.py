@@ -17,6 +17,7 @@ from frontend.data_client import (
     get_locations,
     get_regression_results,
     predict_regression,
+    resolve_location_state,
 )
 
 
@@ -186,6 +187,11 @@ def _render_prediction(results: dict) -> None:
     states = results["states"]
     categories = results["categories"]
 
+    customer_state_key = "regression-customer-state"
+    pending_customer_state = st.session_state.pop("pending-customer-state", None)
+    if pending_customer_state in states:
+        st.session_state[customer_state_key] = pending_customer_state
+
     st.markdown("#### Origen y destino")
     state_cols = st.columns(2)
     seller_state = state_cols[0].selectbox(
@@ -199,6 +205,7 @@ def _render_prediction(results: dict) -> None:
         states,
         index=states.index("SP"),
         format_func=_state_label,
+        key=customer_state_key,
     )
 
     try:
@@ -222,8 +229,8 @@ def _render_prediction(results: dict) -> None:
         _route_map(seller, customer, customer_state, allow_click=False)
     else:
         st.caption(
-            f"Haz clic en el mapa para ubicar al cliente nuevo en {_state_label(customer_state)}. "
-            "La coordenada se usa solo para esta simulación y no se guarda."
+            "Haz clic en cualquier punto dentro de Brasil. El estado del cliente se ajustará "
+            "automáticamente y la coordenada se usará solo para esta simulación."
         )
         customer = st.session_state.get("new-customer-point")
         if customer and customer.get("state") != customer_state:
@@ -233,17 +240,30 @@ def _render_prediction(results: dict) -> None:
             selected_point = {
                 "lat": float(clicked["lat"]),
                 "lng": float(clicked["lng"]),
-                "state": customer_state,
             }
             if not _is_inside_brazil(selected_point["lat"], selected_point["lng"]):
                 st.session_state.pop("new-customer-point", None)
                 customer = None
                 st.error("El punto seleccionado está fuera de Brasil. Selecciona una ubicación dentro del contorno marcado.")
-            elif customer != selected_point:
-                st.session_state["new-customer-point"] = selected_point
-                st.rerun()
+            else:
+                try:
+                    resolved = resolve_location_state(
+                        selected_point["lat"], selected_point["lng"]
+                    )
+                except (HTTPError, URLError, TimeoutError, ValueError) as exc:
+                    st.error(f"No se pudo identificar el estado del punto: {exc}")
+                else:
+                    selected_point["state"] = resolved["state"]
+                    if customer != selected_point:
+                        st.session_state["new-customer-point"] = selected_point
+                        if resolved["state"] != customer_state:
+                            st.session_state["pending-customer-state"] = resolved["state"]
+                        st.rerun()
         if customer:
-            st.success(f"Destino seleccionado: {customer['lat']:.5f}, {customer['lng']:.5f}")
+            st.success(
+                f"Destino seleccionado en {_state_label(customer['state'])}: "
+                f"{customer['lat']:.5f}, {customer['lng']:.5f}"
+            )
         else:
             st.warning("Selecciona un punto en el mapa para poder calcular la ruta.")
 

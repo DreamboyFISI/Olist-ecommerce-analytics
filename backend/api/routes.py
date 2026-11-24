@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 from backend.services.repository import load_eda_summary, load_module_registry
 from backend.services.regression import load_regression_results, predict_freight
-from backend.services.regression_locations import list_cities, list_locations
+from backend.services.regression_locations import list_cities, list_locations, resolve_state
 from backend.services.sentiment import load_sentiment_results, predict_sentiment
 
 router = APIRouter()
@@ -80,6 +80,17 @@ def regression_locations(
 ) -> list[dict]:
     try:
         return list_locations(role, state, city)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail="No se encontró el catálogo de ubicaciones.") from exc
+
+
+@router.get("/api/v1/regression/locations/resolve-state", tags=["regression"])
+def regression_location_state(
+    lat: float = Query(ge=-35, le=6),
+    lng: float = Query(ge=-75, le=-30),
+) -> dict:
+    try:
+        return resolve_state(lat, lng)
     except FileNotFoundError as exc:
         raise HTTPException(status_code=404, detail="No se encontró el catálogo de ubicaciones.") from exc
 
