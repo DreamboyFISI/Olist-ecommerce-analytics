@@ -1,0 +1,31 @@
+posicion,variable,importancia_mae,desviacion,origen,descripcion
+1,n_items,1.8535039565804965,0.008302348704419317,Dataset original,Líneas de artículos
+2,distance_x_items,0.9568649168966123,0.014361166927274028,Ingeniería de características,Distancia por cantidad
+3,distance_x_chargeable_weight,0.8530465335133576,0.010992370768991585,Ingeniería de características,Distancia por peso
+4,route_historical_freight,0.7568434894182673,0.01209521960652299,Ingeniería de características,Historial de la ruta
+5,weight_total_g,0.602023189467158,0.006190347886239137,Dataset original,Peso total
+6,same_state,0.5077820441746189,0.004634746453229441,Ingeniería de características,Mismo estado
+7,price_total,0.500282133725763,0.004045390381369192,Dataset original,Valor de productos
+8,volume_total_cm3,0.4267567351802354,0.007670344606979709,Ingeniería de características,Volumen total
+9,chargeable_weight_kg,0.23852123852739773,0.005373396429509397,Ingeniería de características,Peso cobrable
+10,seller_historical_freight,0.2187235599038983,0.002348676635968636,Ingeniería de características,Historial del vendedor
+11,seller_geo_cluster,0.09224008297638715,0.0036898827529362153,Ingeniería de características,Zona logística del vendedor
+12,volumetric_weight_kg,0.07195202452566267,0.003327174146254778,Ingeniería de características,Peso volumétrico
+13,volume_per_item_cm3,0.07068973196461989,0.003680072342951774,Ingeniería de características,Volumen por artículo
+14,weight_total_kg,0.06878566601866894,0.0020455087246297682,Ingeniería de características,Peso en kg
+15,distance_km,0.058251941166881774,0.0035505661388276874,Ingeniería de características,Distancia geográfica
+16,main_category,0.04629045663585298,0.0017435924536980077,Dataset original,Categoría principal
+17,geo_cluster_pair,0.044483260260516036,0.0007152629094008424,Ingeniería de características,Par de zonas logísticas
+18,state_pair,0.028194921946758454,0.001955623007630967,Ingeniería de características,Par de estados
+19,avg_item_price,0.022401409130804774,0.0020966104972629917,Ingeniería de características,Precio promedio
+20,customer_state,0.02046636249014657,0.0009842425955443534,Dataset original,Estado del cliente
+21,weight_per_item_kg,0.01904096075081263,0.0024217179879761222,Ingeniería de características,Peso por artículo
+22,customer_geo_cluster,0.014820299656882696,0.0010731484533764068,Ingeniería de características,Zona logística del cliente
+23,main_seller_state,0.01051538884717651,0.0009715744502514607,Dataset original,Estado del vendedor
+24,purchase_month,0.0018828059230157734,0.0022639113808624978,Ingeniería de características,Mes
+25,n_sellers,0.0003647562002909055,0.00010746011642319845,Dataset original,Vendedores diferentes
+26,purchase_is_weekend,2.9492000061104308e-05,2.6608396559611697e-05,Ingeniería de características,Fin de semana
+27,purchase_year,0.0,0.0,Ingeniería de características,Año
+28,purchase_hour,-0.0007464042067779175,0.0012388745709304115,Ingeniería de características,Hora
+29,purchase_dayofweek,-0.0008235215533254348,0.00047082374048149317,Ingeniería de características,Día semanal
+30,n_products,-0.0009348639906411549,0.0005776583563221454,Dataset original,Productos diferentes

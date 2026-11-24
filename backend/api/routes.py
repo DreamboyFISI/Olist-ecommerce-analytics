@@ -1,10 +1,10 @@
-from datetime import date, datetime
+from datetime import datetime
 
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from backend.services.repository import load_eda_summary, load_module_registry
-from backend.services.regression import load_regression_results, predict_delivery
+from backend.services.regression import load_regression_results, predict_freight
 from backend.services.regression_locations import list_cities, list_locations
 from backend.services.sentiment import load_sentiment_results, predict_sentiment
 
@@ -13,15 +13,18 @@ router = APIRouter()
 
 class RegressionPredictionRequest(BaseModel):
     purchase_timestamp: datetime
-    estimated_delivery_date: date
     n_items: int = Field(ge=1, le=100)
     n_products: int = Field(ge=1, le=100)
     n_sellers: int = Field(ge=1, le=20)
     price_total: float = Field(ge=0, le=100_000)
-    freight_total: float = Field(ge=0, le=20_000)
     weight_total_g: float = Field(ge=0, le=1_000_000)
     volume_total_cm3: float = Field(ge=0, le=100_000_000)
     distance_km: float = Field(ge=0, le=10_000)
+    seller_id: str = Field(min_length=1, max_length=64)
+    seller_lat: float = Field(ge=-35, le=6)
+    seller_lng: float = Field(ge=-75, le=-30)
+    customer_lat: float = Field(ge=-35, le=6)
+    customer_lng: float = Field(ge=-75, le=-30)
     customer_state: str = Field(min_length=2, max_length=2)
     main_seller_state: str = Field(min_length=2, max_length=2)
     main_category: str = Field(min_length=1, max_length=120)
@@ -84,7 +87,7 @@ def regression_locations(
 @router.post("/api/v1/regression/predict", tags=["regression"])
 def regression_predict(request: RegressionPredictionRequest) -> dict:
     try:
-        return predict_delivery(request.model_dump())
+        return predict_freight(request.model_dump())
     except FileNotFoundError as exc:
         raise HTTPException(status_code=503, detail="El modelo de regresión no está disponible.") from exc
     except (AttributeError, ImportError, ValueError) as exc:
