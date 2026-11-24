@@ -1,0 +1,8 @@
+timestamp,evento,modulo,version,metrica,referencia,actual,cambio_relativo,estado,motivo
+2026-11-24T15:51:40+00:00,monitoreo,classification,1.0.0,PR-AUC,0.3999,0.3683,-0.0789,OK,Desempeño y distribución estables respecto a la referencia.
+2026-11-24T15:51:40+00:00,monitoreo,regression,3.0,MAE,5.449142197782633,5.4491,0.0,OK,Desempeño y distribución estables respecto a la referencia.
+2026-11-24T15:51:40+00:00,monitoreo,nlp,1.0.0,macro-F1,0.6769,0.6245,-0.0773,OK,Desempeño y distribución estables respecto a la referencia.
+2026-11-24T15:51:40+00:00,monitoreo,timeseries,1.0.0,MAE,6906.94,6096.7114,-0.1173,OK,Desempeño y distribución estables respecto a la referencia.
+2026-11-24T15:51:40+00:00,monitoreo,clustering,1.0.0,,,,,OK,Sin predicciones fechadas: se vigila versión y antigüedad del artefacto.
+2026-11-24T15:51:40+00:00,monitoreo,graphs,1.0.0,,,,,OK,Sin predicciones fechadas: se vigila versión y antigüedad del artefacto.
+2026-11-24T15:51:40+00:00,monitoreo,association,1.0.0,,,,,OK,Sin predicciones fechadas: se vigila versión y antigüedad del artefacto.

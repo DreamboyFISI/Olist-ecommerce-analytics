@@ -1,0 +1,717 @@
+{
+  "generated_at": "2026-11-24T15:51:40+00:00",
+  "umbrales": {
+    "psi_vigilar": 0.1,
+    "psi_alerta": 0.25,
+    "degradacion_vigilar": 0.1,
+    "degradacion_alerta": 0.2,
+    "max_edad_dias": 90
+  },
+  "resumen": {
+    "OK": 7,
+    "Vigilar": 0,
+    "Alerta": 0,
+    "Sin datos": 0
+  },
+  "modulos": [
+    {
+      "modulo": "classification",
+      "titulo": "Clasificación",
+      "metrica": "PR-AUC",
+      "mayor_es_mejor": true,
+      "version": "1.0.0",
+      "referencia": 0.3999,
+      "actual": 0.3683,
+      "cambio_relativo": -0.0789,
+      "n_predicciones": 500,
+      "periodos": [
+        {
+          "periodo": "2018-06",
+          "n": 151,
+          "metrica": 0.4384,
+          "tasa_objetivo": 0.0927,
+          "score_medio": 0.106
+        },
+        {
+          "periodo": "2018-07",
+          "n": 185,
+          "metrica": 0.4514,
+          "tasa_objetivo": 0.1243,
+          "score_medio": 0.1023
+        },
+        {
+          "periodo": "2018-08",
+          "n": 164,
+          "metrica": 0.3038,
+          "tasa_objetivo": 0.0976,
+          "score_medio": 0.1128
+        }
+      ],
+      "drift": {
+        "psi_score": {
+          "valor": null,
+          "estado": "Sin datos",
+          "nota": "Se necesitan al menos 200 predicciones por periodo."
+        }
+      },
+      "estado": "OK",
+      "motivos": [
+        "Desempeño y distribución estables respecto a la referencia."
+      ]
+    },
+    {
+      "modulo": "regression",
+      "titulo": "Regresión",
+      "metrica": "MAE",
+      "mayor_es_mejor": false,
+      "version": "3.0",
+      "referencia": 5.449142197782633,
+      "actual": 5.4491,
+      "cambio_relativo": 0.0,
+      "n_predicciones": 19734,
+      "periodos": [
+        {
+          "periodo": "2018-05",
+          "n": 848,
+          "metrica": 5.9348,
+          "score_medio": 5.9348
+        },
+        {
+          "periodo": "2018-06",
+          "n": 6160,
+          "metrica": 5.5958,
+          "score_medio": 5.5958
+        },
+        {
+          "periodo": "2018-07",
+          "n": 6273,
+          "metrica": 5.769,
+          "score_medio": 5.769
+        },
+        {
+          "periodo": "2018-08",
+          "n": 6452,
+          "metrica": 4.9343,
+          "score_medio": 4.9343
+        }
+      ],
+      "drift": {
+        "psi_score": {
+          "valor": 0.0199,
+          "estado": "OK",
+          "desde": "2018-05",
+          "hasta": "2018-08"
+        }
+      },
+      "estado": "OK",
+      "motivos": [
+        "Desempeño y distribución estables respecto a la referencia."
+      ]
+    },
+    {
+      "modulo": "nlp",
+      "titulo": "Sentimientos",
+      "metrica": "macro-F1",
+      "mayor_es_mejor": true,
+      "version": "1.0.0",
+      "referencia": 0.6769,
+      "actual": 0.6245,
+      "cambio_relativo": -0.0773,
+      "n_predicciones": 498,
+      "periodos": [
+        {
+          "periodo": "2017-12",
+          "n": 32,
+          "metrica": 0.5519,
+          "tasa_objetivo": 0.25,
+          "score_medio": 0.3459
+        },
+        {
+          "periodo": "2018-01",
+          "n": 37,
+          "metrica": 0.5641,
+          "tasa_objetivo": 0.3243,
+          "score_medio": 0.4135
+        },
+        {
+          "periodo": "2018-02",
+          "n": 30,
+          "metrica": 0.509,
+          "tasa_objetivo": 0.3333,
+          "score_medio": 0.4419
+        },
+        {
+          "periodo": "2018-03",
+          "n": 54,
+          "metrica": 0.6324,
+          "tasa_objetivo": 0.4444,
+          "score_medio": 0.4789
+        },
+        {
+          "periodo": "2018-04",
+          "n": 34,
+          "metrica": 0.5875,
+          "tasa_objetivo": 0.4412,
+          "score_medio": 0.406
+        },
+        {
+          "periodo": "2018-05",
+          "n": 45,
+          "metrica": 0.7408,
+          "tasa_objetivo": 0.3778,
+          "score_medio": 0.3365
+        },
+        {
+          "periodo": "2018-06",
+          "n": 38,
+          "metrica": 0.6587,
+          "tasa_objetivo": 0.1842,
+          "score_medio": 0.3073
+        },
+        {
+          "periodo": "2018-08",
+          "n": 38,
+          "metrica": 0.574,
+          "tasa_objetivo": 0.4211,
+          "score_medio": 0.4285
+        }
+      ],
+      "drift": {
+        "psi_score": {
+          "valor": null,
+          "estado": "Sin datos",
+          "nota": "Se necesitan al menos 200 predicciones por periodo."
+        }
+      },
+      "estado": "OK",
+      "motivos": [
+        "Desempeño y distribución estables respecto a la referencia."
+      ]
+    },
+    {
+      "modulo": "timeseries",
+      "titulo": "Series temporales",
+      "metrica": "MAE",
+      "mayor_es_mejor": false,
+      "version": "1.0.0",
+      "referencia": 6906.94,
+      "actual": 6096.7114,
+      "cambio_relativo": -0.1173,
+      "n_predicciones": 30,
+      "periodos": [],
+      "drift": {
+        "psi_score": {
+          "valor": null,
+          "estado": "Sin datos",
+          "nota": "Se necesitan al menos 200 predicciones por periodo."
+        }
+      },
+      "estado": "OK",
+      "motivos": [
+        "Desempeño y distribución estables respecto a la referencia."
+      ]
+    },
+    {
+      "modulo": "clustering",
+      "titulo": "Clustering",
+      "metrica": null,
+      "mayor_es_mejor": null,
+      "version": "1.0.0",
+      "referencia": null,
+      "actual": null,
+      "cambio_relativo": null,
+      "n_predicciones": 0,
+      "periodos": [],
+      "drift": {},
+      "estado": "OK",
+      "motivos": [
+        "Sin predicciones fechadas: se vigila versión y antigüedad del artefacto."
+      ]
+    },
+    {
+      "modulo": "graphs",
+      "titulo": "Grafos",
+      "metrica": null,
+      "mayor_es_mejor": null,
+      "version": "1.0.0",
+      "referencia": null,
+      "actual": null,
+      "cambio_relativo": null,
+      "n_predicciones": 0,
+      "periodos": [],
+      "drift": {},
+      "estado": "OK",
+      "motivos": [
+        "Sin predicciones fechadas: se vigila versión y antigüedad del artefacto."
+      ]
+    },
+    {
+      "modulo": "association",
+      "titulo": "Asociación",
+      "metrica": null,
+      "mayor_es_mejor": null,
+      "version": "1.0.0",
+      "referencia": null,
+      "actual": null,
+      "cambio_relativo": null,
+      "n_predicciones": 0,
+      "periodos": [],
+      "drift": {},
+      "estado": "OK",
+      "motivos": [
+        "Sin predicciones fechadas: se vigila versión y antigüedad del artefacto."
+      ]
+    }
+  ],
+  "registro": [
+    {
+      "modulo": "classification",
+      "titulo": "Clasificación",
+      "estado_manifest": "Completado",
+      "modelo": "Riesgo de reseña negativa",
+      "ganador": "HistGradientBoosting (sin tratamiento, ajustado)",
+      "version": "1.0.0",
+      "generado": "2026-11-03T20:31:04.084417+00:00",
+      "edad_dias": 20,
+      "antiguedad": "OK",
+      "metricas": {
+        "roc_auc": 0.7241,
+        "pr_auc": 0.3999,
+        "f1": 0.4124,
+        "precision": 0.5925,
+        "recall": 0.3162,
+        "balanced_accuracy": 0.6451,
+        "brier": 0.0783,
+        "umbral": 0.2907,
+        "prevalencia_test": 0.1067,
+        "cv_pr_auc": 0.5543,
+        "n_train": 78801,
+        "n_test": 18789
+      },
+      "artefactos": [
+        {
+          "archivo": "chart_data.json",
+          "bytes": 17320,
+          "sha256": "49dc1e4fd776f51c"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 2521,
+          "sha256": "a6bb3c3e32b2b2b4"
+        },
+        {
+          "archivo": "model.joblib",
+          "bytes": 153955,
+          "sha256": "3bf4c435a9f511a5"
+        },
+        {
+          "archivo": "results.csv",
+          "bytes": 38022,
+          "sha256": "defa632fc6e96c43"
+        }
+      ]
+    },
+    {
+      "modulo": "regression",
+      "titulo": "Regresión",
+      "estado_manifest": "Completado",
+      "modelo": "Sistema híbrido XGBoost",
+      "ganador": "Sistema híbrido XGBoost",
+      "version": "3.0",
+      "generado": "2026-11-23T22:54:28-05:00",
+      "edad_dias": 0,
+      "antiguedad": "OK",
+      "metricas": {
+        "MAE": 5.449142197782633,
+        "RMSE": 15.05724653321196,
+        "R2": 0.6589115150558766,
+        "sesgo": 2.3060986227026055,
+        "WAPE": 21.98224176163846,
+        "MAE_fletes_altos": 15.092891218484247,
+        "sesgo_fletes_altos": 10.082487743699197,
+        "precision_clase_alta": 0.805307599517491,
+        "recall_clase_alta": 0.8448494052138699,
+        "F1_clase_alta": 0.8246047430830039
+      },
+      "artefactos": [
+        {
+          "archivo": "classifier_metrics.csv",
+          "bytes": 6940,
+          "sha256": "9b7ca4818b6f6830"
+        },
+        {
+          "archivo": "customer_locations.csv",
+          "bytes": 12484329,
+          "sha256": "5e8631e5d47b6d74"
+        },
+        {
+          "archivo": "feature_importance.csv",
+          "bytes": 3271,
+          "sha256": "b313f285802b2e1e"
+        },
+        {
+          "archivo": "freight_classifier.joblib",
+          "bytes": 744239,
+          "sha256": "113bf0737874b76b"
+        },
+        {
+          "archivo": "geographic_clusters.joblib",
+          "bytes": 89089,
+          "sha256": "1cc17618449cb8ec"
+        },
+        {
+          "archivo": "high_feature_importance.csv",
+          "bytes": 3252,
+          "sha256": "e43be29c8df70934"
+        },
+        {
+          "archivo": "high_freight_model.joblib",
+          "bytes": 1444014,
+          "sha256": "a58264a5887bcd9a"
+        },
+        {
+          "archivo": "high_regression_metrics.csv",
+          "bytes": 6237,
+          "sha256": "17d02d6fe30ed310"
+        },
+        {
+          "archivo": "hybrid_model.joblib",
+          "bytes": 3978385,
+          "sha256": "6322cb7838bf0e54"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 2993,
+          "sha256": "ba4e9c365fba530e"
+        },
+        {
+          "archivo": "metrics.csv",
+          "bytes": 412,
+          "sha256": "12555da315e85744"
+        },
+        {
+          "archivo": "normal_freight_model.joblib",
+          "bytes": 1636846,
+          "sha256": "6ecae4a72623c024"
+        },
+        {
+          "archivo": "normal_regression_metrics.csv",
+          "bytes": 1474,
+          "sha256": "89e1afe0465423d4"
+        },
+        {
+          "archivo": "predictions.csv",
+          "bytes": 2100113,
+          "sha256": "e07ec84d1acb5f4e"
+        },
+        {
+          "archivo": "route_freight_history.csv",
+          "bytes": 5727,
+          "sha256": "8fbab036bfab778e"
+        },
+        {
+          "archivo": "seller_freight_history.csv",
+          "bytes": 103621,
+          "sha256": "dcb47cc1fe040833"
+        },
+        {
+          "archivo": "seller_locations.csv",
+          "bytes": 285984,
+          "sha256": "c4bc42f740c12e7a"
+        }
+      ]
+    },
+    {
+      "modulo": "nlp",
+      "titulo": "Sentimientos",
+      "estado_manifest": "Completado",
+      "modelo": "Análisis de sentimientos de reseñas",
+      "ganador": "Regresión Logística + TF-IDF palabra/carácter",
+      "version": "1.0.0",
+      "generado": "2026-11-23T20:40:36.649996+00:00",
+      "edad_dias": 0,
+      "antiguedad": "OK",
+      "metricas": {
+        "macro_f1": 0.6769,
+        "weighted_f1": 0.8349,
+        "accuracy": 0.8368,
+        "balanced_accuracy": 0.6815,
+        "cohen_kappa": 0.8309,
+        "negative_pr_auc": 0.8786,
+        "negative_roc_auc": 0.9542,
+        "negative_f1": 0.8363,
+        "negative_precision": 0.7765,
+        "negative_recall": 0.9059,
+        "umbral_negativo": 0.3745,
+        "macro_f1_cv": 0.677,
+        "qwk_5_estrellas": 0.841,
+        "exactitud_5_estrellas": 0.6744,
+        "off_by_one_5_estrellas": 0.8876,
+        "n_total": 35044,
+        "n_train": 28035,
+        "n_test": 7009,
+        "tasa_negativa_test": 0.2928,
+        "transformer_macro_f1": 0.6486
+      },
+      "artefactos": [
+        {
+          "archivo": "ajuste_logistico.csv",
+          "bytes": 229,
+          "sha256": "12fcad6ebd3574f4"
+        },
+        {
+          "archivo": "chart_data.json",
+          "bytes": 59730,
+          "sha256": "4ba0946d431cf14b"
+        },
+        {
+          "archivo": "comparacion_modelos.csv",
+          "bytes": 829,
+          "sha256": "eeabac2f1e32ecc9"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 3768,
+          "sha256": "32d25c6e8f651a99"
+        },
+        {
+          "archivo": "metricas_por_clase.csv",
+          "bytes": 244,
+          "sha256": "6a825deec191f0cc"
+        },
+        {
+          "archivo": "model.joblib",
+          "bytes": 1681602,
+          "sha256": "56a584bb8495e17e"
+        },
+        {
+          "archivo": "results.csv",
+          "bytes": 143335,
+          "sha256": "2a94be2a22fa3814"
+        },
+        {
+          "archivo": "terminos_por_clase.csv",
+          "bytes": 5685,
+          "sha256": "17b7588bd0951507"
+        },
+        {
+          "archivo": "transformer_benchmark.json",
+          "bytes": 2559,
+          "sha256": "176711566f4f4216"
+        }
+      ]
+    },
+    {
+      "modulo": "timeseries",
+      "titulo": "Series temporales",
+      "estado_manifest": "Completado",
+      "modelo": "SARIMA(1, 1, 2)(1, 1, 1, 7) sobre log1p",
+      "ganador": "sarima",
+      "version": "1.0.0",
+      "generado": "2026-11-02T07:41:52",
+      "edad_dias": 22,
+      "antiguedad": "OK",
+      "metricas": {
+        "MAE": 6906.94,
+        "RMSE": 8547.58,
+        "sMAPE_%": 19.08,
+        "MAPE_%": 21.53,
+        "MAE_baseline": 7263.44,
+        "mejora_vs_baseline_%": 4.9
+      },
+      "artefactos": [
+        {
+          "archivo": "chart_data.json",
+          "bytes": 26599,
+          "sha256": "18fcdd8c95c4cbe0"
+        },
+        {
+          "archivo": "comparacion_modelos.csv",
+          "bytes": 392,
+          "sha256": "e68ed14d86b46b9d"
+        },
+        {
+          "archivo": "comparacion_por_pliegue.csv",
+          "bytes": 2661,
+          "sha256": "aa52660657618386"
+        },
+        {
+          "archivo": "forecast.csv",
+          "bytes": 3922,
+          "sha256": "87da772ce73cecc7"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 3171,
+          "sha256": "69a6bbedae81543c"
+        },
+        {
+          "archivo": "modelo_sarima.json",
+          "bytes": 383,
+          "sha256": "41edce43d124af0d"
+        }
+      ]
+    },
+    {
+      "modulo": "clustering",
+      "titulo": "Clustering",
+      "estado_manifest": "Completado",
+      "modelo": "Segmentación de Clientes RFM",
+      "ganador": "K-Means (k=4) - Conjunto A (RFM)",
+      "version": "1.0.0",
+      "generado": "2026-11-03T17:39:45.563639+00:00",
+      "edad_dias": 20,
+      "antiguedad": "OK",
+      "metricas": {
+        "silhouette_score": 0.4003,
+        "davies_bouldin_index": 0.7537,
+        "calinski_harabasz_index": 60934.7,
+        "stability_ari_10_runs": 0.9947,
+        "baseline_rfm_quantiles_ari": 0.1617,
+        "explainability_tree_accuracy": 0.9696
+      },
+      "artefactos": [
+        {
+          "archivo": "algorithm_comparison.csv",
+          "bytes": 2402,
+          "sha256": "321db76b7b723355"
+        },
+        {
+          "archivo": "chart_data.json",
+          "bytes": 622533,
+          "sha256": "b0e45ef9aa9a3d79"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 2783,
+          "sha256": "3e1b77a3b4be41ac"
+        },
+        {
+          "archivo": "model.joblib",
+          "bytes": 375171,
+          "sha256": "d36327edcc7f0b18"
+        },
+        {
+          "archivo": "results.csv",
+          "bytes": 53574,
+          "sha256": "4175eae442ee8bd9"
+        }
+      ]
+    },
+    {
+      "modulo": "graphs",
+      "titulo": "Grafos",
+      "estado_manifest": "Completado",
+      "modelo": "Louvain sobre grafo bipartito categoría–vendedor",
+      "ganador": "Louvain",
+      "version": "1.0.0",
+      "generado": "2026-11-09T20:56:49.369983+00:00",
+      "edad_dias": 14,
+      "antiguedad": "OK",
+      "metricas": {
+        "modularidad_ganador": 0.7596,
+        "comunidades_ganador": 21,
+        "cobertura_ganador": 1.0,
+        "nodos_grafo_principal": 3169,
+        "aristas_grafo_principal": 6616,
+        "conectividad_grafo_principal_%": 100.0,
+        "componente_gigante_producto_vendedor_%": 26.94,
+        "pedidos_con_2_o_mas_productos": 3236,
+        "aristas_co_compra": 4058
+      },
+      "artefactos": [
+        {
+          "archivo": "aristas.csv",
+          "bytes": 333544,
+          "sha256": "2aef61c388f5f4ba"
+        },
+        {
+          "archivo": "chart_data.json",
+          "bytes": 56352,
+          "sha256": "719032e0e3049c9b"
+        },
+        {
+          "archivo": "comparacion_algoritmos.csv",
+          "bytes": 156,
+          "sha256": "d68fec1d7b649e74"
+        },
+        {
+          "archivo": "comunidades.csv",
+          "bytes": 3124,
+          "sha256": "fa53f744b5b360e2"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 1920,
+          "sha256": "eff62920b2c9d291"
+        },
+        {
+          "archivo": "metricas.json",
+          "bytes": 10994,
+          "sha256": "5ed3993ebc05a13c"
+        },
+        {
+          "archivo": "nodos.csv",
+          "bytes": 175543,
+          "sha256": "9abbedeb0053aa1e"
+        },
+        {
+          "archivo": "pares_categorias.csv",
+          "bytes": 652,
+          "sha256": "abfbfafcdee27cbe"
+        },
+        {
+          "archivo": "pares_co_compra.csv",
+          "bytes": 1416,
+          "sha256": "cd4cbacfbbef03e8"
+        }
+      ]
+    },
+    {
+      "modulo": "association",
+      "titulo": "Asociación",
+      "estado_manifest": "Completado",
+      "modelo": "Reglas de Asociación y Venta Cruzada",
+      "ganador": "FP-Growth - Canasta por Pedido",
+      "version": "1.0.0",
+      "generado": "2026-11-03T23:50:17.123325+00:00",
+      "edad_dias": 20,
+      "antiguedad": "OK",
+      "metricas": {
+        "rules_count": 10,
+        "max_lift": 15.1457,
+        "avg_lift": 4.3316,
+        "avg_confidence": 0.0453,
+        "min_support_used": 2e-05,
+        "exec_time_sec": 0.7105
+      },
+      "artefactos": [
+        {
+          "archivo": "algorithm_comparison.csv",
+          "bytes": 393,
+          "sha256": "2f5ba9fc07506075"
+        },
+        {
+          "archivo": "chart_data.json",
+          "bytes": 11160,
+          "sha256": "ce4217df658a0982"
+        },
+        {
+          "archivo": "manifest.json",
+          "bytes": 2064,
+          "sha256": "86c9b65556893c5d"
+        },
+        {
+          "archivo": "model.joblib",
+          "bytes": 2036,
+          "sha256": "009f5599ea1a5788"
+        },
+        {
+          "archivo": "results.csv",
+          "bytes": 827,
+          "sha256": "bfa2b9a7fca38930"
+        }
+      ]
+    }
+  ]
+}
