@@ -13,6 +13,7 @@ MODULES = (
     {"slug": "graphs", "title": "Grafos", "branch": "feature/graphs", "question": "¿Qué productos, categorías o vendedores están más conectados?", "expected_models": ["NetworkX", "Louvain"]},
     {"slug": "regression", "title": "Regresión", "branch": "feature/regression", "question": "¿Cuántos días tardará en entregarse un pedido?", "expected_models": ["Regresión lineal", "Random Forest", "XGBoost"]},
     {"slug": "classification", "title": "Clasificación", "branch": "feature/classification", "question": "¿Qué pedidos tienen riesgo de recibir una reseña negativa?", "expected_models": ["Random Forest", "XGBoost", "SVM", "Naive Bayes"]},
+    {"slug": "nlp", "title": "Sentimientos", "branch": "feature/nlp", "question": "¿Qué sentimiento expresan las reseñas y qué temas explican la insatisfacción?", "expected_models": ["TF-IDF + Regresión Logística", "Complement NB", "SVM lineal", "BERTimbau (referencia)"]},
 )
 
 

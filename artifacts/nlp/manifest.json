@@ -1,0 +1,52 @@
+{
+  "status": "Completado",
+  "model_name": "Análisis de sentimientos de reseñas",
+  "version": "1.0.0",
+  "generated_at": "2026-11-23T20:40:36.649996+00:00",
+  "dataset": "Olist Brazilian E-Commerce — olist_order_reviews_dataset.csv",
+  "period": "2016-10-02 a 2018-08-31",
+  "metrics": {
+    "macro_f1": 0.6769,
+    "weighted_f1": 0.8349,
+    "accuracy": 0.8368,
+    "balanced_accuracy": 0.6815,
+    "cohen_kappa": 0.8309,
+    "negative_pr_auc": 0.8786,
+    "negative_roc_auc": 0.9542,
+    "negative_f1": 0.8363,
+    "negative_precision": 0.7765,
+    "negative_recall": 0.9059,
+    "umbral_negativo": 0.3745,
+    "macro_f1_cv": 0.677,
+    "qwk_5_estrellas": 0.841,
+    "exactitud_5_estrellas": 0.6744,
+    "off_by_one_5_estrellas": 0.8876,
+    "n_total": 35044,
+    "n_train": 28035,
+    "n_test": 7009,
+    "tasa_negativa_test": 0.2928,
+    "transformer_macro_f1": 0.6486
+  },
+  "winner": "Regresión Logística + TF-IDF palabra/carácter",
+  "results_path": "artifacts/nlp/results.csv",
+  "chart_data_path": "artifacts/nlp/chart_data.json",
+  "business_conclusions": [
+    "El modelo detecta reseñas negativas con PR-AUC 0.879 y ROC-AUC 0.954; con el umbral 0.37 logra precisión 77.6% y recall 90.6%.",
+    "El sentimiento está muy ligado a la logística: las reseñas de pedidos con entrega tardía tienen 72.8% de negativas predichas frente a 23.6% de los entregados a tiempo, y 89.2% cuando no hay entrega registrada.",
+    "Entre las 15 categorías con más reseñas, la de mayor tasa de negativas es baby (37.2% de 191 reseñas), una prioridad para revisar producto, embalaje y expectativas.",
+    "La clase neutra es la más difícil (F1 0.279): muchas reseñas de 3 estrellas son ambivalentes o descriptivas. Para decisiones operativas conviene usar la probabilidad de negativa y no solo la clase argmax.",
+    "El transformer externo zero-shot alcanzó macro-F1 0.649 en la muestra balanceada, frente a 0.648 del mejor modelo clásico. Empate técnico: el clásico se despliega por latencia, costo e interpretabilidad, y fine-tunear BERTimbau en GPU queda como mejora pendiente."
+  ],
+  "limitations": [
+    "La nota de 1–5 estrellas es una etiqueta débil: mide satisfacción global y no sentimiento puro; las reseñas de 3 estrellas son especialmente ambiguas.",
+    "Solo ~41% de las reseñas tienen comentario. La muestra está sesgada hacia clientes que deciden escribir, que suelen ser los muy satisfechos o los muy insatisfechos.",
+    "El texto es portugués coloquial, con errores de tipeo, ironía, emojis y abreviaturas; los n-gramas de carácter ayudan, pero no resuelven la ironía ni el sarcasmo.",
+    "Se eliminaron duplicados exactos de texto para evitar fuga de información; near-duplicates y plantillas casi idénticas pueden seguir inflando levemente la evaluación.",
+    "La partición train/test es aleatoria y estratificada, no temporal: mide generalización a reseñas similares, no deriva futura. Para producción conviene añadir un holdout temporal.",
+    "Las tasas por categoría se calculan sobre el test y algunas categorías tienen menos de 200 reseñas; son señales exploratorias, no estimaciones precisas.",
+    "El benchmark con transformer es zero-shot sobre un modelo entrenado en otro e-commerce (B2W). No se fine-tuneó BERTimbau en Olist por costo computacional; con GPU el techo sería mayor.",
+    "El modelo se entrenó con reseñas de 2016–2018. Cambios de catálogo, logística o lenguaje requieren monitoreo de deriva y reentrenamiento periódico.",
+    "Es un modelo descriptivo, no causal: una asociación entre retraso y negatividad no prueba que el retraso sea la única causa."
+  ],
+  "serialized_model_path": "artifacts/nlp/model.joblib"
+}

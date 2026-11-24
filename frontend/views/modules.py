@@ -1,4 +1,4 @@
-from frontend.views.model_pages import association, classification, clustering, graphs, regression, timeseries
+from frontend.views.model_pages import association, classification, clustering, graphs, nlp, regression, timeseries
 
 PAGES = {
     "association": association,
@@ -7,6 +7,7 @@ PAGES = {
     "graphs": graphs,
     "regression": regression,
     "classification": classification,
+    "nlp": nlp,
 }
 
 

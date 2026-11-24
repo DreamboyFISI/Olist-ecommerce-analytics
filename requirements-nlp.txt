@@ -1,0 +1,9 @@
+# Dependencias opcionales para el benchmark de transformer (no las necesita la API).
+# En CPU conviene instalar torch desde el índice oficial:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-nlp.txt
+torch>=2.5,<3
+transformers>=4.46,<5
+safetensors
+sentencepiece
+accelerate

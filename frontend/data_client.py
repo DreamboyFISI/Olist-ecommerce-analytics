@@ -75,3 +75,12 @@ def get_location_cities(role: str, state: str) -> list[str]:
 def get_locations(role: str, state: str, city: str) -> list[dict]:
     query = urlencode({"role": role, "state": state, "city": city})
     return api_get(f"/api/v1/regression/locations?{query}")
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def get_nlp_results() -> dict:
+    return api_get("/api/v1/nlp/results")
+
+
+def predict_nlp(text: str) -> dict:
+    return api_post("/api/v1/nlp/predict", {"text": text})

@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 from backend.services.repository import load_eda_summary, load_module_registry
 from backend.services.regression import load_regression_results, predict_delivery
 from backend.services.regression_locations import list_cities, list_locations
+from backend.services.sentiment import load_sentiment_results, predict_sentiment
 
 router = APIRouter()
 
@@ -24,6 +25,11 @@ class RegressionPredictionRequest(BaseModel):
     customer_state: str = Field(min_length=2, max_length=2)
     main_seller_state: str = Field(min_length=2, max_length=2)
     main_category: str = Field(min_length=1, max_length=120)
+
+
+class SentimentPredictionRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=5_000, description="Reseña en portugués brasileño.")
+
 
 
 @router.get("/health", tags=["system"])
@@ -82,4 +88,24 @@ def regression_predict(request: RegressionPredictionRequest) -> dict:
     except FileNotFoundError as exc:
         raise HTTPException(status_code=503, detail="El modelo de regresión no está disponible.") from exc
     except (AttributeError, ImportError, ValueError) as exc:
+        raise HTTPException(status_code=500, detail=f"No se pudo ejecutar la predicción: {exc}") from exc
+
+
+@router.get("/api/v1/nlp/results", tags=["nlp"])
+def nlp_results() -> dict:
+    try:
+        return load_sentiment_results()
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail="No se encontraron los artefactos de sentimientos.") from exc
+
+
+@router.post("/api/v1/nlp/predict", tags=["nlp"])
+def nlp_predict(request: SentimentPredictionRequest) -> dict:
+    try:
+        return predict_sentiment(request.text)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail="El modelo de sentimientos no está disponible.") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except (AttributeError, ImportError) as exc:
         raise HTTPException(status_code=500, detail=f"No se pudo ejecutar la predicción: {exc}") from exc
