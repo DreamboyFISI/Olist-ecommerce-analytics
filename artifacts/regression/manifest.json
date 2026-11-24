@@ -1,5 +1,6 @@
 {
   "module": "hybrid_freight_regression",
+  "status": "Completado",
   "target": "freight_total",
   "currency": "BRL",
   "high_freight_limit": 30.0,
