@@ -103,7 +103,7 @@ iniciar Streamlit.
 - `feature/clustering`
 - `feature/timeseries`
 - `feature/graphs`
-- `feature/regression`
+- `modelo-regresion-jc`
 - `feature/classification`
 - `feature/nlp`
 
@@ -285,7 +285,7 @@ El Pull Request debe apuntar de `feature/nombre-modulo` hacia `develop`.
 | `feature/clustering` | Notebook `04_clustering`, RFM, K-Means/DBSCAN, segmentos, Silhouette y `clustering.py`. |
 | `feature/timeseries` | Notebook `05_timeseries`, SARIMA/Prophet, backtesting, pronósticos y `timeseries.py`. |
 | `feature/graphs` | Notebook `06_graphs`, nodos, aristas, centralidad, Louvain y `graphs.py`. |
-| `feature/regression` | Notebook `07_regression`, días de entrega, comparación por MAE y `regression.py`. |
+| `modelo-regresion-jc` | Notebook `07-regression-fletev3.ipynb`, predicción del costo del flete, sistema híbrido con XGBoost y evaluación mediante MAE, RMSE, R² y WAPE. |
 | `feature/classification` | Notebook `08_classification`, reseña negativa, Recall/F1/PR-AUC y `classification.py`. |
 | `feature/nlp` | Notebook `09_nlp`, sentimiento de reseñas, TF-IDF/SVM/Naive Bayes/BERTimbau, macro-F1 y `sentiment.py`. |
 
@@ -315,6 +315,6 @@ se coordinan previamente en `develop`.
 | **Clustering** | ¿Qué tipos de clientes existen y cuáles tienen mayor valor? | Segmentar clientes y diseñar acciones diferenciadas. |
 | **Series temporales** | ¿Cuánto se venderá en los próximos periodos? | Planificar inventario, logística y demanda. |
 | **Grafos** | ¿Qué productos, categorías o vendedores están más conectados? | Detectar comunidades, productos centrales y relaciones relevantes. |
-| **Regresión** | ¿Cuántos días tardará en llegar un pedido? | Anticipar retrasos y ofrecer fechas de entrega más precisas. |
+| **Regresión** | ¿Cuánto costará el flete de un pedido? | Anticipar el costo logístico, proteger la rentabilidad y detectar envíos inusualmente caros. |
 | **Clasificación** | ¿Qué pedidos podrían recibir una reseña negativa? | Identificar riesgos y actuar antes de que el cliente quede insatisfecho. |
 | **NLP / Sentimientos** | ¿Qué dicen y sienten los clientes en sus reseñas? | Priorizar quejas, detectar temas críticos y monitorear la satisfacción. |
